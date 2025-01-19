@@ -9,7 +9,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$extraclasses[] = 'remui-login';
+$extraclasses[] = 'inteb-login';
 $bodyattributes = $OUTPUT->body_attributes($extraclasses);
 
 $templatecontext = [
@@ -18,4 +18,4 @@ $templatecontext = [
     'bodyattributes' => $bodyattributes,
 ];
 
-echo $OUTPUT->render_from_template('theme_remui/login', $templatecontext);
+echo $OUTPUT->render_from_template('theme_inteb/login', $templatecontext);
