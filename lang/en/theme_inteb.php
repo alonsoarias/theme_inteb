@@ -93,8 +93,6 @@ $string['carouselintervaldesc'] = 'Enter the interval time in milliseconds for t
 
 $string['carousel'] = 'Image carousel';
 $string['loginsection'] = 'Login section';
-$string['previous'] = 'Go to the previous slide';
-$string['next'] = 'Go to the next slide';
 
 $string['slidetitle'] = 'Title for slide {$a}';
 $string['slidetitle_desc'] = 'Enter the title for slide {$a}';
