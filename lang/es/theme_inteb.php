@@ -97,8 +97,6 @@ $string['carouselintervaldesc'] = 'Introduce el tiempo de intervalo en milisegun
 
 $string['carousel'] = 'Carrusel de imágenes';
 $string['loginsection'] = 'Sección de inicio de sesión';
-$string['previous'] = 'Ir a la diapositiva anterior';
-$string['next'] = 'Ir a la siguiente diapositiva';
 
 $string['slidetitle'] = 'Título para la diapositiva {$a}';
 $string['slidetitle_desc'] = 'Introduce el título para la diapositiva {$a}';
