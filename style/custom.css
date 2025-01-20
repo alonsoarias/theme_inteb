@@ -46,10 +46,6 @@ div#navbarmenutopic {
     margin: 0 -15px;
 }
 
-div#banner-img-slider {
-    min-height: 250px !important;
-}
-
 #top-footer .my-about,
 #top-footer h3 {
     margin-top: 20px;
@@ -439,4 +435,116 @@ button.btn.btn-primary.icon-no-margin.p-0 {
 
 /* Para los teléfonos más pequeños */
 @media (max-width: 479px) {
+}
+
+
+/* Estilos base para la página de login */
+.login-page {
+    min-height: 100vh;
+    background-color: var(--color-bg-page);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    /* Contenedor principal */
+    .login-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        /* Grid layout */
+        .row {
+            margin: 0;
+            min-height: 100vh;
+        }
+    }
+}
+
+/* Estilos del formulario de login */
+.loginform {
+    display: flex;
+    flex-direction: column;
+    max-width: var(--max-width-form);
+    animation: fadeIn 0.8s ease-out;
+
+    /* Mensaje de bienvenida */
+    .login-welcome-wrapper {
+        text-align: center;
+        margin-bottom: 2rem;
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--color-text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+        }
+    }
+
+}
+
+.login-wrapper{
+    margin: 10%;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Footer */
+.footer {
+    background-color: var(--color-footer-bg);
+    padding: 1rem 0;
+    text-align: center;
+
+    .my-credit {
+        font-size: 0.875rem;
+        color: var(--color-text-secondary);
+    }
+}
+
+/* Media queries para responsividad */
+@media (max-width: 991.98px) {
+    .loginform {
+        margin: 5%;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .loginform {
+        .login-welcome-wrapper h2 {
+            font-size: 1.25rem;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .loginform {
+        margin: 1rem;
+        padding: 1rem;
+
+        .login-logo img {
+            max-width: 150px;
+        }
+    }
+}
+
+
+.carousel-item img {
+    object-fit: cover; /* Ya está en tu código */
+    width: 100%;
+    height: 100vh;
+    max-height: 1080px; /* Para evitar estiramiento excesivo en pantallas muy altas */
 }
