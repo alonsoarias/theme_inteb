@@ -1,126 +1,125 @@
 <?php
 $string['pluginname'] = 'INTEB';
-$string['choosereadme'] = 'INTEB es un tema creado por <a href="http://ingeweb.co/">IngeWeb</a>.';
-
+$string['choosereadme'] = 'INTEB es un tema creado por el Ing. Pablo A Pico (<a href="http://ingeweb.co/">IngeWeb</a>) exclusivamente para nuestros clientes.';
 $string['configtitle'] = 'INTEB';
 
 $string['logo'] = 'Logo';
 
-$string['themesettings'] = 'Configuración general';
-$string['themesettingsgeneral'] = 'Configuración general del tema INTEB';
-$string['contactinfo'] = 'Datos de contacto';
+$string['themesettings'] = 'Ajustes del Tema INTEB';
+$string['themesettingsgeneral'] = 'Configuración General';
+$string['contactinfo'] = 'Información de contacto';
 $string['abouttitle'] = 'Acerca de';
 
-$string['abouttext'] = 'Texto Acerca de';
-$string['abouttextdesc'] = 'Contenido para mostrar en la sección "acerca de" del pié página.';
+$string['abouttext'] = 'Texto "Acerca de"';
+$string['abouttextdesc'] = 'Contenido para la sección "Acerca de" en el pie de página';
 
-$string['loginfootertext'] = 'Pié página en inicio de sesión';
-$string['loginfootertextdesc'] = 'Contenido para mostrar en el pié página de la página de iniciar sesión';
+$string['loginfootertext'] = 'Pie de página de inicio de sesión';
+$string['loginfootertextdesc'] = 'Contenido para la sección de pie de página en la página de inicio de sesión';
 
-$string['generalalert'] = 'Aviso general';
-$string['generalalertdesc'] = 'Esto es &uacute;til para alertar a los usuarios de una situaci&oacute;n particular. La alerta aparece en la portada';
+$string['generalalert'] = 'Alerta General';
+$string['generalalertdesc'] = 'Esto mostrará una alerta en la página principal para notificar a los usuarios sobre algún evento o situación particular.';
 
-$string['footertitle'] = 'T&iacute;tulo en pi&eacute; de página central';
-$string['footertitledesc'] = 'El t&iacute;tulo  para el m&oacute;dulo de la mitad en la zona de pi&eacute; de página.';
+$string['footertitle'] = 'Título del bloque central del pie de página';
+$string['footertitledesc'] = 'El título para el bloque central del pie de página.';
 
-$string['footertext'] = 'Texto en pi&eacute; de página central';
-$string['footertextdesc'] = 'El contenido para el m&oacute;dulo de la mitad en la zona de pi&eacute; de página.';
+$string['footertext'] = 'Texto del bloque central del pie de página';
+$string['footertextdesc'] = 'El contenido para el bloque central del pie de página.';
 
-$string['footertitle2'] = 'T&iacute;tulo en pi&eacute; de página derecho';
-$string['footertitledesc2'] = 'El t&iacute;tulo  para el m&oacute;dulo de la derecha en la zona de pi&eacute; de página.';
+$string['footertitle2'] = 'Título del bloque derecho del pie de página';
+$string['footertitledesc2'] = 'El título para el bloque derecho del pie de página.';
 
-$string['footertext2'] = 'Texto en pi&eacute; de página derecho';
-$string['footertextdesc2'] = 'El contenido para el m&oacute;dulo de la derecha en la zona de pi&eacute; de página.';
+$string['footertext2'] = 'Texto del bloque derecho del pie de página';
+$string['footertextdesc2'] = 'El contenido para el bloque derecho del pie de página.';
 
-$string['copyright'] = 'Nota legal';
+$string['copyright'] = 'Derechos de autor';
 $string['copyrightdesc'] = 'Acerca de este sitio web.';
 
-$string['customcss'] = 'Reglas personalizadas de CSS';
-$string['customcssdesc'] = 'Estas reglas aplican a todo el sitio y facilitan agregar nuevos estilos CSS sin modificar el theme.';
+$string['customcss'] = 'CSS personalizado';
+$string['customcssdesc'] = 'Cualquier regla CSS que agregue aquí se reflejará en cada página, lo que facilita la personalización de este tema.';
 
-$string['themeinfotext'] = 'Este theme ha sido creado para otro caso de éxito de <strong>IngeWeb</strong>. Visítenos en <a target="_blank" href="http://ingeweb.co/">IngeWeb - Soluciones para triunfar en Internet</a>. Tiene la posibilidad de cambiar fácilmente el banner informativo y/o la imagen de fonde en el inicio de sesión.';
-$string['credit'] = 'Tema creado por <a target="_blank" class="my-credit-link" href="http://ingeweb.co/">IngeWeb</a> Copyright © 2024 - Todos los derechos reservados';
+$string['themeinfotext'] = 'Este tema fue creado para <strong>otro proyecto de Moodle</strong> por <a target="_blank" href="http://ingeweb.co/">IngeWeb - Soluciones para triunfar en Internet</a>.';
+$string['credit'] = 'Tema creado por <a target="_blank" class="my-credit-link" href="http://ingeweb.co/">IngeWeb</a> © 2024 - Todos los derechos reservados';
 
-$string['loginimage'] = 'Usar imagen de fondo en inicio de sesión';
-$string['loginimagedesc'] = 'Activa la capa adicional en el fondo de la página de inicio de sesión para la imagen de fondo establecida a continuación.
-<br><strong>Imágenes de fondo: </strong> (Para descargar y reutilizar)
-<br><a href="{$a->example_cover2}" target="_blank">Fondo recomendado (colorido) para usar</a>
-<br><a href="{$a->example_cover1}" target="_blank">Fondo alternativo (corporativo)</a>
-<br><strong>Recordatorio: </strong>En la pestaña "Configuración general" puede cambiar la imagen de fondo principal.';
+$string['loginimage'] = 'Imagen de bienvenida';
+$string['loginimagedesc'] = 'Esta imagen aparece en la página de inicio de sesión. Se recomienda PNG o JPG de 960px * 960px.<br><strong>Ejemplos</strong>';
 
-$string['loginbg_color'] = 'Color de fondo inicio de sesión';
+$string['loginbg_color'] = 'Color de fondo de inicio de sesión';
 $string['loginbg_colordesc'] = 'Color de fondo en la página de inicio de sesión';
 
-$string['frontpagewallpaper'] = 'Papel tapiz en portada';
-$string['frontpagewallpaperdesc'] = 'Se recomienda una imagen rectangular horizontal jpg (Calidad 80) de 1440*130 pixeles. Esta imagen aparece en la portada en la parte superior de la portada y se recomienda que sea ancha.';
+$string['frontpagewallpaper'] = 'Imagen de fondo de la página principal';
+$string['frontpagewallpaperdesc'] = 'Esta imagen aparece en la parte superior de la página principal, justo después del menú principal.';
 
-$string['coursepresentation'] = 'Presentación de los cursos';
-$string['coursepresentationdesc'] = '<b>Presentación por defecto:</b> Apariencia por defecto del curso.<br><b>Imagen de portada:</b> Se mostrará una imagen de portada en la parte superior de la página del curso (se usará la primera imagen que se encuentre en los archivos de resumen del curso).';
-
-$string['showingonlycategorieswithenrolledcourses'] = 'Mostrando categorías donde tiene cursos inscritos';
-$string['nocoursestoshow'] = 'No hay cursos para mostrar';
+$string['showingonlycategorieswithenrolledcourses'] = 'Mostrando únicamente categorías con cursos inscritos';
+$string['nocoursestoshow'] = 'No se encontraron cursos para mostrar';
 
 $string['region-side-pre'] = 'Derecha';
 
-$string['generalnoticemode'] = 'Aviso general (modo)';
-$string['generalnoticemodedesc'] = 'El aviso general fue creado para mostrar avisos importantes y cortos dentro de la plataforma en la zona superior. Puede configurar el texto a mostrar en la próxima configuración';
+// Aviso general
+$string['generalnoticemode'] = 'Modo de aviso general';
+$string['generalnoticemodedesc'] = 'El aviso general permite a los administradores mostrar notificaciones importantes en la cabecera de cada página tras iniciar sesión.';
 $string['generalnoticemode_off'] = 'Apagado';
-$string['generalnoticemode_info'] = 'Informativo';
+$string['generalnoticemode_info'] = 'Información';
 $string['generalnoticemode_danger'] = 'Crítico';
 
 $string['generalnotice'] = 'Texto del aviso';
-$string['generalnoticedesc'] = 'Texto a mostrar en el aviso general. Puede utilizar la etiqueta <strong>strong</strong> para las frases más relevantes del texto.';
+$string['generalnoticedesc'] = 'Texto que se mostrará dentro de la caja de alerta. Puede usar la etiqueta <strong>strong</strong> para resaltar frases importantes.';
 $string['generalnotice_create'] = 'Configurar un aviso';
 
-$string['copypaste'] = 'Copy and Paste';
-$string['copypaste_desc'] = 'Activar o desactivar copy / paste para estudiantes';
-$string['config_copypaste'] = 'Activar o desactivar copy paste';
-$string['config_copypaste_desc'] = 'Active o desactive el copy / paste a estudiantes';
-$string['disable'] = 'Deshabilitado';
-$string['enable'] = 'Habilitado';
+// Caché
+$string['cachedef_fontawesomeremuiiconmapping'] = 'Almacenamiento en caché para el mapeo de iconos Font Awesome';
+
+// Eliminadas cadenas antiguas de copy/paste.
 
 $string['show'] = 'Mostrar';
 $string['hide'] = 'Ocultar';
 
-$string['carouselsettings'] = 'Configuración del Carrusel';
-$string['carouselsettings_desc'] = 'Configura los ajustes para el carrusel de la página de inicio de sesión, incluyendo imágenes, textos y otras opciones.';
-
+$string['carouselsettings'] = 'Ajustes del Carrusel';
+$string['carouselsettings_desc'] = 'Configure los ajustes para el carrusel en la página de inicio de sesión, incluidas imágenes, textos y otras opciones.';
 
 $string['enablecarousel'] = 'Habilitar carrusel en la página de inicio de sesión';
-$string['enablecarousel_desc'] = 'Habilita esta configuración para mostrar un carrusel de imágenes en la página de inicio de sesión.';
+$string['enablecarousel_desc'] = 'Active esta configuración para mostrar un carrusel de imágenes en la página de inicio de sesión.';
 $string['numberofslides'] = 'Número de diapositivas';
-$string['numberofslides_desc'] = 'Selecciona el número de diapositivas que se mostrarán en el carrusel de la página de inicio de sesión.';
+$string['numberofslides_desc'] = 'Seleccione cuántas diapositivas desea mostrar en el carrusel de la página de inicio de sesión.';
 $string['slideimage'] = 'Imagen de la diapositiva {$a}';
-$string['slideimage_desc'] = 'Sube una imagen para la diapositiva {$a} del carrusel.';
-$string['carouselinterval'] = 'Intervalo del Carrusel';
-$string['carouselintervaldesc'] = 'Introduce el tiempo de intervalo en milisegundos para las diapositivas del carrusel. Esto controla la rapidez con la que se realizará la transición entre diapositivas.';
+$string['slideimage_desc'] = 'Cargue una imagen para la diapositiva {$a} en el carrusel.';
+$string['carouselinterval'] = 'Intervalo del carrusel';
+$string['carouselintervaldesc'] = 'Ingrese el tiempo de intervalo en milisegundos para las diapositivas del carrusel.';
 
 $string['carousel'] = 'Carrusel de imágenes';
 $string['loginsection'] = 'Sección de inicio de sesión';
 
 $string['slidetitle'] = 'Título para la diapositiva {$a}';
-$string['slidetitle_desc'] = 'Introduce el título para la diapositiva {$a}';
-$string['slideurl'] = 'URL del botón de la diapositiva {$a}';
-$string['slideurldesc'] = 'Introduce la URL para el botón en la diapositiva {$a}. Esta URL se abrirá en una nueva ventana.';
-$string['slideposition'] = 'Posición del contenido de la diapositiva {$a}';
+$string['slidetitle_desc'] = 'Ingrese el título de la diapositiva {$a}';
+$string['slideurl'] = 'URL del botón en la diapositiva {$a}';
+$string['slideurldesc'] = 'Ingrese la URL para el botón en la diapositiva {$a}. Esta URL se abrirá en una nueva ventana.';
 
 $string['unauthorized_access'] = 'Acceso no autorizado';
-$string['unauthorized_access_msg'] = 'Error inesperado de validación de licencia. Por favor comuníquese con Soporte Técnico';
-//bifurcar mensaje para administradores y usuarios
+$string['unauthorized_access_msg'] = 'Este sitio no está autorizado para operar en esta URL.';
+$string['devtools_access_disabled'] = 'Se ha deshabilitado el acceso a las herramientas de desarrollo.';
 
-$string['devtools_access_disabled'] = 'El acceso a las herramientas de desarrollo está deshabilitado.';
+$string['hidefrontpagesections'] = 'Ocultar secciones superiores de la página principal';
+$string['hidefrontpagesections_desc'] = 'Habilite esta configuración para ocultar las secciones superiores de la página principal, brindando un aspecto más limpio.';
 
-$string['hidefrontpagesections'] = 'Ocultar las secciones superiores de la página principal';
-$string['hidefrontpagesections_desc'] = 'Activa esta configuración para ocultar las secciones superiores de tu página principal, ofreciendo una apariencia más limpia.';
-
-$string['themesettingslogin'] = 'Configuración básica del login';
+$string['themesettingslogin'] = 'Ajustes básicos de inicio de sesión';
 
 $string['abouttext_default'] = '<p style="text-align: center;"></p>
     <p style="text-align: left;">
     </p>
-    <p style="text-align: center;"><span style="font-family: inherit; font-size: 1rem; letter-spacing: 0rem; text-transform: inherit;"><b>IngeWeb - Soluciones para triunfar en Internet<br></b></span><span style="font-family: inherit; font-size: 1rem; letter-spacing: 0rem; text-transform: inherit;">Expertos en Moodle, BigBlueButton, Wordpress y Joomla.<br></span><strong style="font-family: inherit; font-size: 1rem; letter-spacing: 0rem; text-transform: inherit;">www.ingeweb.co</strong></p>
+    <p style="text-align: center;"><span style="font-family: inherit; font-size: 1rem; letter-spacing: 0rem; text-transform: inherit;"><b>IngeWeb - Soluciones para triunfar en Internet<br></b></span><span style="font-family: inherit; font-size: 1rem; letter-spacing: 0rem; text-transform: inherit;">Expertos en Moodle, BigBlueButton, WordPress y Joomla.<br></span><strong style="font-family: inherit; font-size: 1rem; letter-spacing: 0rem; text-transform: inherit;">www.ingeweb.co</strong></p>
     <p></p>';
 
-$string['intebhelp'] = "Ayuda en Plataforma";
-$string['intebfeedback'] = "Feedback de INTEB";
-$string['intebsupport'] = "Soporte de INTEB";
+// Nuevas cadenas para Chat
+$string['themesettingschat'] = 'Ajustes de Chat';
+$string['themesettingschatdesc'] = 'Opciones para integrar un servicio de chat en la plataforma.';
+$string['enable_chat'] = 'Habilitar chat';
+$string['enable_chatdesc'] = 'Si habilita esta opción, se mostrará un widget de chat.';
+$string['tawkto_embed_url'] = 'URL de inserción de Tawk.to';
+$string['tawkto_embed_urldesc'] = 'Ingrese el script o la URL de inserción de Tawk.to (u otro servicio de chat).';
+
+// Nuevas cadenas para Copy/Paste
+$string['themesettingscopypaste'] = 'Configuración de Copy/Paste';
+$string['themesettingscopypaste_desc'] = 'Opciones para bloquear o restringir el copiado y pegado.';
+$string['copypaste_prevention'] = 'Prevenir copy/paste';
+$string['copypaste_preventiondesc'] = 'Si se habilita, se intentará bloquear la función de copiar y pegar.';
+$string['copypaste_roles'] = 'Roles afectados';
+$string['copypaste_rolesdesc'] = 'Seleccione los roles a los que se aplicará la restricción.';
