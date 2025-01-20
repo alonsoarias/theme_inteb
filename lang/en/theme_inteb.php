@@ -1,7 +1,6 @@
 <?php
 $string['pluginname'] = 'INTEB';
 $string['choosereadme'] = 'INTEB is a theme created by Ing. Pablo A Pico (<a href="http://ingeweb.co/">IngeWeb</a>) exclusively for our customers.';
-
 $string['configtitle'] = 'INTEB';
 
 $string['logo'] = 'Logo';
@@ -55,6 +54,7 @@ $string['nocoursestoshow'] = 'No courses to show were found';
 
 $string['region-side-pre'] = 'Right';
 
+// General notice
 $string['generalnoticemode'] = 'General notice mode';
 $string['generalnoticemodedesc'] = 'The general notice was created to allow administrators to show important notices in the header in every page after logging in.';
 $string['generalnoticemode_off'] = 'Off';
@@ -65,22 +65,16 @@ $string['generalnotice'] = 'Notice text';
 $string['generalnoticedesc'] = 'Text to show inside the alert box. You may use <strong>strong</strong> tag for important phrases in this text.';
 $string['generalnotice_create'] = 'Set a notice';
 
-// Fixes by @pabloapico
+// Cache
 $string['cachedef_fontawesomeremuiiconmapping'] = 'Cache Storage for Font Awesome';
 
-$string['copypaste'] = 'Copy and Paste';
-$string['copypaste_desc'] = 'Enable or disable copy & paste for students';
-$string['config_copypaste'] = 'Enable or disable copy & paste';
-$string['config_copypaste_desc'] = 'Enable or disable copy & paste for students';
-$string['disable'] = 'Disable';
-$string['enable'] = 'Enable';
+// Removed old copy/paste strings (no longer needed).
 
 $string['show'] = 'Show';
 $string['hide'] = 'Hide';
 
 $string['carouselsettings'] = 'Carousel Settings';
 $string['carouselsettings_desc'] = 'Configure the settings for the login page carousel including images, texts, and other options.';
-
 
 $string['enablecarousel'] = 'Enable login page carousel';
 $string['enablecarousel_desc'] = 'Enable this setting to display a carousel of images on the login page.';
@@ -101,7 +95,6 @@ $string['slideurldesc'] = 'Enter the URL for the button on slide {$a}. This URL 
 
 $string['unauthorized_access'] = 'Unauthorized Access';
 $string['unauthorized_access_msg'] = 'This site is not authorized to operate at this URL.';
-
 $string['devtools_access_disabled'] = 'Access to the development tools is disabled.';
 
 $string['hidefrontpagesections'] = 'Hide front page top sections';
@@ -115,6 +108,18 @@ $string['abouttext_default'] = '<p style="text-align: center;"></p>
     <p style="text-align: center;"><span style="font-family: inherit; font-size: 1rem; letter-spacing: 0rem; text-transform: inherit;"><b>IngeWeb - Solutions for Success on the Internet<br></b></span><span style="font-family: inherit; font-size: 1rem; letter-spacing: 0rem; text-transform: inherit;">Experts in Moodle, BigBlueButton, WordPress, and Joomla.<br></span><strong style="font-family: inherit; font-size: 1rem; letter-spacing: 0rem; text-transform: inherit;">www.ingeweb.co</strong></p>
     <p></p>';
 
-$string['intebhelp'] = "Platform Help";
-$string['intebfeedback'] = "INTEB Feedback";
-$string['intebsupport'] = "INTEB Support";
+// New strings for Chat
+$string['themesettingschat'] = 'Chat settings';
+$string['themesettingschatdesc'] = 'Options for integrating a chat service into your site.';
+$string['enable_chat'] = 'Enable chat';
+$string['enable_chatdesc'] = 'If you enable this, a chat widget will be displayed.';
+$string['tawkto_embed_url'] = 'Tawk.to embed URL';
+$string['tawkto_embed_urldesc'] = 'Enter your Tawk.to (or another chat service) embed script or URL.';
+
+// New strings for Copy/Paste
+$string['themesettingscopypaste'] = 'Copy/Paste Settings';
+$string['themesettingscopypaste_desc'] = 'Options to block or restrict copy/paste.';
+$string['copypaste_prevention'] = 'Prevent copy/paste';
+$string['copypaste_preventiondesc'] = 'If enabled, attempts to block the copy/paste function.';
+$string['copypaste_roles'] = 'Roles affected';
+$string['copypaste_rolesdesc'] = 'Select the roles to which the restriction applies.';
