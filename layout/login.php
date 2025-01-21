@@ -1,59 +1,130 @@
 <?php
 defined('MOODLE_INTERNAL') || die();
 
-// Obtener atributos del cuerpo y cargar la configuración del tema.
+// Obtener atributos del body y la configuración del tema.
 $bodyattributes = $OUTPUT->body_attributes();
 $theme = theme_config::load('inteb');
 
-// Configurar contexto para la plantilla.
+// Para el manejo de archivos.
+$fs = get_file_storage();
+$context = context_system::instance();
+
+// Construimos el contexto para la plantilla.
 $templatecontext = [
-    'sitename' => format_string($SITE->fullname, true, ['context' => context_course::instance(SITEID)]),
+    'sitename' => format_string(
+        $SITE->fullname,
+        true,
+        ['context' => context_course::instance(SITEID), 'escape' => false]
+    ),
     'output' => $OUTPUT,
     'bodyattributes' => $bodyattributes,
-    'loginbackground' => '', // Inicializar como vacío.
-    'carouselimages' => [],  // Inicializar lista de imágenes del carrusel.
-    'carouselinterval' => $theme->settings->carouselinterval ?? 5000, // Intervalo predeterminado: 5000 ms.
+    'loginbackground' => '',
+    'carouselimages' => [],
+    'carouselinterval' => 5000, // Valor por defecto si no hay nada configurado
     'my_credit' => get_string('credit', 'theme_inteb'),
+    'hasgeneralnote' => false,
+    'generalnote' => ''
 ];
 
-// Configurar imagen de fondo o color.
+// =========================================================================
+// 1) Fondo o color del área de login
+// =========================================================================
 $loginimageurl = $theme->setting_file_url('loginimage', 'loginimage');
 if (!empty($loginimageurl)) {
-    $templatecontext['loginbackground'] = "background-image: url('{$loginimageurl}'); background-size: cover;";
+    $templatecontext['loginbackground'] =
+        "background-image: url('{$loginimageurl}'); background-size: cover; background-position: center;";
 } else {
     $loginbgcolor = $theme->settings->loginbg_color ?? '#b2cdea';
     $templatecontext['loginbackground'] = "background-color: {$loginbgcolor};";
 }
 
-// Preparar imágenes del carrusel.
-$numslides = (int)($theme->settings->numberofslides ?? 0);
-for ($i = 1; $i <= $numslides; $i++) {
-    $imageurl = $theme->setting_file_url("slideimage{$i}", "slideimage{$i}");
+// =========================================================================
+// 2) Carrusel de diapositivas
+// =========================================================================
+
+// Intervalo (ms) para la rotación automática del carrusel.
+// Aseguramos que sea un entero válido.
+$carouselinterval = isset($theme->settings->carouselinterval) && is_numeric($theme->settings->carouselinterval)
+    ? (int)$theme->settings->carouselinterval
+    : 5000; // Valor por defecto si no está configurado o no es numérico.
+
+$templatecontext['carouselinterval'] = $carouselinterval;
+
+// Número de diapositivas configuradas (ej. 1..10).
+$numslides = isset($theme->settings->numberofslides) && is_numeric($theme->settings->numberofslides)
+    ? (int)$theme->settings->numberofslides
+    : 1;
+
+// Recorremos cada slide. El índice interno comenzará en 0.
+for ($i = 0; $i < $numslides; $i++) {
+    // Ajustes se llaman slideimage1, slideimage2..., así que sumamos 1 para la lectura real.
+    $slideindex = $i + 1;
+
+    // Obtenemos la URL de la imagen (si se subió archivo).
+    $imageurl = $theme->setting_file_url("slideimage{$slideindex}", "slideimage{$slideindex}");
     if (!empty($imageurl)) {
-        $slidetitle = $theme->settings->{"slidetitle{$i}"} ?? 'Default Title';
-        $slideurl = $theme->settings->{"slideurl{$i}"} ?? '#'; // URL del botón.
-        $templatecontext['carouselimages'][] = [
-            'url' => $imageurl,
-            'link' => $slideurl,
-            'title' => $slidetitle,
-            'first' => ($i === 1) ? true : false,
-        ];
+        // Verificamos si el archivo existe en storage (opcional).
+        $files = $fs->get_area_files(
+            $context->id,
+            'theme_inteb',
+            "slideimage{$slideindex}",
+            0,
+            'sortorder',
+            false
+        );
+        if (!empty($files)) {
+            // Título y enlace configurados para la diapositiva.
+            $slidetitle = format_string(
+                $theme->settings->{"slidetitle{$slideindex}"} ?? '',
+                true,
+                ['escape' => false]
+            );
+            $slideurl   = $theme->settings->{"slideurl{$slideindex}"} ?? '#';
+
+            // Añadimos la diapositiva al array.
+            // 'index' => $i indica el orden real para el 'data-slide-to'.
+            $templatecontext['carouselimages'][] = [
+                'url'         => $imageurl,
+                'link'        => $slideurl,
+                'title'       => $slidetitle,
+                'first'       => (count($templatecontext['carouselimages']) === 0), // Marca 'active' si es la primera
+                'description' => '', // Puedes agregar descripción si tienes ese campo
+                'button_url'  => $slideurl,
+                'index'       => $i
+            ];
+        }
     }
 }
 
-// Añadir imagen por defecto si no hay imágenes configuradas.
+// Si no se encontró ninguna imagen válida, añadimos una por defecto.
 if (empty($templatecontext['carouselimages'])) {
-    $defaultImage = $OUTPUT->image_url('slide0', 'theme'); // slide0 como imagen predeterminada.
+    $defaultImage = $OUTPUT->image_url('slide0', 'theme_inteb');
     $templatecontext['carouselimages'][] = [
-        'url' => (string)$defaultImage,
-        'link' => '',
-        'title' => 'Default Image Title',
-        'first' => true,
+        'url'         => (string)$defaultImage,
+        'link'        => '',
+        'title'       => get_string('default_slide_title', 'theme_inteb'),
+        'first'       => true,
+        'description' => '', // Puedes agregar descripción si tienes ese campo
+        'button_url'  => '#',
+        'index'       => 0
     ];
 }
 
-// Renderizar desde la plantilla.
-echo $OUTPUT->render_from_template('theme_inteb/core/login-custom', $templatecontext);
+// Para que la plantilla sepa si hay carrusel.
+$templatecontext['hascarousel'] = !empty($templatecontext['carouselimages']);
 
-// Incluir $OUTPUT->main_content() para cumplir con los requisitos de Moodle.
-// echo $OUTPUT->main_content();
+// =========================================================================
+// 3) Texto "About" u otra info en el login
+// =========================================================================
+if (!empty($theme->settings->abouttext)) {
+    $templatecontext['abouttext'] = format_string(
+        $theme->settings->abouttext,
+        true,
+        ['escape' => false]
+    );
+}
+
+// =========================================================================
+// 4) Renderizar la plantilla con este contexto
+// =========================================================================
+echo $OUTPUT->render_from_template('theme_inteb/core/login-custom', $templatecontext);
