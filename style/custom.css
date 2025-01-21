@@ -91,7 +91,7 @@ div#navbarmenutopic {
 .badge-info:hover,
 .badge-success,
 .badge-succes:hover {
-    color: $color-white;
+    color: $color-primary;
     transition: background-color 0.3s;
 }
 
@@ -100,7 +100,8 @@ div#navbarmenutopic {
 }
 
 .badge-info:hover {
-    background-color: darken($purple, 10%);
+    background-color: $color-primary;
+    color: $color-white;
 }
 
 .badge-success {
