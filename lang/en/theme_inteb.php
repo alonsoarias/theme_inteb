@@ -37,7 +37,7 @@ $string['copyrightdesc'] = 'About this website.';
 $string['customcss'] = 'Custom CSS';
 $string['customcssdesc'] = 'Whatever CSS rules you add to this area will be reflected in every page, making for easier customisation of this theme.';
 
-$string['themeinfotext'] = 'This theme was created for <strong> another Moodle project </strong> by <a target="_blank" href="http://ingeweb.co/">IngeWeb - Soluciones para triunfar en Internet</a>.';
+$string['themeinfotext'] = 'This theme was created for <strong> another Moodle project </strong> by <a target="_blank" href="http://ingeweb.co/">IngeWeb - Solutions for Success on the Internet</a>.';
 $string['credit'] = 'Theme created by <a target="_blank" class="my-credit-link" href="http://ingeweb.co/">IngeWeb</a> Copyright © 2024 - All rights reserved';
 
 $string['loginimage'] = 'Welcome Image';
@@ -123,3 +123,7 @@ $string['copypaste_prevention'] = 'Prevent copy/paste';
 $string['copypaste_preventiondesc'] = 'If enabled, attempts to block the copy/paste function.';
 $string['copypaste_roles'] = 'Roles affected';
 $string['copypaste_rolesdesc'] = 'Select the roles to which the restriction applies.';
+
+
+$string['intebhelp'] = "Platform Help";
+$string['intebsupport'] = "IngeWeb Support";
