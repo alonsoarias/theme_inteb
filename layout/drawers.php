@@ -18,27 +18,75 @@
  * A drawer based layout for the remui theme.
  *
  * @package   theme_remui
- * @copyright (c) 2023 WisdmLabs (https://wisdmlabs.com/) <support@wisdmlabs.com>
+ * @copyright (c) 2023 WisdmLabs
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-global $CFG, $PAGE, $COURSE;
+global $CFG, $PAGE, $COURSE, $USER;
 
 require_once($CFG->dirroot . '/theme/remui/layout/common.php');
 require_once($CFG->libdir . '/behat/lib.php');
 
 $coursecontext = context_course::instance($COURSE->id);
-if (!is_guest($coursecontext, $USER) &&
+
+// Ejemplo de condición específica de RemUI para mostrar estadísticas en el dashboard:
+if (
+    !is_guest($coursecontext, $USER) &&
     \theme_remui\toolbox::get_setting('enabledashboardcoursestats') &&
-    $PAGE->pagelayout == 'mydashboard' && $PAGE->pagetype == 'my-index') {
+    $PAGE->pagelayout == 'mydashboard' &&
+    $PAGE->pagetype == 'my-index'
+) {
     $templatecontext['isdashboardstatsshow'] = true;
 }
 
-// Must be called before rendering the template.
-// This will ease us to add body classes directly to the array.
+// Debe llamarse antes de renderizar la plantilla para añadir clases de body, etc.
 require_once($CFG->dirroot . '/theme/remui/layout/common_end.php');
-$themesettings = new \theme_inteb\util\settings();
+
+// =================== INICIO: Cambios para integrar con theme_inteb ===================
+use theme_inteb\util\settings as inteb_settings;
+
+// Instanciamos la clase del tema "inteb" para obtener sus configuraciones.
+$themesettings = new inteb_settings();
+
+// Mezclamos los datos del footer que provee nuestra clase:
 $templatecontext = array_merge($templatecontext, $themesettings->footer());
+
+// ============================================
+// Mostrar cabecera del Área personal (Personal Área)
+// solo si se cumplen:
+// 1) Estamos en la página "my-index" con contexto de usuario
+// 2) El ajuste showpersonalareaheader está habilitado (valor "1")
+// ============================================
+if ($PAGE->pagetype === 'my-index' && $PAGE->context->contextlevel == CONTEXT_USER) {
+    $showpersonalareaheader = !empty($themesettings->theme->settings->showpersonalareaheader)
+        && $themesettings->theme->settings->showpersonalareaheader === '1';
+    if ($showpersonalareaheader) {
+        $templatecontext = array_merge(
+            $templatecontext,
+            $themesettings->personal_area_header()
+        );
+    }
+}
+
+// ============================================
+// Mostrar cabecera de "Mis cursos"
+// solo si se cumplen:
+// 1) Estamos en la página "my-index" con contexto de sistema
+// 2) El ajuste showmycoursesheader está habilitado (valor "1")
+// ============================================
+if ($PAGE->pagetype === 'my-index' && $PAGE->context->contextlevel == CONTEXT_SYSTEM) {
+    $showmycoursesheader = !empty($themesettings->theme->settings->showmycoursesheader)
+        && $themesettings->theme->settings->showmycoursesheader === '1';
+    if ($showmycoursesheader) {
+        $templatecontext = array_merge(
+            $templatecontext,
+            $themesettings->my_courses_header()
+        );
+    }
+}
+// =================== FIN: Cambios para integrar con theme_inteb ===================
+
+// Finalmente, renderizamos la plantilla base de RemUI, pasándole nuestro $templatecontext.
 echo $OUTPUT->render_from_template('theme_remui/drawers', $templatecontext);
