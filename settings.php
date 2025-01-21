@@ -113,17 +113,6 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $page->add($setting);
 
-    // Imagen de cabecera para Área personal
-    $name = 'theme_inteb/personalareaheader';
-    $title = get_string('personalareaheader', 'theme_inteb');
-    $description = get_string('personalareaheaderdesc', 'theme_inteb', $a);
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'personalareaheader', 0, [
-        'subdirs' => 0,
-        'accepted_types' => ['web_image']
-    ]);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $page->add($setting);
-
     // Mostrar/Ocultar imagen de Área personal
     $name = 'theme_inteb/showpersonalareaheader';
     $title = get_string('showpersonalareaheader', 'theme_inteb');
@@ -136,6 +125,29 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $page->add($setting);
 
+    // Imagen de cabecera para Área personal
+    $name = 'theme_inteb/personalareaheader';
+    $title = get_string('personalareaheader', 'theme_inteb');
+    $description = get_string('personalareaheaderdesc', 'theme_inteb', $a);
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'personalareaheader', 0, [
+        'subdirs' => 0,
+        'accepted_types' => ['web_image']
+    ]);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
+   // Mostrar/Ocultar imagen de "Mis cursos"
+   $name = 'theme_inteb/showmycoursesheader';
+   $title = get_string('showmycoursesheader', 'theme_inteb');
+   $description = get_string('showmycoursesheader_desc', 'theme_inteb');
+   $default = '0';
+   $choices = [
+       '1' => get_string('show', 'theme_inteb'),
+       '0' => get_string('hide', 'theme_inteb')
+   ];
+   $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+   $page->add($setting);
+
     // Imagen de cabecera para "Mis cursos"
     $name = 'theme_inteb/mycoursesheader';
     $title = get_string('mycoursesheader', 'theme_inteb');
@@ -145,18 +157,6 @@ if ($ADMIN->fulltree) {
         'accepted_types' => ['web_image']
     ]);
     $setting->set_updatedcallback('theme_reset_all_caches');
-    $page->add($setting);
-
-    // Mostrar/Ocultar imagen de "Mis cursos"
-    $name = 'theme_inteb/showmycoursesheader';
-    $title = get_string('showmycoursesheader', 'theme_inteb');
-    $description = get_string('showmycoursesheader_desc', 'theme_inteb');
-    $default = '0';
-    $choices = [
-        '1' => get_string('show', 'theme_inteb'),
-        '0' => get_string('hide', 'theme_inteb')
-    ];
-    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $page->add($setting);
 
     // =========================
