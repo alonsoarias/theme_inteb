@@ -57,6 +57,11 @@
 {{> theme_remui/common_start}}
 
 <div id="page-content" class="pb-3 d-print-block">
+{{#headerimage}}
+        <div class="header-image">
+            <img src="{{url}}" alt="{{title}}" class="d-block w-100" style="object-fit: cover; height: 200px;">
+        </div>
+        {{/headerimage}}
     <div id="region-main-box">
         {{#hasregionmainsettingsmenu}}
         <div id="region-main-settings-menu" class="d-print-none">
