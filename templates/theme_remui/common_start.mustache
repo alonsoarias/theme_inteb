@@ -92,6 +92,11 @@
             </div>
         </section>
         {{/canaddfwtopblocks}}
+                    {{#headerimage}}
+        <div class="header-image">
+            <img src="{{url}}" alt="{{title}}" class="d-block w-100" style="object-fit: cover; height: auto;">
+        </div>
+        {{/headerimage}}
         <div id="topofscroll" class="main-inner">
             {{#notification}}{{> theme_remui/product_notification}}{{/notification}}
             {{#customhomepage}}
@@ -143,7 +148,6 @@
                 {{/hasblocks}}
             </div>
             {{{ output.full_header }}}
-
             {{#notstudent}}
                 {{#iscoursestatsshow}}
                     {{> theme_remui/course_stats }}
