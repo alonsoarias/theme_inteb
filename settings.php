@@ -1,6 +1,3 @@
-Voy a generar el código completo del settings.php que combine la correcta herencia de tabs con todos los settings de tu nueva versión:
-
-```php
 <?php
 // Este archivo forma parte de Moodle - http://moodle.org/
 //
@@ -26,26 +23,24 @@ defined('MOODLE_INTERNAL') || die();
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-// Incluimos el settings del tema padre
+// Incluimos la clase para admin_settingspage_tabs y settings del tema padre
+require_once(__DIR__ . '/classes/admin_settingspage_tabs.php');
 require(__DIR__ . '/../remui/settings.php');
 
-// Incluimos la clase para admin_settingspage_tabs
-require_once(__DIR__ . '/classes/admin_settingspage_tabs.php');
+// Guardamos las tabs del padre
+$parent_tabs = null;
+if (isset($settings) && method_exists($settings, 'get_tabs')) {
+    $parent_tabs = $settings->get_tabs();
+}
 
 // Creamos la categoría propia en "appearance"
 $ADMIN->add('appearance', new admin_category('theme_inteb', get_string('configtitle', 'theme_inteb')));
 
 if ($ADMIN->fulltree) {
-    // 1. Obtener las tabs del padre
-    $tabs = $settings->get_tabs();
-
-    // 2. Crear nueva instancia
+    // Crear nueva instancia
     $settings = new theme_inteb_admin_settingspage_tabs('themesettinginteb', get_string('configtitle', 'theme_inteb'));
 
-    // 3. Establecer las tabs del padre
-    $settings->set_tabs($tabs);
-
-    // 4. Crear nuestra página de configuración
+    // Crear nuestra página de configuración
     $page = new admin_settingpage('themesettings', get_string('themesettings', 'theme_inteb'));
 
     // Variables para strings dinámicos
@@ -133,7 +128,7 @@ if ($ADMIN->fulltree) {
     $name = 'theme_inteb/showpersonalareaheader';
     $title = get_string('showpersonalareaheader', 'theme_inteb');
     $description = get_string('showpersonalareaheader_desc', 'theme_inteb');
-    $default = '1';
+    $default = '0';
     $choices = [
         '1' => get_string('show', 'theme_inteb'),
         '0' => get_string('hide', 'theme_inteb')
@@ -156,7 +151,7 @@ if ($ADMIN->fulltree) {
     $name = 'theme_inteb/showmycoursesheader';
     $title = get_string('showmycoursesheader', 'theme_inteb');
     $description = get_string('showmycoursesheader_desc', 'theme_inteb');
-    $default = '1';
+    $default = '0';
     $choices = [
         '1' => get_string('show', 'theme_inteb'),
         '0' => get_string('hide', 'theme_inteb')
@@ -339,7 +334,17 @@ if ($ADMIN->fulltree) {
 
     // 5. Agregar nuestra página como una nueva tab
     $settings->add($page);
+
+    // =============================================
+    // 6) Reordenamos las tabs para que las nuestras
+    //    aparezcan primero
+    // =============================================
+    $my_tabs = $settings->get_tabs();
+    if ($parent_tabs !== null) {
+        $all_tabs = array_merge($my_tabs, $parent_tabs);  // Primero las nuestras, luego las del padre
+        $settings->set_tabs($all_tabs);
+    }
 }
 
-// 6. Agregar la configuración a la categoría
+// 7. Agregar la configuración a la categoría
 $ADMIN->add('theme_inteb', $settings);
