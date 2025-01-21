@@ -95,8 +95,18 @@ $string['unauthorized_access'] = 'Acceso no autorizado';
 $string['unauthorized_access_msg'] = 'Este sitio no está autorizado para operar en esta URL.';
 $string['devtools_access_disabled'] = 'Se ha deshabilitado el acceso a las herramientas de desarrollo.';
 
+$string['personalareaheader'] = 'Imagen de cabecera del área personal';
+$string['personalareaheaderdesc'] = 'Sube una imagen que se mostrará como cabecera en el área personal.';
+$string['showpersonalareaheader']= 'Mostrar imagen de cabecera del área personal';
+$string['showpersonalareaheader_desc'] = 'Habilita esta configuración para mostrar una imagen de cabecera en el área personal.';
+$string['mycoursesheader'] = 'Imagen de cabecera de mis cursos';
+$string['mycoursesheaderdesc'] = 'Sube una imagen que se mostrará como cabecera en la página de mis cursos.';
+$string['showmycoursesheader'] = 'Mostrar imagen de cabecera de mis cursos';
+$string['showmycoursesheader_desc'] = 'Habilita esta configuración para mostrar una imagen de cabecera en la página de Mis Cursos.';
 $string['hidefrontpagesections'] = 'Ocultar secciones superiores de la página principal';
 $string['hidefrontpagesections_desc'] = 'Habilite esta configuración para ocultar las secciones superiores de la página principal, brindando un aspecto más limpio.';
+$string['hidefootersections'] = 'Ocultar secciones del pie de página';
+$string['hidefootersections_desc'] = 'Habilita esta configuración para ocultar secciones de tu pie de página, proporcionando una apariencia más limpia.';
 
 $string['themesettingslogin'] = 'Ajustes básicos de inicio de sesión';
 
