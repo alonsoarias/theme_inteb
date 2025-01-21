@@ -68,8 +68,6 @@ $string['generalnotice_create'] = 'Configurar un aviso';
 // Caché
 $string['cachedef_fontawesomeremuiiconmapping'] = 'Almacenamiento en caché para el mapeo de iconos Font Awesome';
 
-// Eliminadas cadenas antiguas de copy/paste.
-
 $string['show'] = 'Mostrar';
 $string['hide'] = 'Ocultar';
 
@@ -123,3 +121,6 @@ $string['copypaste_prevention'] = 'Prevenir copy/paste';
 $string['copypaste_preventiondesc'] = 'Si se habilita, se intentará bloquear la función de copiar y pegar.';
 $string['copypaste_roles'] = 'Roles afectados';
 $string['copypaste_rolesdesc'] = 'Seleccione los roles a los que se aplicará la restricción.';
+
+$string['intebhelp'] = "Platform Help";
+$string['intebsupport'] = "Inteb Support";
