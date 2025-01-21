@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ingeweb.
+ * inteb.
  *
  * @package    theme_inteb
  * @copyright  Creado por Ing Pablo A Pico - @pabloapico exclusivamente para plataformas Moodle creadas y soportadas por ingeweb - Sistemas y Publicidad
@@ -75,7 +75,7 @@ function theme_inteb_get_main_scss_content($theme) {
         $scss .= file_get_contents($CFG->dirroot . '/theme/remui/scss/preset/default.scss');
     }
 
-    // Luego, cargar las personalizaciones SCSS de ingeweb.
+    // Luego, cargar las personalizaciones SCSS de inteb.
     $intebVariables = file_get_contents($CFG->dirroot . '/theme/inteb/scss/_variables.scss');
     $customVariables = file_get_contents($CFG->dirroot . '/theme/inteb/scss/custom_variables.scss');
     $intebScss = file_get_contents($CFG->dirroot . '/theme/inteb/scss/inteb.scss');
@@ -148,6 +148,12 @@ function theme_inteb_pluginfile($course, $cm, $context, $filearea, $args, $force
 
     if ($context->contextlevel == CONTEXT_SYSTEM && $filearea === 'loginimage') {
         return $theme->setting_file_serve('loginimage', $args, $forcedownload, $options);
+    }
+    if ($context->contextlevel == CONTEXT_SYSTEM && $filearea === 'personalareaheader') {
+        return $theme->setting_file_serve('personalareaheader', $args, $forcedownload, $options);
+    }
+    if ($context->contextlevel == CONTEXT_SYSTEM && $filearea === 'mycoursesheader') {
+        return $theme->setting_file_serve('mycoursesheader', $args, $forcedownload, $options);
     }
 
     // Check if the file area corresponds to the carousel images.
