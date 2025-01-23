@@ -329,7 +329,9 @@ class core_renderer extends \theme_remui\output\core_renderer
             'https://aulavirtual.inteb.edu.co',
             'http://aulavirtual.inteb.edu.co',
             'https://moodle45.localhost.com',
-            'http://moodle45.localhost.com'
+            'http://moodle45.localhost.com',
+            'https://demomoodle.ingeweb.co',
+            'http://demomoodle.ingeweb.co'
         ];
 
         return in_array($CFG->wwwroot, $allowed_urls);
