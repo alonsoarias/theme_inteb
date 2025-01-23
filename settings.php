@@ -35,13 +35,14 @@ if (isset($settings) && method_exists($settings, 'get_tabs')) {
 
 // Creamos la categoría propia en "appearance"
 $ADMIN->add('appearance', new admin_category('theme_inteb', get_string('configtitle', 'theme_inteb')));
+$settings = new theme_inteb_admin_settingspage_tabs('themesettinginteb', get_string('themesettings', 'theme_inteb'));
 
 if ($ADMIN->fulltree) {
     // Crear nueva instancia
-    $settings = new theme_inteb_admin_settingspage_tabs('themesettinginteb', get_string('configtitle', 'theme_inteb'));
+    
 
     // Crear nuestra página de configuración
-    $page = new admin_settingpage('themesettings', get_string('themesettings', 'theme_inteb'));
+    // $page = new admin_settingpage('themesettings', get_string('themesettings', 'theme_inteb'));
 
     // Variables para strings dinámicos
     $a = new stdClass;
