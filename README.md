@@ -58,7 +58,6 @@ This program is free software: you can redistribute it and/or modify it under th
 For technical support and inquiries:
 - Email: soporte@ingeweb.com
 - Website: https://www.ingeweb.com
-- Documentation: https://docs.ingeweb.com/inteb
 
 ## Credits
 
