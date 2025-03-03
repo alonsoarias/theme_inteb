@@ -40,7 +40,7 @@ $string['customcss'] = 'Custom CSS';
 $string['customcssdesc'] = 'Any CSS rules you add here will be reflected on every page, making it easy to customize this theme.';
 
 $string['themeinfotext'] = 'This theme was created for <strong>another Moodle project</strong> by <a target="_blank" href="http://ingeweb.co/">IngeWeb - Solutions to succeed on the Internet</a>.';
-$string['credit'] = 'Theme created by <a target="_blank" class="my-credit-link" href="http://ingeweb.co/">IngeWeb</a> © 2024 - All rights reserved';
+$string['credit'] = 'Theme created by <a target="_blank" class="my-credit-link" href="http://ingeweb.co/">IngeWeb</a> © 2025 - All rights reserved';
 
 $string['frontpagewallpaper'] = 'Front Page Background Image';
 $string['frontpagewallpaperdesc'] = 'This image appears at the top of the front page, right after the main menu.';
