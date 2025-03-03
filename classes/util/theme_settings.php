@@ -35,12 +35,12 @@ class settings {
         $templatecontext['my_credit'] = get_string('credit', 'theme_inteb');
         
         // Comprobar y cargar correctamente abouttitle
-        $templatecontext['abouttitle'] = isset($this->theme->settings->abouttitle) 
+        $templatecontext['abouttitle'] = $this->theme->settings->abouttitle
             ? $this->theme->settings->abouttitle 
             : get_string('abouttitle_default', 'theme_inteb');
         
         // Comprobar y cargar correctamente abouttext
-        $templatecontext['abouttext'] = isset($this->theme->settings->abouttext) 
+        $templatecontext['abouttext'] = $this->theme->settings->abouttext
             ? $this->theme->settings->abouttext 
             : get_string('abouttext_default', 'theme_inteb');
         
