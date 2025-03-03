@@ -113,15 +113,6 @@ function theme_inteb_set_extra_img($theme)
 
     $content = '';
 
-    // Sets the login background image.
-    $loginimage = $theme->setting_file_url('loginimage', 'loginimage');
-    if (!empty($loginimage)) {
-        $content .= 'body.pagelayout-login #page { ';
-        $content .= "background-image: url('$loginimage'); background-size: cover;";
-        $content .= ' }';
-    }
-
-
     // Always return the background image with the scss when we have it.
     return !empty($theme->settings->scss) ? $theme->settings->scss . ' ' . $content : $content;
     return $css;
@@ -146,9 +137,6 @@ function theme_inteb_pluginfile($course, $cm, $context, $filearea, $args, $force
 {
     $theme = theme_config::load('inteb');
 
-    if ($context->contextlevel == CONTEXT_SYSTEM && $filearea === 'loginimage') {
-        return $theme->setting_file_serve('loginimage', $args, $forcedownload, $options);
-    }
     if ($context->contextlevel == CONTEXT_SYSTEM && $filearea === 'personalareaheader') {
         return $theme->setting_file_serve('personalareaheader', $args, $forcedownload, $options);
     }
@@ -157,11 +145,11 @@ function theme_inteb_pluginfile($course, $cm, $context, $filearea, $args, $force
     }
 
     // Check if the file area corresponds to the carousel images.
-    if ($context->contextlevel == CONTEXT_SYSTEM && strpos($filearea, 'slideimage') === 0) {
+    if ($context->contextlevel == CONTEXT_SYSTEM && strpos($filearea, 'login_slideimage') === 0) {
         // Extract the slide number from the file area name.
-        $slide_number = substr($filearea, 10); // Remove 'slideimage' prefix.
+        $slide_number = substr($filearea, 16); // Remove 'login_slideimage' prefix.
         // Serve the slide image.
-        return $theme->setting_file_serve("slideimage{$slide_number}", $args, $forcedownload, $options);
+        return $theme->setting_file_serve("login_slideimage{$slide_number}", $args, $forcedownload, $options);
     }
 
     return theme_remui_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, $options);
