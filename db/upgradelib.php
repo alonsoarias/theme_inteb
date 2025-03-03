@@ -17,9 +17,9 @@
 /**
  * Plugin upgrade helper functions are defined here.
  *
- * @package     theme_inteb
+ * @package     theme_fng
  * @category    upgrade
- * @copyright   2022 Soporte ingeweb <soporte@ingeweb.com>
+ * @copyright   2022 Soporte fng <soporte@fng.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -28,7 +28,7 @@ defined('MOODLE_INTERNAL') || die();
 /**
  * Helper function used by the upgrade.php file.
  */
-function theme_inteb_helper_function() {
+function theme_fng_helper_function() {
     global $DB;
 
     // Please note: you can only use raw low level database access here.

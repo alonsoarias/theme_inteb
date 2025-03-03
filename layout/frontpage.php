@@ -68,6 +68,6 @@ if (\theme_remui\toolbox::get_setting('frontpagechooser') == 0 || \theme_remui\t
     $templatecontext['homepagetransparentheader'] = get_config('theme_remui', 'homepagetransparentheader');
     $templatecontext['frontpageheadercolor'] = get_config('theme_remui', 'frontpageheadercolor');
 }
-$themesettings = new \theme_inteb\util\settings();
+$themesettings = new \theme_fng\util\settings();
 $templatecontext = array_merge($templatecontext, $themesettings->footer());
 echo $OUTPUT->render_from_template('theme_remui/frontpage', $templatecontext);

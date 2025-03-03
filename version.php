@@ -17,18 +17,17 @@
 /**
  * Plugin version and other meta-data are defined here.
  *
- * @package     theme_inteb
- * @copyright   2024 Soporte IngeWeb <soporte@ingeweb.co>
+ * @package     theme_fng
+ * @copyright   2024 Soporte fng <soporte@fng.co>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
- 
- defined('MOODLE_INTERNAL') || die();
- 
- $plugin->component = 'theme_inteb';
- $plugin->version = 2025012200; // Fecha de la versión: Año, mes, día, incremento.
- $plugin->requires = 2022041200; // Versión mínima de Moodle requerida.
- $plugin->release   = '4.5.0';
- $plugin->dependencies = [
-     'theme_remui' => 2024102300, // Dependencia del tema padre.
- ];
- 
+
+defined('MOODLE_INTERNAL') || die();
+
+$plugin->component = 'theme_fng';
+$plugin->version = 2025012204; // Fecha de la versión: Año, mes, día, incremento.
+$plugin->requires = 2022041200; // Versión mínima de Moodle requerida.
+$plugin->release   = '4.5.0';
+$plugin->dependencies = [
+    'theme_remui' => 2024102300, // Dependencia del tema padre.
+];

@@ -1,65 +1,44 @@
-# INTEB Theme
+# fng #
 
-A modern and feature-rich Moodle theme designed for Instituto Técnico Educativo Bilingüe.
+TODO Describe the plugin shortly here.
 
-## Features
+TODO Provide more detailed description here.
 
-- Responsive design & customization
-- Login carousel system
-- Role-based copy/paste prevention 
-- Integrated chat (Tawk.to)
-- Custom headers for specific areas
-- Global notifications system
-- Custom footer sections
-- Dark/Light mode support
-- Accessibility controls
+## Installing via uploaded ZIP file ##
 
-## Installing
+1. Log in to your Moodle site as an admin and go to _Site administration >
+   Plugins > Install plugins_.
+2. Upload the ZIP file with the plugin code. You should only be prompted to add
+   extra details if your plugin type is not automatically detected.
+3. Check the plugin validation report and finish the installation.
 
-### Via ZIP Upload
+## Installing manually ##
 
-1. Log in to Moodle as admin
-2. Go to _Site administration > Plugins > Install plugins_
-3. Upload the ZIP file
-4. Follow installation prompts
+The plugin can be also installed by putting the contents of this directory to
 
-### Manual Installation
+    {your/moodle/dirroot}/theme/fng
 
-1. Extract theme files to `{your/moodle/dirroot}/theme/inteb`
-2. Access _Site administration > Notifications_ to complete installation
-3. Or run `$ php admin/cli/upgrade.php` from command line
+Afterwards, log in to your Moodle site as an admin and go to _Site administration >
+Notifications_ to complete the installation.
 
-## Configuration
+Alternatively, you can run
 
-Access theme settings at _Site administration > Appearance > Themes > INTEB_:
+    $ php admin/cli/upgrade.php
 
-- General settings
-- Login page
-- Carousel configuration  
-- Header/Footer options
-- Chat integration
-- Copy/paste prevention
-- Custom CSS
+to complete the installation from the command line.
 
-## Requirements
+## License ##
 
-- Moodle 4.0 or higher
-- Theme RemUI installed
-- PHP 8.0+
+2022 Soporte fng <soporte@fng.com>
 
-## License
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
 
-2025 IngeWeb <soporte@ingeweb.com>
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-
-## Support
-
-For technical support and inquiries:
-- Email: soporte@ingeweb.com
-- Website: https://www.ingeweb.com
-
-## Credits
-
-Developed by IngeWeb based on Theme RemUI
-Copyright © 2025 IngeWeb - All rights reserved
+You should have received a copy of the GNU General Public License along with
+this program.  If not, see <https://www.gnu.org/licenses/>.
