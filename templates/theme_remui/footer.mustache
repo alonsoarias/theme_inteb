@@ -39,14 +39,16 @@
 <section id="top-footer" class="p-y-1">
     <div class="container">
         <div class="col-12">
-            {{#abouttext}}
-                <div class="my-about my-4 my-after-divider text-center">
-                    <h3>{{#str}}abouttitle, theme_inteb{{/str}}</h3>
-                    <div class="about-text-content" style="word-wrap: break-word;">
-                        {{{abouttext}}}
-                    </div>
-                </div>
-            {{/abouttext}}
+            {{#abouttitle}}
+        <div class="row justify-content-center">
+            <div class="my-about text-center my-4 my-after-divider">
+                <h3>{{{abouttitle}}}</h3>
+                {{#abouttext}}
+                <div class="about-text-content">{{{abouttext}}}</div>
+                {{/abouttext}}
+            </div>
+        </div>
+        {{/abouttitle}}
         </div>
     </div>
     <div class="floating-buttons-wrapper">
