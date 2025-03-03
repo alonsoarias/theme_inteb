@@ -30,14 +30,20 @@ class settings {
      */
     public function footer() {
         $templatecontext = [];
-
-        // Retrieve 'my_credit' from the theme settings or use a default value if not set.
+        
+        // Retrieve 'my_credit' from the theme settings
         $templatecontext['my_credit'] = get_string('credit', 'theme_inteb');
-
-        // Retrieve 'abouttext' from the theme settings or use a default value if not set.
-        $templatecontext['abouttitle'] = !empty($this->theme->settings->abouttext) ? $this->theme->settings->abouttext : get_string('abouttitle_default', 'theme_inteb');
-        $templatecontext['abouttext'] = !empty($this->theme->settings->abouttext) ? $this->theme->settings->abouttext : get_string('abouttext_default', 'theme_inteb');
-
+        
+        // Retrieve 'abouttitle' correctly
+        $templatecontext['abouttitle'] = isset($this->theme->settings->abouttitle) 
+            ? $this->theme->settings->abouttitle 
+            : get_string('abouttitle_default', 'theme_inteb');
+        
+        // Retrieve 'abouttext' correctly
+        $templatecontext['abouttext'] = isset($this->theme->settings->abouttext) 
+            ? $this->theme->settings->abouttext 
+            : get_string('abouttext_default', 'theme_inteb');
+        
         return $templatecontext;
     }
 
