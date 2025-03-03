@@ -8,10 +8,12 @@ $string['logo'] = 'Logo';
 $string['themesettings'] = 'INTEB Theme Settings';
 $string['themesettingsgeneral'] = 'General Settings';
 $string['contactinfo'] = 'Contact Information';
-$string['abouttitle'] = 'About';
+$string['abouttitle'] = 'About Title';
+$string['abouttitledesc'] = 'Title for "About" in footer area';
+$string['abouttitle_default'] = 'About Us';
 
 $string['abouttext'] = 'About Text';
-$string['abouttextdesc'] = 'Content for the "About" section in the footer';
+$string['abouttextdesc'] = 'Content for "About" in footer area';
 
 $string['loginfootertext'] = 'Login Footer';
 $string['loginfootertextdesc'] = 'Content for the footer section on the login page';
@@ -39,12 +41,6 @@ $string['customcssdesc'] = 'Any CSS rules you add here will be reflected on ever
 
 $string['themeinfotext'] = 'This theme was created for <strong>another Moodle project</strong> by <a target="_blank" href="http://ingeweb.co/">IngeWeb - Solutions to succeed on the Internet</a>.';
 $string['credit'] = 'Theme created by <a target="_blank" class="my-credit-link" href="http://ingeweb.co/">IngeWeb</a> © 2024 - All rights reserved';
-
-$string['loginimage'] = 'Welcome Image';
-$string['loginimagedesc'] = 'This image appears on the login page. PNG or JPG of 960px * 960px is recommended.<br><strong>Examples</strong>';
-
-$string['loginbg_color'] = 'Login Background Color';
-$string['loginbg_colordesc'] = 'Background color on the login page';
 
 $string['frontpagewallpaper'] = 'Front Page Background Image';
 $string['frontpagewallpaperdesc'] = 'This image appears at the top of the front page, right after the main menu.';
