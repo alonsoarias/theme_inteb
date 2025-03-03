@@ -156,26 +156,14 @@ if ($ADMIN->fulltree) {
         get_string('themesettingslogin', 'theme_inteb'),
         ''
     ));
-
-    // Login image
-    $name = 'theme_inteb/loginimage';
-    $title = get_string('loginimage', 'theme_inteb');
-    $description = get_string('loginimagedesc', 'theme_inteb', $a);
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'loginimage', 0, [
-        'subdirs' => 0,
-        'accepted_types' => ['web_image']
-    ]);
+    // About title
+    $name = 'theme_inteb/abouttitle';
+    $title = get_string('abouttitle', 'theme_inteb');
+    $description = get_string('abouttitledesc', 'theme_inteb');
+    $default = get_string('abouttitle_default', 'theme_inteb');
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
-
-    // Login background color
-    $name = 'theme_inteb/loginbg_color';
-    $title = get_string('loginbg_color', 'theme_inteb');
-    $description = get_string('loginbg_colordesc', 'theme_inteb');
-    $setting = new admin_setting_configcolourpicker($name, $title, $description, '#b2cdea');
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $page->add($setting);
-
     // About text
     $name = 'theme_inteb/abouttext';
     $title = get_string('abouttext', 'theme_inteb');
@@ -192,26 +180,26 @@ if ($ADMIN->fulltree) {
     ));
 
     // Number of slides
-    $name = 'theme_inteb/numberofslides';
+    $name = 'theme_inteb/login_numberofslides';
     $title = get_string('numberofslides', 'theme_inteb');
     $description = get_string('numberofslides_desc', 'theme_inteb');
     $choices = range(1, 10);
     $page->add(new admin_setting_configselect($name, $title, $description, 1, array_combine($choices, $choices)));
 
     // Settings for each slide
-    $numslides = get_config('theme_inteb', 'numberofslides') ?: 1;
+    $numslides = get_config('theme_inteb', 'login_numberofslides') ?: 1;
     for ($i = 1; $i <= $numslides; $i++) {
         // Slide title
-        $name = 'theme_inteb/slidetitle' . $i;
+        $name = 'theme_inteb/login_slidetitle' . $i;
         $title = get_string('slidetitle', 'theme_inteb', $i);
         $description = get_string('slidetitle_desc', 'theme_inteb', $i);
         $page->add(new admin_setting_configtext($name, $title, $description, ''));
 
         // Slide image
-        $name = 'theme_inteb/slideimage' . $i;
+        $name = 'theme_inteb/login_slideimage' . $i;
         $title = get_string('slideimage', 'theme_inteb', $i);
         $description = get_string('slideimage_desc', 'theme_inteb', $i);
-        $setting = new admin_setting_configstoredfile($name, $title, $description, 'slideimage' . $i, 0, [
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'login_slideimage' . $i, 0, [
             'subdirs' => 0,
             'accepted_types' => ['web_image']
         ]);
@@ -219,14 +207,14 @@ if ($ADMIN->fulltree) {
         $page->add($setting);
 
         // Slide URL
-        $name = 'theme_inteb/slideurl' . $i;
+        $name = 'theme_inteb/login_slideurl' . $i;
         $title = get_string('slideurl', 'theme_inteb', $i);
         $description = get_string('slideurldesc', 'theme_inteb', $i);
         $page->add(new admin_setting_configtext($name, $title, $description, ''));
     }
 
     // Carousel interval
-    $name = 'theme_inteb/carouselinterval';
+    $name = 'theme_inteb/login_carouselinterval';
     $title = get_string('carouselinterval', 'theme_inteb');
     $description = get_string('carouselintervaldesc', 'theme_inteb');
     $setting = new admin_setting_configtext($name, $title, $description, '5000');
