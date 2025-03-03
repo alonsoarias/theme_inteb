@@ -8,9 +8,11 @@ $string['logo'] = 'Logo';
 $string['themesettings'] = 'Ajustes del Tema INTEB';
 $string['themesettingsgeneral'] = 'Configuración General';
 $string['contactinfo'] = 'Información de contacto';
-$string['abouttitle'] = 'Acerca de';
+$string['abouttitle'] = 'Título Acerca de';
+$string['abouttitledesc'] = 'Título para la sección "Acerca de" en el pie de página';
+$string['abouttitle_default'] = 'Acerca de Nosotros';
 
-$string['abouttext'] = 'Texto "Acerca de"';
+$string['abouttext'] = 'Texto Acerca de';
 $string['abouttextdesc'] = 'Contenido para la sección "Acerca de" en el pie de página';
 
 $string['loginfootertext'] = 'Pie de página de inicio de sesión';
@@ -39,12 +41,6 @@ $string['customcssdesc'] = 'Cualquier regla CSS que agregue aquí se reflejará 
 
 $string['themeinfotext'] = 'Este tema fue creado para <strong>otro proyecto de Moodle</strong> por <a target="_blank" href="http://ingeweb.co/">IngeWeb - Soluciones para triunfar en Internet</a>.';
 $string['credit'] = 'Tema creado por <a target="_blank" class="my-credit-link" href="http://ingeweb.co/">IngeWeb</a> © 2024 - Todos los derechos reservados';
-
-$string['loginimage'] = 'Imagen de bienvenida';
-$string['loginimagedesc'] = 'Esta imagen aparece en la página de inicio de sesión. Se recomienda PNG o JPG de 960px * 960px.<br><strong>Ejemplos</strong>';
-
-$string['loginbg_color'] = 'Color de fondo de inicio de sesión';
-$string['loginbg_colordesc'] = 'Color de fondo en la página de inicio de sesión';
 
 $string['frontpagewallpaper'] = 'Imagen de fondo de la página principal';
 $string['frontpagewallpaperdesc'] = 'Esta imagen aparece en la parte superior de la página principal, justo después del menú principal.';
