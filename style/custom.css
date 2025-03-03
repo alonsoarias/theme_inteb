@@ -569,3 +569,6 @@ span.badge.bg-secondary.text-dark {
 .about-text-content a.link-1 {
     color: #ffffff;
 }
+.login-logo img.mb-3.img-fluid {
+    width: 50%;
+}
