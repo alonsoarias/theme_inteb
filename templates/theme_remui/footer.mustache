@@ -49,45 +49,39 @@
             {{/abouttext}}
         </div>
     </div>
+    <div class="floating-buttons-wrapper">
+        <button id="gotop" class="btn btn-primary btn-floating d-none"
+            aria-label="{{#str}}gotop, theme_remui{{/str}}" role="button"
+            title="{{#str}}gotop, theme_remui{{/str}}">
+            <span class="edw-icon edw-icon-UpArrow"></span>
+            <span class="btn-floating-text">{{#str}}gotop, theme_remui{{/str}}</span>
+        </button>
+        {{#focusdata.enabled}}
+        <button id="focusmodebutton" type="button"
+            class="btn {{focusdata.btnbg}} btn-floating align-items-center justify-content-center d-flex"
+            data-toggle="tooltip" data-placement="left" data-trigger="hover"
+            aria-label="{{#str}}togglefocusmode, theme_remui{{/str}}" role="Button" aria-pressed="false">
+            <i class="{{focusdata.btnicon}}" aria-hidden="true"></i>
+            <span class="btn-floating-text">{{#str}}focusmode, theme_remui{{/str}}</span>
+        </button>
+        {{/focusdata.enabled}}
+        {{#floating_buttons}}
+        {{{floating_buttons}}}
+        {{/floating_buttons}}
+
+
+
+        {{#enablebeacon}}
+        <button class="btn btn-primary btn-floating d-none d-md-flex beaconbtn open" onclick="Beacon('toggle')">
+            <span class="edw-icon edw-icon-Comment-03"></span>
+            <span class="edw-icon edw-icon-Cancel"></span>
+            <span class="btn-floating-text">{{#str}}intebsupport, theme_remui{{/str}}</span>
+        </button>
+        {{/enablebeacon}}
+    </div>
 </section>
 <footer id="page-footer" class="footer-popover ">
     <div class="footer-container container">
-        <div class="floating-buttons-wrapper">
-            <button id="gotop" class="btn btn-primary btn-floating d-none"
-                aria-label="{{#str}}gotop, theme_remui{{/str}}" role="button"
-                title="{{#str}}gotop, theme_remui{{/str}}">
-                <span class="edw-icon edw-icon-UpArrow"></span>
-                <span class="btn-floating-text">{{#str}}gotop, theme_remui{{/str}}</span>
-            </button>
-            {{#focusdata.enabled}}
-            <button id="focusmodebutton" type="button"
-                class="btn {{focusdata.btnbg}} btn-floating align-items-center justify-content-center d-flex"
-                data-toggle="tooltip" data-placement="left" data-trigger="hover"
-                aria-label="{{#str}}togglefocusmode, theme_remui{{/str}}" role="Button" aria-pressed="false">
-                <i class="{{focusdata.btnicon}}" aria-hidden="true"></i>
-                <span class="btn-floating-text">{{#str}}focusmode, theme_remui{{/str}}</span>
-            </button>
-            {{/focusdata.enabled}}
-            {{#floating_buttons}}
-            {{{floating_buttons}}}
-            {{/floating_buttons}}
-
-
-            <button class="btn btn-primary btn-floating d-none d-md-flex moodlehelpbtn" data-action="footer-popover"
-                aria-label="{{#str}}showfooter, theme_remui{{/str}}" data-region="footer-container-popover">
-                <span class="edw-icon edw-icon-Cancel"></span>
-                <span class="edw-icon edw-icon-Help"></span>
-                <span class="btn-floating-text">{{#str}}intebhelp, theme_inteb{{/str}}</span>
-            </button>
-
-            {{#enablebeacon}}
-            <button class="btn btn-primary btn-floating d-none d-md-flex beaconbtn open" onclick="Beacon('toggle')">
-                <span class="edw-icon edw-icon-Comment-03"></span>
-                <span class="edw-icon edw-icon-Cancel"></span>
-                <span class="btn-floating-text">{{#str}}intebsupport, theme_remui{{/str}}</span>
-            </button>
-            {{/enablebeacon}}
-        </div>
         <div class="footer-content-popover container" data-region="footer-content-popover">
             {{# output.has_popover_links }}
             <div class="footer-section ">
