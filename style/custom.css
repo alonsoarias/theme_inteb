@@ -550,6 +550,40 @@ button.btn.btn-primary.icon-no-margin.p-0 {
     max-height: 1080px; /* Para evitar estiramiento excesivo en pantallas muy altas */
 }
 
+.primary-navigation .nav.more-nav {
+    display: flex;
+    /* Asegúrate de que el contenedor use flexbox */
+}
+
+.primary-navigation .nav.more-nav .nav-item[data-key="coursecat"] {
+    order: 1;
+    /* Cursos */
+}
+
+.primary-navigation .nav.more-nav .nav-item[data-key="myhome"] {
+    order: 2;
+    /* Área personal */
+}
+
+.primary-navigation .nav.more-nav .nav-item[data-key="mycourses"] {
+    order: 3;
+    /* Mis cursos */
+}
+
+.primary-navigation .nav.more-nav .nav-item[data-key="home"] {
+    order: 4;
+    /* Página principal */
+}
+
+.primary-navigation .nav.more-nav .nav-item[data-key="siteadminnode"] {
+    order: 5;
+    /* Administración del sitio, opcional si quieres cambiar su posición */
+}
+
+.primary-navigation .nav.more-nav .dropdownmoremenu {
+    order: 6;
+}
+
 .navbar [data-key="recentcourses"] {
     display: none;
 }
