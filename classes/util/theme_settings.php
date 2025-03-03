@@ -20,17 +20,24 @@ class settings {
         $this->theme = theme_config::load('inteb');
     }
 
-    /**
+        /**
      * Retrieves footer settings for the theme.
+     *
+     * This method gathers the 'my_credit' and 'abouttext' settings from the theme configuration
+     * and prepares them for use in the footer template.
      *
      * @return array Context for the footer template with settings data.
      */
     public function footer() {
         $templatecontext = [];
+
+        // Retrieve 'my_credit' from the theme settings or use a default value if not set.
         $templatecontext['my_credit'] = get_string('credit', 'theme_inteb');
-        $templatecontext['abouttext'] = !empty($this->theme->settings->abouttext) ? 
-            $this->theme->settings->abouttext : 
-            get_string('abouttext_default', 'theme_inteb');
+
+        // Retrieve 'abouttext' from the theme settings or use a default value if not set.
+        $templatecontext['abouttitle'] = !empty($this->theme->settings->abouttext) ? $this->theme->settings->abouttext : get_string('abouttitle_default', 'theme_inteb');
+        $templatecontext['abouttext'] = !empty($this->theme->settings->abouttext) ? $this->theme->settings->abouttext : get_string('abouttext_default', 'theme_inteb');
+
         return $templatecontext;
     }
 
