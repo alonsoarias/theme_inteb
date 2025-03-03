@@ -549,3 +549,14 @@ button.btn.btn-primary.icon-no-margin.p-0 {
     height: 100vh;
     max-height: 1080px; /* Para evitar estiramiento excesivo en pantallas muy altas */
 }
+
+.navbar [data-key="recentcourses"] {
+    display: none;
+}
+
+span.badge.badge-info {
+    color: white;
+}
+span.badge.rounded-pill.bg-secondary.text-dark {
+    color: white !important;
+}
