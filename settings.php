@@ -20,7 +20,7 @@ defined('MOODLE_INTERNAL') || die();
  * Theme settings for theme_inteb
  *
  * @package   theme_inteb
- * @copyright 2024, You Name <your@email.com>
+ * @copyright 2025, You Name <your@email.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
