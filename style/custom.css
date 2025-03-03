@@ -560,3 +560,12 @@ span.badge.badge-info {
 span.badge.rounded-pill.bg-secondary.text-dark {
     color: white !important;
 }
+span.badge.bg-secondary.text-dark {
+    color: white !important;
+}
+.about-text-content h4.data {
+    color: #ffffff;
+}
+.about-text-content a.link-1 {
+    color: #ffffff;
+}
