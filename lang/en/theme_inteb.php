@@ -17,7 +17,7 @@ $string['abouttextdesc'] = 'Content for "About" in footer area';
 
 $string['loginfootertext'] = 'Login Footer';
 $string['loginfootertextdesc'] = 'Content for the footer section on the login page';
-$string['focusmode']= 'Focus Mode';
+
 $string['generalalert'] = 'General Alert';
 $string['generalalertdesc'] = 'This will display an alert on the main page to notify users about a particular event or situation.';
 

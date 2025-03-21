@@ -17,7 +17,7 @@ $string['abouttextdesc'] = 'Contenido para la sección "Acerca de" en el pie de 
 
 $string['loginfootertext'] = 'Pie de página de inicio de sesión';
 $string['loginfootertextdesc'] = 'Contenido para la sección de pie de página en la página de inicio de sesión';
-$string['focusmode']='Modo de enfoque';
+
 $string['generalalert'] = 'Alerta General';
 $string['generalalertdesc'] = 'Esto mostrará una alerta en la página principal para notificar a los usuarios sobre algún evento o situación particular.';
 
