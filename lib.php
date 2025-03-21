@@ -1,10 +1,10 @@
 <?php
 
 /**
- * fng.
+ * inteb.
  *
- * @package    theme_fng
- * @copyright  Creado por Ing Pablo A Pico - @pabloapico exclusivamente para plataformas Moodle creadas y soportadas por fng - Sistemas y Publicidad
+ * @package    theme_inteb
+ * @copyright  Creado por Ing Pablo A Pico - @pabloapico exclusivamente para plataformas Moodle creadas y soportadas por ingeweb - Sistemas y Publicidad
  */
 
 defined('MOODLE_INTERNAL') || die();
@@ -17,12 +17,12 @@ require_once(__DIR__ . '/../remui/lib.php');
  * @param theme_config $theme The theme config object.
  * @return string
  */
-function theme_fng_get_extra_scss($theme) {
+function theme_inteb_get_extra_scss($theme) {
     $scss = '';
     // Cargando SCSS existente de variables y estilos personalizados
     $scss .= file_get_contents(__DIR__ . '/scss/_variables.scss');
     $scss .= file_get_contents(__DIR__ . '/scss/custom_variables.scss');
-    $scss .= file_get_contents(__DIR__ . '/scss/fng.scss');
+    $scss .= file_get_contents(__DIR__ . '/scss/inteb.scss');
 
     // Añadiendo el contenido de custom.css
     $customCss = file_get_contents(__DIR__ . '/style/custom.css');
@@ -31,14 +31,18 @@ function theme_fng_get_extra_scss($theme) {
     return $scss;
 }
 
+
+
 /**
  * Get SCSS to prepend.
  *
  * @param theme_config $theme The theme config object.
  * @return string
  */
-function theme_fng_get_pre_scss($theme) {
+function theme_inteb_get_pre_scss($theme)
+{
     $scss = theme_remui_get_extra_scss($theme);
+
     return $scss;
 }
 
@@ -48,7 +52,8 @@ function theme_fng_get_pre_scss($theme) {
  * @param theme_config $theme The theme config object.
  * @return string
  */
-function theme_fng_get_main_scss_content($theme) {
+
+function theme_inteb_get_main_scss_content($theme) {
     global $CFG;
 
     // Primero, cargar el SCSS del tema padre (RemUI) directamente, ya que no podemos 
@@ -70,19 +75,22 @@ function theme_fng_get_main_scss_content($theme) {
         $scss .= file_get_contents($CFG->dirroot . '/theme/remui/scss/preset/default.scss');
     }
 
-    // Luego, cargar las personalizaciones SCSS de fng.
-    $fngVariables = file_get_contents($CFG->dirroot . '/theme/fng/scss/_variables.scss');
-    $customVariables = file_get_contents($CFG->dirroot . '/theme/fng/scss/custom_variables.scss');
-    $fngScss = file_get_contents($CFG->dirroot . '/theme/fng/scss/fng.scss');
+    // Luego, cargar las personalizaciones SCSS de inteb.
+    $intebVariables = file_get_contents($CFG->dirroot . '/theme/inteb/scss/_variables.scss');
+    $customVariables = file_get_contents($CFG->dirroot . '/theme/inteb/scss/custom_variables.scss');
+    $intebScss = file_get_contents($CFG->dirroot . '/theme/inteb/scss/inteb.scss');
 
     // Cargar cualquier CSS personalizado desde 'custom.css'.
-    $customCss = file_get_contents($CFG->dirroot . '/theme/fng/style/custom.css');
+    $customCss = file_get_contents($CFG->dirroot . '/theme/inteb/style/custom.css');
 
     // Combinar todos los estilos en el orden correcto.
-    $combinedScssContent = $scss . "\n" . $fngVariables . "\n" . $customVariables . "\n" . $fngScss . "\n" . $customCss;
+    $combinedScssContent = $scss . "\n" . $intebVariables . "\n" . $customVariables . "\n" . $intebScss . "\n" . $customCss;
 
     return $combinedScssContent;
 }
+
+
+
 
 /**
  * Adds the footer image to CSS.
@@ -90,7 +98,8 @@ function theme_fng_get_main_scss_content($theme) {
  * @param theme_config $theme The theme config object.
  * @return string
  */
-function theme_fng_set_extra_img($theme) {
+function theme_inteb_set_extra_img($theme)
+{
     global $OUTPUT;
 
     $css = '';
@@ -104,18 +113,13 @@ function theme_fng_set_extra_img($theme) {
 
     $content = '';
 
-    // Sets the login background image.
-    $loginimage = $theme->setting_file_url('loginimage', 'loginimage');
-    if (!empty($loginimage)) {
-        $content .= 'body.pagelayout-login #page { ';
-        $content .= "background-image: url('$loginimage'); background-size: cover;";
-        $content .= ' }';
-    }
-
     // Always return the background image with the scss when we have it.
     return !empty($theme->settings->scss) ? $theme->settings->scss . ' ' . $content : $content;
     return $css;
 }
+
+
+
 
 /**
  * Serves any files associated with the theme settings.
@@ -129,28 +133,23 @@ function theme_fng_set_extra_img($theme) {
  * @param array $options
  * @return mixed
  */
-function theme_fng_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
-    $theme = theme_config::load('fng');
+function theme_inteb_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array())
+{
+    $theme = theme_config::load('inteb');
 
-    if ($context->contextlevel == CONTEXT_SYSTEM) {
-        // Áreas válidas fijas.
-        $validfileareas = [
-            'loginimage',
-            'personalareaheader',
-            'mycoursesheader'
-        ];
-        
-        // Si el área es una de las válidas, se sirve el archivo.
-        if (in_array($filearea, $validfileareas)) {
-            return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
-        }
-        
-        // Si el área corresponde a una imagen del slider (usando el prefijo "loging_"),
-        // se procesa para extraer el número y servir el archivo.
-        if (strpos($filearea, 'loging_slideimage') === 0) {
-            $slide_number = substr($filearea, strlen('loging_slideimage'));
-            return $theme->setting_file_serve("loging_slideimage{$slide_number}", $args, $forcedownload, $options);
-        }
+    if ($context->contextlevel == CONTEXT_SYSTEM && $filearea === 'personalareaheader') {
+        return $theme->setting_file_serve('personalareaheader', $args, $forcedownload, $options);
+    }
+    if ($context->contextlevel == CONTEXT_SYSTEM && $filearea === 'mycoursesheader') {
+        return $theme->setting_file_serve('mycoursesheader', $args, $forcedownload, $options);
+    }
+
+    // Check if the file area corresponds to the carousel images.
+    if ($context->contextlevel == CONTEXT_SYSTEM && strpos($filearea, 'login_slideimage') === 0) {
+        // Extract the slide number from the file area name.
+        $slide_number = substr($filearea, 16); // Remove 'login_slideimage' prefix.
+        // Serve the slide image.
+        return $theme->setting_file_serve("login_slideimage{$slide_number}", $args, $forcedownload, $options);
     }
 
     return theme_remui_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, $options);

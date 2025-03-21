@@ -39,7 +39,7 @@ if (!is_guest($coursecontext, $USER) &&
 // Must be called before rendering the template.
 // This will ease us to add body classes directly to the array.
 require_once($CFG->dirroot . '/theme/remui/layout/common_end.php');
-$themesettings = new \theme_fng\util\settings();
+$themesettings = new \theme_inteb\util\settings();
 $templatecontext = array_merge($templatecontext, $themesettings->footer());
 
 // Añadir la configuración del encabezado del área personal solo en la página del área personal

@@ -3,10 +3,10 @@
 /**
  * PromWebSoft.
  *
- * @package    theme_fng
+ * @package    theme_inteb
  * @copyright  Creado por Ing Pablo A Pico - @pabloapico exclusivamente para plataformas Moodle creadas y soportadas por PromWebSoft - Sistemas y Publicidad
  */
-namespace theme_fng\output;
+namespace theme_inteb\output;
 
 defined('MOODLE_INTERNAL') || die;
 

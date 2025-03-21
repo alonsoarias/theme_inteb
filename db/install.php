@@ -17,9 +17,9 @@
 /**
  * Code to be executed after the plugin's database scheme has been installed is defined here.
  *
- * @package     theme_fng
+ * @package     theme_inteb
  * @category    upgrade
- * @copyright   2022 Soporte fng <soporte@fng.com>
+ * @copyright   2022 Soporte ingeweb <soporte@ingeweb.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -28,7 +28,7 @@ defined('MOODLE_INTERNAL') || die();
 /**
  * Custom code to be run on installing the plugin.
  */
-function xmldb_theme_fng_install() {
+function xmldb_theme_inteb_install() {
 
     return true;
 }

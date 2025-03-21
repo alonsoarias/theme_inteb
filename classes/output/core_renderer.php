@@ -1,33 +1,24 @@
 <?php
-
 /**
- * Provides the core rendering functionality for the theme_fng, aligning Moodle's HTML with Bootstrap expectations.
+ * Provides the core rendering functionality for the theme_inteb, aligning Moodle's HTML with Bootstrap expectations.
  *
  * This core renderer class extends theme_remui's core renderer, adding specific modifications to enhance and customize
- * the user interface for theme_fng. Key functionalities include customized login forms, theme settings integration,
+ * the user interface for theme_inteb. Key functionalities include customized login forms, theme settings integration,
  * and dynamic handling of UI elements like carousels and notices based on theme configurations.
  *
- * @package    theme_fng
+ * @package    theme_inteb
  * @category   output
  * @author     ...
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace theme_fng\output;
+namespace theme_inteb\output;
 
-use html_writer;
-use custom_menu;
-use action_menu_filler;
-use action_menu_link_secondary;
-use stdClass;
-use moodle_url;
-use action_menu;
-use pix_icon;
 use theme_config;
-use core_text;
-use help_icon;
-use context_system;
-use core_course_list_element;
+use moodle_url;
+use context_course;
+use moodle_exception;
+
 defined('MOODLE_INTERNAL') || die();
 
 require_once(__DIR__ . '/../../../remui/classes/output/core_renderer.php');
@@ -39,47 +30,22 @@ require_once(__DIR__ . '/../util/theme_settings.php');
  */
 class core_renderer extends \theme_remui\output\core_renderer
 {
-
-
-    /**
-     * Cached theme config
-     * @var object
-     */
-    protected $themeConfig = null;
-
-/**
- * Get theme config with caching
- * @return object
- */
-public function get_theme_config()
-{
-    if ($this->themeConfig === null) {
-        $this->themeConfig = theme_config::load('fng');
-    }
-    return $this->themeConfig;
-}
-
     /**
      * Renders the login form.
      *
      * @param \core_auth\output\login $form The renderable.
      * @return string
      */
-    public function render_login(\core_auth\output\login $form)
-    {
+    public function render_login(\core_auth\output\login $form) {
         global $SITE;
 
         $context = $form->export_for_template($this);
 
-        // Prepara el mensaje de error, si lo hubiera.
+        // Prepare error text if any.
         $context->errorformatted = $this->error_text($context->error);
 
-        // Añade los textos para la autorización policial.
-        $context->police_autorization = get_string('police_autorization', 'theme_fng');
-        $context->police_autorization_help = get_string('police_autorization_help', 'theme_fng');
-
-        // Logo from 'remui' or from 'fng'? 
-        // Si deseas usar el logo del tema "fng" en vez de "remui", cambia la línea:
+        // Logo from 'remui' or from 'inteb'? 
+        // Si deseas usar el logo del tema "inteb" en vez de "remui", cambia la línea:
         $context->logourl = $this->get_theme_logo_url('logo');
 
         // Nombre del sitio.
@@ -90,66 +56,49 @@ public function get_theme_config()
     }
 
     /**
-     * Get theme image URL.
+     * Devuelve la URL de una imagen de configuración del tema (ej. loginimage, slide1, etc.)
      *
-     * @param string $img Image name
-     * @return string Image URL
+     * @param string $img Nombre del ajuste
+     * @return string
      */
     public function get_theme_img_url($img) {
-        $theme = $this->get_theme_config();
+        $theme = theme_config::load('inteb');
         return $theme->setting_file_url($img, $img);
     }
 
     /**
-     * Devuelve la URL del logo. Puede cambiarse para usar 'fng' o 'remui' según tu preferencia.
+     * Devuelve la URL del logo. Puede cambiarse para usar 'inteb' o 'remui' según tu preferencia.
      *
      * @param string $img
      * @return string|null
      */
-    public function get_theme_logo_url($img)
-    {
+    public function get_theme_logo_url($img) {
         $theme = theme_config::load('remui');
         return $theme->setting_file_url($img, $img);
     }
 
     /**
-     * Returns standard footer content.
+     * Devuelve el footer estándar y agrega scripts de chat y prevención de copy/paste según configuraciones.
      *
-     * @return string HTML footer content
+     * @return string
      */
-    public function standard_footer_html()
-    {
-        global $CFG, $USER;
+    public function standard_footer_html() {
+        global $USER;
 
+        // Footer principal heredado de theme_remui
         $output = parent::standard_footer_html();
-        $theme = $this->get_theme_config();
 
-        // Add chat widget if enabled and user is logged in
-        if (!empty($this->page->theme->settings->enable_chat) && isloggedin()) {
+        // Carga la configuración del tema inteb
+        $theme = theme_config::load('inteb');
+
+        // 1) Widget de chat
+        if (!empty($theme->settings->enable_chat)) {
             $output .= $this->add_chat_widget();
         }
 
-        // Add accessibility widget only if enabled and user is logged in
-        if (isloggedin() && !empty($this->page->theme->settings->accessibility_widget)) {
-            $output .= '<script src="https://website-widgets.pages.dev/dist/sienna.min.js" defer></script>';
-            debugging('Accessibility widget loaded for user ID: ' . $USER->id, DEBUG_DEVELOPER);
-        }
-
-        // Add copy paste prevention if enabled
-        if (!empty($this->page->theme->settings->copypaste_prevention)) {
+        // 2) Prevención de Copy/Paste
+        if (!empty($theme->settings->copypaste_prevention)) {
             $this->add_copy_paste_prevention();
-        }
-
-        // Check if about text should be hidden
-        if (
-            isset($this->page->theme->settings->hideabouttext) &&
-            $this->page->theme->settings->hideabouttext == 1
-        ) {
-            $output .= '<style>
-                body section#top-footer { 
-                    display: none !important; 
-                }
-            </style>';
         }
 
         return $output;
@@ -160,11 +109,10 @@ public function get_theme_config()
      *
      * @return string
      */
-    public function full_header()
-    {
+    public function full_header() {
         global $CFG, $USER, $PAGE;
 
-        $theme = theme_config::load('fng');
+        $theme = theme_config::load('inteb');
         $output = '';
 
         // Ocultar secciones front page si está configurado
@@ -185,8 +133,8 @@ public function get_theme_config()
 
         // Recordatorio para admin, si el aviso está en modo 'off'
         if (is_siteadmin() && (!empty($theme->settings->generalnoticemode) && $theme->settings->generalnoticemode === 'off')) {
-            $output .= '<div class="alert mt-4"><a href="' . $CFG->wwwroot . '/admin/settings.php?section=themesettingfng#theme_fng">' .
-                '<strong><i class="fa fa-edit"></i></strong> ' . get_string('generalnotice_create', 'theme_fng') . '</a></div>';
+            $output .= '<div class="alert mt-4"><a href="' . $CFG->wwwroot . '/admin/settings.php?section=themesettinginteb#theme_inteb">' .
+                       '<strong><i class="fa fa-edit"></i></strong> ' . get_string('generalnotice_create', 'theme_inteb') . '</a></div>';
         }
 
         // Validación de URL (por ejemplo, para sitios de prueba)
@@ -208,8 +156,9 @@ public function get_theme_config()
     protected function add_chat_widget() {
         global $USER;
 
+        $theme = theme_config::load('inteb');
         // Si el usuario no ha iniciado sesión o no tenemos URL del chat, no hacemos nada
-        if (!isloggedin() || empty($this->page->theme->settings->tawkto_embed_url)) { 
+        if (!isloggedin() || empty($theme->settings->tawkto_embed_url)) {
             return '';
         }
 
@@ -235,7 +184,7 @@ public function get_theme_config()
         (function(){
             var s1 = document.createElement(\"script\"), s0 = document.getElementsByTagName(\"script\")[0];
             s1.async = true;
-            s1.src = '" . $this->page->theme->settings->tawkto_embed_url . "';
+            s1.src = '" . $theme->settings->tawkto_embed_url . "';
             s1.charset = 'UTF-8';
             s1.setAttribute('crossorigin','*');
             s0.parentNode.insertBefore(s1, s0);
@@ -247,56 +196,61 @@ public function get_theme_config()
         return $script;
     }
 
-
     /**
-     * Adds copy/paste prevention JavaScript for specified roles.
+     * Agrega la lógica de prevención de Copy/Paste para roles específicos.
      */
     protected function add_copy_paste_prevention() {
         global $USER, $PAGE, $COURSE;
 
+        $theme = theme_config::load('inteb');
+        $restrictedroles = $theme->settings->copypaste_roles;
+
+        // Si no hay roles restringidos, no hacemos nada.
+        if (empty($restrictedroles)) {
+            return;
+        }
+
+        // Si es administrador/a, ignoramos la restricción
+        if (is_siteadmin()) {
+            return;
+        }
+
         try {
-            // Get restricted roles from theme settings
-            $restricted_roles = $this->page->theme->settings->copypaste_roles;
-
-            // Return if no roles are restricted or user is admin
-            if (empty($restricted_roles) || is_siteadmin()) {
-                return;
-            }
-
-            // Get appropriate context
+            // Obtenemos el contexto para saber en qué curso o página estamos
             $context = null;
             if (!empty($COURSE->id) && $COURSE->id > 1) {
+                // Contexto de un curso
                 $context = \context_course::instance($COURSE->id);
             } else if (!empty($PAGE->context)) {
+                // Si no es un curso, usamos el contexto de la página actual
                 $context = $PAGE->context;
             }
 
             if (!$context) {
-                return;
+                return; // No hay contexto válido
             }
 
-            // Convert roles to array if needed
-            if (!is_array($restricted_roles)) {
-                $restricted_roles = explode(',', $restricted_roles);
+            // Convertimos a array si es string (por seguridad)
+            if (!is_array($restrictedroles)) {
+                $restrictedroles = explode(',', $restrictedroles);
             }
 
-            // Check user roles
-            $has_restricted_role = false;
-            $user_roles = get_user_roles($context, $USER->id);
-
-            foreach ($user_roles as $role) {
-                if (in_array($role->roleid, $restricted_roles)) {
-                    $has_restricted_role = true;
+            // Obtenemos los roles del usuario en este contexto
+            $userroles = get_user_roles($context, $USER->id);
+            $hasrestrictedrole = false;
+            foreach ($userroles as $role) {
+                if (in_array($role->roleid, $restrictedroles)) {
+                    $hasrestrictedrole = true;
                     break;
                 }
             }
 
-            // Apply restrictions if needed
-            if (isloggedin() && $has_restricted_role) {
-                $PAGE->requires->js_call_amd('theme_fng/prevent_copy_paste', 'init');
+            // Si el usuario tiene algún rol restringido, aplicamos la prevención
+            if (isloggedin() && $hasrestrictedrole) {
+                // Llama a un módulo AMD con la lógica para bloquear copy/paste
+                $PAGE->requires->js_call_amd('theme_inteb/prevent_copy_paste', 'init');
             }
-
-        } catch (\moodle_exception $e) {
+        } catch (moodle_exception $e) {
             debugging('Error in copy/paste prevention: ' . $e->getMessage(), DEBUG_DEVELOPER);
             return;
         }
@@ -308,8 +262,7 @@ public function get_theme_config()
      * @param string $popup_id Un ID único para el div
      * @return string
      */
-    protected function show_unauthorized_access_overlay($popup_id)
-    {
+    protected function show_unauthorized_access_overlay($popup_id) {
         $output = '';
         $output .= '<style>
             #' . $popup_id . ' {
@@ -332,8 +285,8 @@ public function get_theme_config()
 
         $output .= '<div id="' . $popup_id . '">';
         $output .= '<div style="padding: 20px; background: white; border: 1px solid #ccc; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">';
-        $output .= '<h2 style="color: red;">' . get_string('unauthorized_access', 'theme_fng') . '</h2>';
-        $output .= '<p>' . get_string('unauthorized_access_msg', 'theme_fng') . '</p>';
+        $output .= '<h2 style="color: red;">' . get_string('unauthorized_access', 'theme_inteb') . '</h2>';
+        $output .= '<p>' . get_string('unauthorized_access_msg', 'theme_inteb') . '</p>';
         $output .= '</div>';
         $output .= '</div>';
 
@@ -343,13 +296,13 @@ public function get_theme_config()
                 // Bloquea F12 y ctrl+shift+i / ctrl+shift+j
                 if (event.keyCode == 123 || (event.ctrlKey && event.shiftKey && (event.keyCode == 73 || event.keyCode == 74))) {
                     event.preventDefault();
-                    alert("' . get_string('devtools_access_disabled', 'theme_fng') . '");
+                    alert("' . get_string('devtools_access_disabled', 'theme_inteb') . '");
                     return false;
                 }
             });
             setInterval(function() {
                 if ((window.outerHeight - window.innerHeight) > 200 || (window.outerWidth - window.innerWidth) > 200) {
-                    alert("' . get_string('devtools_access_disabled', 'theme_fng') . '");
+                    alert("' . get_string('devtools_access_disabled', 'theme_inteb') . '");
                 }
             }, 1000);
             // Previene interacción en el resto de la página
@@ -368,14 +321,13 @@ public function get_theme_config()
      * Comprueba si la URL actual está en la lista de URLs permitidas.
      * @return bool True si la URL está permitida, False en caso contrario.
      */
-    protected function check_allowed_urls()
-    {
+    protected function check_allowed_urls() {
         global $CFG;
         $allowed_urls = [
-            'https://fng.moodlesoporte.net',
-            'http://fng.moodlesoporte.net',
-            'https://aulavirtual.fng.com',
-            'http://aulavirtual.fng.com',
+            'https://inteb.moodlesoporte.net',
+            'http://inteb.moodlesoporte.net',
+            'https://aulavirtual.inteb.edu.co',
+            'http://aulavirtual.inteb.edu.co',
             'https://moodle45.localhost.com',
             'http://moodle45.localhost.com',
             'https://demomoodle.ingeweb.co',

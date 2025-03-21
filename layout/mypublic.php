@@ -252,6 +252,6 @@ $PAGE->requires->strings_for_js(array(
 
 
 ), 'theme_remui');
-$themesettings = new \theme_fng\util\settings();
+$themesettings = new \theme_inteb\util\settings();
 $templatecontext = array_merge($templatecontext, $themesettings->footer());
 echo $OUTPUT->render_from_template('theme_remui/mypublic', $templatecontext);

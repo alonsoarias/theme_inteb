@@ -27,10 +27,10 @@ defined('MOODLE_INTERNAL') || die();
 // global $CFG, $SITE, $OUTPUT;
 
 // Manually include the theme_settings.php for debugging purposes
-require_once($CFG->dirroot . '/theme/fng/classes/util/theme_settings.php');
+require_once($CFG->dirroot . '/theme/inteb/classes/util/theme_settings.php');
 
 // Instantiate theme settings and retrieve footer settings
-$themesettings = new \theme_fng\util\settings();
+$themesettings = new \theme_inteb\util\settings();
 $templatecontext = [
     // We cannot pass the context to format_string, this layout can be used during
     // installation. At that stage database tables do not exist yet.

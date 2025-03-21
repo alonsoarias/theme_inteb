@@ -1,19 +1,19 @@
 <?php
 /**
- * Extends the core course renderer for theme_fng to customize the display of course elements.
+ * Extends the core course renderer for theme_inteb to customize the display of course elements.
  *
  * This class extends the default Moodle course renderer provided by the theme_remui. It allows
- * for customization specific to the needs of theme_fng, focusing primarily on the visual
+ * for customization specific to the needs of theme_inteb, focusing primarily on the visual
  * presentation of course elements to align with the theme's aesthetics and functional requirements.
  *
- * @package    theme_fng
+ * @package    theme_inteb
  * @category   output
  * @author     Pedro Alonso Arias Balcucho
- * @copyright  2025 Soporte fng <soporte@fng.co>
+ * @copyright  2025 Soporte IngeWeb <soporte@ingeweb.co>
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace theme_fng\output\core;
+namespace theme_inteb\output\core;
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -31,9 +31,9 @@ require_once(__DIR__ . '/../../../../remui/classes/output/core/course_renderer.p
 /**
  * Class course_renderer
  *
- * Custom course renderer for theme_fng, extending the course renderer from theme_remui.
+ * Custom course renderer for theme_inteb, extending the course renderer from theme_remui.
  * It can override methods from the parent class to alter the default rendering behavior or
- * add new methods to introduce new functionalities specific to theme_fng.
+ * add new methods to introduce new functionalities specific to theme_inteb.
  */
 class course_renderer extends \theme_remui\output\core\course_renderer {
     // Custom rendering methods can be defined here to override or extend the parent functionality

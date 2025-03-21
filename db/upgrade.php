@@ -17,9 +17,9 @@
 /**
  * Plugin upgrade steps are defined here.
  *
- * @package     theme_fng
+ * @package     theme_inteb
  * @category    upgrade
- * @copyright   2022 Soporte fng <soporte@fng.com>
+ * @copyright   2022 Soporte ingeweb <soporte@ingeweb.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -28,12 +28,12 @@ defined('MOODLE_INTERNAL') || die();
 require_once(__DIR__.'/upgradelib.php');
 
 /**
- * Execute theme_fng upgrade from the given old version.
+ * Execute theme_inteb upgrade from the given old version.
  *
  * @param int $oldversion
  * @return bool
  */
-function xmldb_theme_fng_upgrade($oldversion) {
+function xmldb_theme_inteb_upgrade($oldversion) {
     global $DB;
 
     $dbman = $DB->get_manager();

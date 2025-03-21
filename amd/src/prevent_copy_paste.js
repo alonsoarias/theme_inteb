@@ -17,8 +17,8 @@
  * Copy/paste prevention JavaScript module.
  *
  * @module     theme_aeronova/prevent_copy_paste
- * @copyright  2025 fng https://www.fng.co
- * @author     Pedro Arias <soporte@fng.co>
+ * @copyright  2025 IngeWeb https://www.ingeweb.co
+ * @author     Pedro Arias <soporte@ingeweb.co>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 define(['jquery'], function($) {

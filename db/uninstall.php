@@ -17,9 +17,9 @@
 /**
  * Code that is executed before the tables and data are dropped during the plugin uninstallation.
  *
- * @package     theme_fng
+ * @package     theme_inteb
  * @category    upgrade
- * @copyright   2022 Soporte fng <soporte@fng.com>
+ * @copyright   2022 Soporte ingeweb <soporte@ingeweb.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -28,7 +28,7 @@ defined('MOODLE_INTERNAL') || die();
 /**
  * Custom uninstallation procedure.
  */
-function xmldb_theme_fng_uninstall() {
+function xmldb_theme_inteb_uninstall() {
 
     return true;
 }
