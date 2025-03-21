@@ -563,13 +563,13 @@ a.nav-link {
 .navbar .primary-navigation .dropdown-toggle.active::before,
 .navbar #usernavigation .nav-link.active::before,
 .navbar #usernavigation .dropdown-toggle.active::before {
-    top: 58px;
+    top: 56px;
     border-bottom: 3px solid $color-primary; // Reemplazado #3972b5 con $color-primary
 }
 
 /* Footer */
 #page-footer {
-    background-color: $color-secondary; /* Reemplazado con $color-secondary */
+    background-color: darken($color-primary, 10%); // Oscurece el color primario para el fondo
 }
 
 /* Top Footer */

@@ -33,16 +33,14 @@
 }}
 <footer class="row justify-content-center my-3 my-footer-wrapper">
     <div class="container-fluid">
-        {{#abouttitle}}
+        {{#abouttext}}
         <div class="row justify-content-center">
             <div class="my-about text-center my-4 my-after-divider">
-                <h3>{{{abouttitle}}}</h3>
-                {{#abouttext}}
-                <div class="about-text-content">{{{abouttext}}}</div>
-                {{/abouttext}}
+                <h3> {{{abouttitle}}}</h3>
+                {{{abouttext}}}
             </div>
         </div>
-        {{/abouttitle}}
+        {{/abouttext}}
     </div>
 </footer>
 
