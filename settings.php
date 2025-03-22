@@ -240,7 +240,7 @@ if ($ADMIN->fulltree) {
     $name = 'theme_inteb/ib_showpersonalareaheader';
     $title = get_string('showpersonalareaheader', 'theme_inteb');
     $description = get_string('showpersonalareaheader_desc', 'theme_inteb');
-    $default = 1;
+    $default = 0;
     $choices = [
         0 => get_string('hide', 'theme_inteb'),
         1 => get_string('show', 'theme_inteb')
@@ -271,7 +271,7 @@ if ($ADMIN->fulltree) {
     $name = 'theme_inteb/ib_showmycoursesheader';
     $title = get_string('showmycoursesheader', 'theme_inteb');
     $description = get_string('showmycoursesheader_desc', 'theme_inteb');
-    $default = 1;
+    $default = 0;
     $choices = [
         0 => get_string('hide', 'theme_inteb'),
         1 => get_string('show', 'theme_inteb')
