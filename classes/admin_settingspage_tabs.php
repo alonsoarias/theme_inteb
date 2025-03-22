@@ -1,17 +1,9 @@
 <?php
-/**
- * Admin settings page tabs for theme_inteb
- *
- * @package   theme_inteb
- * @copyright (c) 2025 IngeWeb <soporte@ingeweb.co>
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @author    Pedro Arias <soporte@ingeweb.co>
- */
-
 defined('MOODLE_INTERNAL') || die();
 
 class theme_inteb_admin_settingspage_tabs extends theme_boost_admin_settingspage_tabs
 {
+
     /** @var array Lista de pestañas */
     public $tabs = array();
 

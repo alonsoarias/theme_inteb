@@ -36,6 +36,7 @@
         }
     }
 }}
+{{^hidefootersections}}
 <section id="top-footer" class="p-y-1">
     <div class="container">
         <div class="col-12">
@@ -104,6 +105,8 @@
         {{/my_credit}}
     </div>
 </footer>
+{{/hidefootersections}}
+
 {{#js}}
 require(['theme_remui/footer-popover'], function(FooterPopover) {
     FooterPopover.init();

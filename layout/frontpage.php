@@ -42,7 +42,6 @@ $templatecontext['bodyattributes'] = str_replace("limitedwidth", "", $templateco
 
 if (\theme_remui\toolbox::get_setting('frontpagechooser') == 0) {
     // Frontpage context.
-            // Frontpage context.
     // Slider.
     $templatecontext['slider'] = \theme_remui\Sitehomehandler::get_slider_data();
 

@@ -1,32 +1,31 @@
 <?php
 // This file is part of Moodle - http://moodle.org/
-// 
+//
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// 
+//
 // Moodle is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+defined('MOODLE_INTERNAL') || die();
 
 /**
  * Theme settings for theme_inteb
  *
  * @package   theme_inteb
- * @copyright (c) 2025 IngeWeb <soporte@ingeweb.co>
+ * @copyright 2025, You Name <your@email.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @author    Pedro Arias <soporte@ingeweb.co>
  */
 
-defined('MOODLE_INTERNAL') || die();
-
-require_once(__DIR__ . '/classes/license_autoload.php');
-require_once(__DIR__ . '/../remui/settings.php');
+// Keep includes from theme_inteb
+require(__DIR__ . '/../remui/settings.php');
 require_once(__DIR__ . '/classes/admin_settingspage_tabs.php');
 require_once($CFG->libdir . '/accesslib.php');
 require_once(__DIR__ . '/lib.php');
@@ -41,7 +40,7 @@ unset($settings);
 $settings = null;
 
 // Crear categoría en "Apariencia"
-$ADMIN->add('appearance', new admin_category('theme_inteb', get_string('pluginname', 'theme_inteb')));
+$ADMIN->add('appearance', new admin_category('theme_inteb', get_string('configtitle', 'theme_inteb')));
 
 // Crear objeto de configuraciones con pestañas
 $asettings = new theme_inteb_admin_settingspage_tabs(
@@ -61,23 +60,22 @@ if ($ADMIN->fulltree) {
     /* =========================================================================
        TAB 1: General Settings
        ========================================================================= */
-    $page = new admin_settingpage('theme_inteb_generals', get_string('generalsettings', 'theme_inteb'));
+    $page = new admin_settingpage('theme_inteb_generals', get_string('themesettingsgeneral', 'theme_inteb'));
 
-    // --- Información del tema ---
-    $page->add(new admin_setting_heading(
-        'theme_inteb/infoheading',
-        get_string('themeinfoheading', 'theme_inteb'),
-        get_string('themeinfotext', 'theme_inteb')
-    ));
+    // Theme info text
+    $name = 'theme_inteb/themeinfotext';
+    $title = '';
+    $description = get_string('themeinfotext', 'theme_inteb');
+    $page->add(new admin_setting_heading($name, $title, $description));
 
     // --- Notificaciones Generales ---
     $page->add(new admin_setting_heading(
         'theme_inteb/generalnoticeheading',
-        get_string('generalnoticeheading', 'theme_inteb'),
+        get_string('generalnoticemode', 'theme_inteb'),
         ''
     ));
 
-    $name = 'theme_inteb/ib_generalnoticemode';
+    $name = 'theme_inteb/generalnoticemode';
     $title = get_string('generalnoticemode', 'theme_inteb');
     $description = get_string('generalnoticemodedesc', 'theme_inteb');
     $default = 'off';
@@ -90,7 +88,7 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
-    $name = 'theme_inteb/ib_generalnotice';
+    $name = 'theme_inteb/generalnotice';
     $title = get_string('generalnotice', 'theme_inteb');
     $description = get_string('generalnoticedesc', 'theme_inteb');
     $default = '<strong>Estamos trabajando</strong> para mejorar...';
@@ -101,11 +99,11 @@ if ($ADMIN->fulltree) {
     // --- Chat Settings ---
     $page->add(new admin_setting_heading(
         'theme_inteb/chatheading',
-        get_string('chatheading', 'theme_inteb'),
-        ''
+        get_string('themesettingschat', 'theme_inteb'),
+        get_string('themesettingschatdesc', 'theme_inteb')
     ));
 
-    $name = 'theme_inteb/ib_enable_chat';
+    $name = 'theme_inteb/enable_chat';
     $title = get_string('enable_chat', 'theme_inteb');
     $description = get_string('enable_chatdesc', 'theme_inteb');
     $default = 0;
@@ -113,7 +111,7 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
-    $name = 'theme_inteb/ib_tawkto_embed_url';
+    $name = 'theme_inteb/tawkto_embed_url';
     $title = get_string('tawkto_embed_url', 'theme_inteb');
     $description = get_string('tawkto_embed_urldesc', 'theme_inteb');
     $default = '';
@@ -124,11 +122,11 @@ if ($ADMIN->fulltree) {
     // --- Content Protection Settings ---
     $page->add(new admin_setting_heading(
         'theme_inteb/contentprotectionheading',
-        get_string('contentprotectionheading', 'theme_inteb'),
-        ''
+        get_string('themesettingscopypaste', 'theme_inteb'),
+        get_string('themesettingscopypaste_desc', 'theme_inteb')
     ));
 
-    $name = 'theme_inteb/ib_copypaste_prevention';
+    $name = 'theme_inteb/copypaste_prevention';
     $title = get_string('copypaste_prevention', 'theme_inteb');
     $description = get_string('copypaste_preventiondesc', 'theme_inteb');
     $default = 0;
@@ -143,7 +141,7 @@ if ($ADMIN->fulltree) {
         $roles_array[$role->id] = $role->localname;
     }
 
-    $name = 'theme_inteb/ib_copypaste_roles';
+    $name = 'theme_inteb/copypaste_roles';
     $title = get_string('copypaste_roles', 'theme_inteb');
     $description = get_string('copypaste_rolesdesc', 'theme_inteb');
     $default = [5]; // Rol de estudiante por defecto
@@ -156,7 +154,7 @@ if ($ADMIN->fulltree) {
     /* =========================================================================
        TAB 2: Login Page Settings
        ========================================================================= */
-    $page = new admin_settingpage('theme_inteb_login', get_string('loginsettings', 'theme_inteb'));
+    $page = new admin_settingpage('theme_inteb_login', get_string('themesettingslogin', 'theme_inteb'));
 
     // Carousel Settings
     $page->add(new admin_setting_heading(
@@ -166,26 +164,26 @@ if ($ADMIN->fulltree) {
     ));
 
     // Número de slides
-    $name = 'theme_inteb/ib_login_numberofslides';
+    $name = 'theme_inteb/login_numberofslides';
     $title = get_string('numberofslides', 'theme_inteb');
     $description = get_string('numberofslides_desc', 'theme_inteb');
-    $choices = range(1, 5);
+    $choices = range(1, 10);
     $page->add(new admin_setting_configselect($name, $title, $description, 1, array_combine($choices, $choices)));
 
     // Settings para cada slide
-    $numslides = get_config('theme_inteb', 'ib_login_numberofslides') ?: 1;
+    $numslides = get_config('theme_inteb', 'login_numberofslides') ?: 1;
     for ($i = 1; $i <= $numslides; $i++) {
         // Título del slide
-        $name = 'theme_inteb/ib_login_slidetitle' . $i;
+        $name = 'theme_inteb/login_slidetitle' . $i;
         $title = get_string('slidetitle', 'theme_inteb', $i);
         $description = get_string('slidetitle_desc', 'theme_inteb', $i);
         $page->add(new admin_setting_configtext($name, $title, $description, ''));
 
         // Imagen del slide
-        $name = 'theme_inteb/ib_login_slideimage' . $i;
+        $name = 'theme_inteb/login_slideimage' . $i;
         $title = get_string('slideimage', 'theme_inteb', $i);
         $description = get_string('slideimage_desc', 'theme_inteb', $i);
-        $setting = new admin_setting_configstoredfile($name, $title, $description, 'ib_login_slideimage' . $i, 0, [
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'login_slideimage' . $i, 0, [
             'subdirs' => 0,
             'accepted_types' => ['web_image']
         ]);
@@ -193,14 +191,14 @@ if ($ADMIN->fulltree) {
         $page->add($setting);
 
         // URL del slide
-        $name = 'theme_inteb/ib_login_slideurl' . $i;
+        $name = 'theme_inteb/login_slideurl' . $i;
         $title = get_string('slideurl', 'theme_inteb', $i);
         $description = get_string('slideurldesc', 'theme_inteb', $i);
         $page->add(new admin_setting_configtext($name, $title, $description, ''));
     }
 
     // Intervalo del carrusel
-    $name = 'theme_inteb/ib_carouselinterval';
+    $name = 'theme_inteb/login_carouselinterval';
     $title = get_string('carouselinterval', 'theme_inteb');
     $description = get_string('carouselintervaldesc', 'theme_inteb');
     $setting = new admin_setting_configtext($name, $title, $description, '5000');
@@ -217,14 +215,14 @@ if ($ADMIN->fulltree) {
     // Personal Area Header Settings
     $page->add(new admin_setting_heading(
         'theme_inteb/personalareaheading',
-        get_string('personalareaheading', 'theme_inteb'),
+        get_string('showpersonalareaheader', 'theme_inteb'),
         ''
     ));
 
     // Toggle de visibilidad del Personal Area Header
-    $name = 'theme_inteb/ib_show_personalareaheader';
-    $title = get_string('show_personalareaheader', 'theme_inteb');
-    $description = get_string('show_personalareaheaderdesc', 'theme_inteb');
+    $name = 'theme_inteb/showpersonalareaheader';
+    $title = get_string('showpersonalareaheader', 'theme_inteb');
+    $description = get_string('showpersonalareaheader_desc', 'theme_inteb');
     $default = 1;
     $choices = [
         0 => get_string('hide', 'theme_inteb'),
@@ -235,10 +233,10 @@ if ($ADMIN->fulltree) {
     $page->add($setting);
 
     // Imagen del Personal Area Header
-    $name = 'theme_inteb/ib_personalareaheader';
+    $name = 'theme_inteb/personalareaheader';
     $title = get_string('personalareaheader', 'theme_inteb');
     $description = get_string('personalareaheaderdesc', 'theme_inteb', $a);
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'ib_personalareaheader', 0, [
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'personalareaheader', 0, [
         'subdirs' => 0,
         'accepted_types' => 'web_image'
     ]);
@@ -248,14 +246,14 @@ if ($ADMIN->fulltree) {
     // My Courses Header Settings
     $page->add(new admin_setting_heading(
         'theme_inteb/mycoursesheading',
-        get_string('mycoursesheading', 'theme_inteb'),
+        get_string('showmycoursesheader', 'theme_inteb'),
         ''
     ));
 
     // Toggle de visibilidad del My Courses Header
-    $name = 'theme_inteb/ib_show_mycoursesheader';
-    $title = get_string('show_mycoursesheader', 'theme_inteb');
-    $description = get_string('show_mycoursesheaderdesc', 'theme_inteb');
+    $name = 'theme_inteb/showmycoursesheader';
+    $title = get_string('showmycoursesheader', 'theme_inteb');
+    $description = get_string('showmycoursesheader_desc', 'theme_inteb');
     $default = 1;
     $choices = [
         0 => get_string('hide', 'theme_inteb'),
@@ -266,15 +264,25 @@ if ($ADMIN->fulltree) {
     $page->add($setting);
 
     // Imagen del My Courses Header
-    $name = 'theme_inteb/ib_mycoursesheader';
+    $name = 'theme_inteb/mycoursesheader';
     $title = get_string('mycoursesheader', 'theme_inteb');
     $description = get_string('mycoursesheaderdesc', 'theme_inteb', $a);
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'ib_mycoursesheader', 0, [
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'mycoursesheader', 0, [
         'subdirs' => 0,
         'accepted_types' => 'web_image'
     ]);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
+    
+    // Hide/Show frontpage sections
+    $name = 'theme_inteb/hidefrontpagesections';
+    $title = get_string('hidefrontpagesections', 'theme_inteb');
+    $description = get_string('hidefrontpagesections_desc', 'theme_inteb');
+    $choices = [
+        '0' => get_string('show', 'theme_inteb'),
+        '1' => get_string('hide', 'theme_inteb')
+    ];
+    $page->add(new admin_setting_configselect($name, $title, $description, 0, $choices));
 
     $asettings->add_tab($page);
 
@@ -284,7 +292,7 @@ if ($ADMIN->fulltree) {
     $page = new admin_settingpage('theme_inteb_footer', get_string('footersettings', 'theme_inteb'));
 
     // Visibilidad del Footer
-    $name = 'theme_inteb/ib_hidefootersections';
+    $name = 'theme_inteb/hidefootersections';
     $title = get_string('hidefootersections', 'theme_inteb');
     $description = get_string('hidefootersections_desc', 'theme_inteb');
     $default = 0;
@@ -298,11 +306,11 @@ if ($ADMIN->fulltree) {
     // About Section
     $page->add(new admin_setting_heading(
         'theme_inteb/footeraboutheading',
-        get_string('footeraboutheading', 'theme_inteb'),
+        get_string('abouttitle', 'theme_inteb'),
         ''
     ));
 
-    $name = 'theme_inteb/ib_abouttitle';
+    $name = 'theme_inteb/abouttitle';
     $title = get_string('abouttitle', 'theme_inteb');
     $description = get_string('abouttitledesc', 'theme_inteb');
     $default = get_string('abouttitle_default', 'theme_inteb');
@@ -310,7 +318,7 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
-    $name = 'theme_inteb/ib_abouttext';
+    $name = 'theme_inteb/abouttext';
     $title = get_string('abouttext', 'theme_inteb');
     $description = get_string('abouttextdesc', 'theme_inteb');
     $default = get_string('abouttext_default', 'theme_inteb');
