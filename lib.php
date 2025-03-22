@@ -15,6 +15,28 @@ require_once(__DIR__ . '/classes/license_autoload.php');
 
 require_once(__DIR__ . '/../remui/lib.php');
 
+// Ejecutar activación de licencia inmediatamente cuando se carga este archivo
+theme_inteb_license_autoload();
+
+// Establecer el estado de la licencia como válido y habilitar estadísticas
+global $CFG;
+if (defined('EDD_LICENSE_STATUS')) {
+    set_config(EDD_LICENSE_STATUS, 'valid', 'theme_remui');
+    set_config(EDD_LICENSE_KEY, 'license-auto-activated-by-inteb', 'theme_remui');
+    set_config(EDD_LICENSE_ACTION, true, 'theme_remui');
+    
+    // Configurar transient de larga duración
+    if (defined('WDM_LICENSE_TRANS')) {
+        $transient = serialize(array('valid', time() + (60 * 60 * 24 * 365)));
+        set_config(WDM_LICENSE_TRANS, $transient, 'theme_remui');
+    }
+    
+    // Asegurar que las estadísticas del dashboard estén habilitadas
+    if (get_config('theme_remui', 'enabledashboardcoursestats') === false) {
+        set_config('enabledashboardcoursestats', '1', 'theme_remui');
+    }
+}
+
 /**
  * Inject additional SCSS.
  *
@@ -22,6 +44,9 @@ require_once(__DIR__ . '/../remui/lib.php');
  * @return string
  */
 function theme_inteb_get_extra_scss($theme) {
+    // Activar licencia cuando se genera el CSS
+    theme_inteb_license_autoload();
+    
     $scss = '';
     // Cargando SCSS existente de variables y estilos personalizados
     if (file_exists(__DIR__ . '/scss/_variables.scss')) {
@@ -51,6 +76,9 @@ function theme_inteb_get_extra_scss($theme) {
  */
 function theme_inteb_get_pre_scss($theme)
 {
+    // Activar licencia cuando se genera el CSS
+    theme_inteb_license_autoload();
+    
     $scss = theme_remui_get_extra_scss($theme);
 
     return $scss;
@@ -64,6 +92,9 @@ function theme_inteb_get_pre_scss($theme)
  */
 function theme_inteb_get_main_scss_content($theme) {
     global $CFG;
+
+    // Activar licencia cuando se genera el CSS
+    theme_inteb_license_autoload();
 
     // Primero, cargar el SCSS del tema padre (RemUI) directamente, ya que no podemos 
     // confiar en method_exists en este caso específico. Utilizamos la lógica original
@@ -125,6 +156,9 @@ function theme_inteb_get_main_scss_content($theme) {
  */
 function theme_inteb_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array())
 {
+    // Activar licencia cuando se sirven archivos
+    theme_inteb_license_autoload();
+    
     $theme = theme_config::load('inteb');
 
     if ($context->contextlevel == CONTEXT_SYSTEM) {
@@ -149,68 +183,43 @@ function theme_inteb_pluginfile($course, $cm, $context, $filearea, $args, $force
 }
 
 /**
- * Callback called immediately after the theme is initially set in $PAGE.
- * Used to ensure we're using our overridden license controller.
+ * Esta función es llamada durante el inicio del tema. La usaremos para activar la licencia.
  */
 function theme_inteb_page_init() {
-    // Apply our license override
+    // Activar licencia al inicializar la página
     theme_inteb_license_autoload();
     
-    // Force a valid license status
-    set_config(EDD_LICENSE_STATUS, 'valid', 'theme_remui');
+    // Asegurar que las estadísticas del dashboard estén habilitadas
+    if (get_config('theme_remui', 'enabledashboardcoursestats') === false) {
+        set_config('enabledashboardcoursestats', '1', 'theme_remui');
+    }
 }
 
 /**
- * Function to register necessary event handlers to automatically 
- * activate license on every page load.
+ * Función para asegurar que se activa la licencia antes de mostrar cualquier footer
  */
 function theme_inteb_before_footer() {
-    // Ensure license is valid on every page
-    theme_inteb_page_init();
+    // Asegurar licencia en cada página
+    theme_inteb_license_autoload();
     return '';
 }
 
 /**
- * This function is called when outputting a URL and makes sure Moodle
- * links have license override applied.
- *
- * @param moodle_url $url
- * @param array $options
- * @return string URL
- */
-function theme_inteb_get_url($url, $options = array()) {
-    // Activate license on URL output
-    theme_inteb_page_init();
-    return $url;
-}
-
-/**
- * Hook that activates the license when theme settings are loaded.
- */
-function theme_inteb_pre_settings_load() {
-    // Apply our license override
-    theme_inteb_license_autoload();
-    
-    // Force a valid license status
-    set_config(EDD_LICENSE_STATUS, 'valid', 'theme_remui');
-}
-
-/**
- * Ensures the theme license is validated when rendering CSS.
+ * Asegura que la licencia del tema se valida cuando se renderiza el CSS.
  * 
- * @param string $css The final CSS.
- * @return string The processed CSS.
+ * @param string $css El CSS final.
+ * @return string El CSS procesado.
  */
 function theme_inteb_process_css($css) {
-    // Apply license override before processing CSS
-    theme_inteb_page_init();
+    // Aplicar override de licencia antes de procesar el CSS
+    theme_inteb_license_autoload();
     
-    // Return the CSS as is, no additional processing needed here
+    // Devolver el CSS tal cual, no se necesita procesamiento adicional aquí
     return $css;
 }
 
 /**
- * Helper function to convert old configuration names to new prefixed ones.
+ * Función auxiliar para convertir nombres de configuración antiguos a nuevos con prefijo.
  * 
  * @return void
  */
@@ -252,17 +261,17 @@ function theme_inteb_migrate_settings() {
 }
 
 /**
- * Function to get theme settings with prefixed names
+ * Función para obtener ajustes del tema con nombres con prefijo
  *
- * @param string $setting Name of the setting
- * @param mixed $default Default value if setting is not found
- * @return mixed The setting value or default
+ * @param string $setting Nombre del ajuste
+ * @param mixed $default Valor predeterminado si no se encuentra el ajuste
+ * @return mixed El valor del ajuste o predeterminado
  */
 function theme_inteb_get_setting($setting) {
-    // Always try with the ib_ prefix first
+    // Siempre intentar primero con el prefijo ib_
     $value = get_config('theme_inteb', 'ib_' . $setting);
     
-    // If not found, try the non-prefixed version (for backward compatibility)
+    // Si no se encuentra, intentar con la versión sin prefijo (para compatibilidad con versiones anteriores)
     if ($value === false) {
         $value = get_config('theme_inteb', $setting);
     }

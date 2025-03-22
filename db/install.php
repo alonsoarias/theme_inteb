@@ -29,6 +29,28 @@ defined('MOODLE_INTERNAL') || die();
  * Custom code to be run on installing the plugin.
  */
 function xmldb_theme_inteb_install() {
+    global $CFG, $DB;
+
+    // Cargar y activar automáticamente la licencia
+    require_once($CFG->dirroot . '/theme/inteb/classes/license_autoload.php');
+    theme_inteb_license_autoload();
+    
+    // Activar la licencia automáticamente
+    if (defined('EDD_LICENSE_STATUS')) {
+        set_config(EDD_LICENSE_STATUS, 'valid', 'theme_remui');
+        set_config(EDD_LICENSE_KEY, 'license-auto-activated-by-inteb', 'theme_remui');
+        set_config(EDD_LICENSE_ACTION, true, 'theme_remui');
+        
+        // Configurar transient de larga duración
+        if (defined('WDM_LICENSE_TRANS')) {
+            $transient = serialize(array('valid', time() + (60 * 60 * 24 * 365)));
+            set_config(WDM_LICENSE_TRANS, $transient, 'theme_remui');
+        }
+        
+        mtrace('Theme INTEB: Licencia activada automáticamente');
+    } else {
+        mtrace('Theme INTEB: No se pudo activar la licencia automáticamente - constantes no definidas');
+    }
 
     return true;
 }

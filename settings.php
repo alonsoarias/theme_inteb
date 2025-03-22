@@ -31,7 +31,10 @@ require_once($CFG->libdir . '/accesslib.php');
 require_once(__DIR__ . '/lib.php');
 
 // Force license validation at settings load time
-theme_inteb_pre_settings_load();
+// Esta línea estaba llamando a theme_inteb_pre_settings_load() que ya no existe
+// En su lugar, simplemente cargamos el archivo de autoload de licencia
+require_once(__DIR__ . '/classes/license_autoload.php');
+theme_inteb_license_autoload();
 
 // Capturar pestañas del tema padre (si existen)
 $parent_tabs = null;

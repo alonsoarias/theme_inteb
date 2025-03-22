@@ -26,36 +26,45 @@
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * This function is called early in the Moodle bootstrap process to ensure
- * our license overrides are loaded before the original RemUI classes.
+ * Esta función se llama temprano en el proceso de bootstrap de Moodle para garantizar
+ * que nuestros overrides de licencia se carguen antes que las clases originales de RemUI.
  */
 function theme_inteb_license_autoload() {
     global $CFG;
     
-    // Make sure theme is installed and these files exist
+    // Para evitar bucles infinitos o cargas redundantes
+    static $loaded = false;
+    if ($loaded) {
+        return;
+    }
+    
+    // Marcar como cargado para evitar llamadas múltiples
+    $loaded = true;
+    
+    // Asegurar que el tema está instalado y que estos archivos existen
     if (!file_exists($CFG->dirroot . '/theme/inteb/classes/controller/LicenseController.php') || 
         !file_exists($CFG->dirroot . '/theme/inteb/classes/controller/RemUIController.php')) {
         return;
     }
     
-    // Load our classes first
+    // Cargar nuestras clases primero
     require_once($CFG->dirroot . '/theme/inteb/classes/controller/LicenseController.php');
     require_once($CFG->dirroot . '/theme/inteb/classes/controller/RemUIController.php');
     
-    // Define license constants if not already defined
+    // Definir constantes de licencia si aún no están definidas
     if (!defined("PLUGINSHORTNAME")) {
-        // Plugins short name appears on the License Menu Page.
+        // Nombre corto del plugin que aparece en la página del menú de licencia.
         define('PLUGINSHORTNAME', 'Edwiser RemUI');
-        // This slug is used to store the data in db.
-        // License is checked using two options viz edd_<slug>_license_key and edd_<slug>_license_status.
+        // Este slug se usa para almacenar los datos en la base de datos.
+        // La licencia se verifica usando dos opciones: edd_<slug>_license_key y edd_<slug>_license_status.
         define('PLUGINSLUG', 'remui');
-        // Current Version of the plugin. This should be similar to Version tag mentioned in Plugin headers.
+        // Versión actual del plugin. Debe ser similar a la etiqueta de versión mencionada en los encabezados del plugin.
         define('PLUGINVERSION', '4.5.0');
-        // Under this Name product should be created on WisdmLabs Site.
+        // Bajo este nombre debe crearse el producto en el sitio de WisdmLabs.
         define('PLUGINNAME', 'Edwiser RemUI');
         // URL local para evitar solicitudes externas
         define('STOREURL', '/theme/inteb/fakecheckurl.php');
-        // Author Name.
+        // Nombre del autor.
         define('AUTHORNAME', 'WisdmLabs');
 
         define('EDD_LICENSE_ACTION', 'licenseactionperformed');
@@ -69,11 +78,17 @@ function theme_inteb_license_autoload() {
         define('WDM_LICENSE_PRODUCTSITE', 'wdm_' . PLUGINSLUG . '_product_site');
     }
     
-    // Set valid license status
+    // Establecer estado de licencia válido
     if (get_config('theme_remui', EDD_LICENSE_STATUS) !== 'valid') {
         set_config(EDD_LICENSE_STATUS, 'valid', 'theme_remui');
+        set_config(EDD_LICENSE_KEY, 'license-auto-activated-by-inteb', 'theme_remui');
+        set_config(EDD_LICENSE_ACTION, true, 'theme_remui');
+        
+        // Establecer transient
+        $transient = serialize(array('valid', time() + (60 * 60 * 24 * 365)));
+        set_config(WDM_LICENSE_TRANS, $transient, 'theme_remui');
     }
 }
 
-// Load our overrides immediately
+// Cargar nuestros overrides inmediatamente al incluir este archivo
 theme_inteb_license_autoload();

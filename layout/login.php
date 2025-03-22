@@ -123,4 +123,4 @@ if (!empty($theme->settings->ib_abouttext)) {
 // =========================================================================
 // 3) Renderizar la plantilla con este contexto
 // =========================================================================
-echo $OUTPUT->render_from_template('theme_inteb/login', $templatecontext);
+echo $OUTPUT->render_from_template('theme_inteb/core/login-custom', $templatecontext);

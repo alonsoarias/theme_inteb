@@ -1,150 +1,131 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+/**
+ * Strings for component 'theme_inteb'
+ *
+ * @package   theme_inteb
+ * @copyright (c) 2025 IngeWeb <soporte@ingeweb.co>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+// Cadenas generales
 $string['pluginname'] = 'INTEB';
-$string['choosereadme'] = 'INTEB es un tema creado por el Ing. Pablo A Pico (<a href="http://ingeweb.co/">IngeWeb</a>) exclusivamente para nuestros clientes.';
-$string['configtitle'] = 'INTEB';
+$string['configtitle'] = 'Tema INTEB';
+$string['choosereadme'] = 'INTEB es un tema hijo de RemUI adaptado a las necesidades de INTEB.';
 
-$string['logo'] = 'Logo';
+// Nuevas cadenas para tareas programadas
+$string['license_check_task'] = 'Tarea de verificación de licencia para INTEB';
+$string['license_activated'] = 'Licencia activada automáticamente';
+$string['license_activation_automatic'] = 'La licencia ha sido activada automáticamente. No es necesario realizar ninguna acción adicional.';
 
-$string['themesettings'] = 'Ajustes del Tema INTEB';
-$string['themesettingsgeneral'] = 'Configuración General';
-$string['contactinfo'] = 'Información de contacto';
-$string['abouttitle'] = 'Título Acerca de';
-$string['abouttitledesc'] = 'Título para la sección "Acerca de" en el pie de página';
-$string['abouttitle_default'] = 'Acerca de Nosotros';
-
-$string['abouttext'] = 'Texto Acerca de';
-$string['abouttextdesc'] = 'Contenido para la sección "Acerca de" en el pie de página';
-
-$string['copyright'] = 'Derechos de autor';
-$string['copyrightdesc'] = 'Acerca de este sitio web.';
-
-$string['customcss'] = 'CSS personalizado';
-$string['customcssdesc'] = 'Cualquier regla CSS que agregue aquí se reflejará en cada página, lo que facilita la personalización de este tema.';
-
-$string['themeinfotext'] = 'Este tema fue creado para <strong>otro proyecto de Moodle</strong> por <a target="_blank" href="http://ingeweb.co/">IngeWeb - Soluciones para triunfar en Internet</a>.';
-$string['credit'] = 'Tema creado por <a target="_blank" class="my-credit-link" href="http://ingeweb.co/">IngeWeb</a> © 2025 - Todos los derechos reservados';
-
-$string['showingonlycategorieswithenrolledcourses'] = 'Mostrando únicamente categorías con cursos inscritos';
-$string['nocoursestoshow'] = 'No se encontraron cursos para mostrar';
-
-$string['region-side-pre'] = 'Derecha';
+// Configuración del tema
+$string['themesettings'] = 'Configuración del tema';
+$string['themesettingsgeneral'] = 'General';
+$string['themesettingslogin'] = 'Página de acceso';
+$string['dashboardsettings'] = 'Panel de control';
+$string['footersettings'] = 'Pie de página';
 
 // Aviso general
 $string['generalnoticemode'] = 'Modo de aviso general';
-$string['generalnoticemodedesc'] = 'El aviso general permite a los administradores mostrar notificaciones importantes en la cabecera de cada página tras iniciar sesión.';
-$string['generalnoticemode_off'] = 'Apagado';
-$string['generalnoticemode_info'] = 'Información';
-$string['generalnoticemode_danger'] = 'Crítico';
+$string['generalnoticemodedesc'] = 'Elige el tipo de aviso general que se mostrará en el sitio.';
+$string['generalnoticemode_off'] = 'Desactivado';
+$string['generalnoticemode_info'] = 'Información (azul)';
+$string['generalnoticemode_danger'] = 'Advertencia (rojo)';
+$string['generalnotice'] = 'Aviso general';
+$string['generalnoticedesc'] = 'Texto que se mostrará en el aviso general en todas las páginas.';
+$string['generalnotice_create'] = 'Haz clic aquí para crear un aviso general';
 
-$string['generalnotice'] = 'Texto del aviso';
-$string['generalnoticedesc'] = 'Texto que se mostrará dentro de la caja de alerta. Puede usar la etiqueta <strong>strong</strong> para resaltar frases importantes.';
-$string['generalnotice_create'] = 'Configurar un aviso';
+// Configuración del chat
+$string['themesettingschat'] = 'Configuración del chat';
+$string['themesettingschatdesc'] = 'Configurar las opciones del widget de chat en el sitio.';
+$string['enable_chat'] = 'Activar chat';
+$string['enable_chatdesc'] = 'Mostrar widget de chat en el sitio.';
+$string['tawkto_embed_url'] = 'URL de incrustación de Tawk.to';
+$string['tawkto_embed_urldesc'] = 'Introduce la URL de incrustación proporcionada por Tawk.to.';
 
-// Caché
-$string['cachedef_fontawesomeremuiiconmapping'] = 'Almacenamiento en caché para el mapeo de iconos Font Awesome';
+// Protección de contenido
+$string['themesettingscopypaste'] = 'Protección de contenido';
+$string['themesettingscopypaste_desc'] = 'Evita que ciertos roles puedan copiar y pegar contenido.';
+$string['copypaste_prevention'] = 'Prevención de copia y pegado';
+$string['copypaste_preventiondesc'] = 'Evita que ciertos roles puedan copiar y pegar contenido.';
+$string['copypaste_roles'] = 'Roles a proteger';
+$string['copypaste_rolesdesc'] = 'Selecciona los roles a los que se aplicará la prevención de copia y pegado.';
 
-$string['show'] = 'Mostrar';
-$string['hide'] = 'Ocultar';
-
-$string['carouselsettings'] = 'Ajustes del Carrusel';
-$string['carouselsettings_desc'] = 'Configure los ajustes para el carrusel en la página de inicio de sesión, incluidas imágenes, textos y otras opciones.';
-
-$string['enablecarousel'] = 'Habilitar carrusel en la página de inicio de sesión';
-$string['enablecarousel_desc'] = 'Active esta configuración para mostrar un carrusel de imágenes en la página de inicio de sesión.';
+// Configuración del carrusel
+$string['carouselsettings'] = 'Configuración del carrusel';
+$string['carouselsettings_desc'] = 'Configura las diapositivas del carrusel en la página de acceso.';
 $string['numberofslides'] = 'Número de diapositivas';
-$string['numberofslides_desc'] = 'Seleccione cuántas diapositivas desea mostrar en el carrusel de la página de inicio de sesión.';
-$string['slideimage'] = 'Imagen de la diapositiva {$a}';
-$string['slideimage_desc'] = 'Cargue una imagen para la diapositiva {$a} en el carrusel.';
+$string['numberofslides_desc'] = 'Selecciona cuántas diapositivas mostrar en el carrusel.';
+$string['slidetitle'] = 'Título de diapositiva {$a}';
+$string['slidetitle_desc'] = 'Título para la diapositiva {$a}.';
+$string['slideimage'] = 'Imagen de diapositiva {$a}';
+$string['slideimage_desc'] = 'Sube una imagen para la diapositiva {$a} (tamaño recomendado: 1600x900px).';
+$string['slideurl'] = 'Enlace de diapositiva {$a}';
+$string['slideurldesc'] = 'URL a la que enlazará la diapositiva {$a}.';
 $string['carouselinterval'] = 'Intervalo del carrusel';
-$string['carouselintervaldesc'] = 'Ingrese el tiempo de intervalo en milisegundos para las diapositivas del carrusel.';
+$string['carouselintervaldesc'] = 'Tiempo en milisegundos entre cambios de diapositivas.';
 
-$string['carousel'] = 'Carrusel de imágenes';
-$string['loginsection'] = 'Sección de inicio de sesión';
+// Encabezados de área personal
+$string['showpersonalareaheader'] = 'Mostrar encabezado de área personal';
+$string['showpersonalareaheader_desc'] = 'Mostrar una imagen de encabezado en la página de Área personal.';
+$string['personalareaheader'] = 'Imagen de encabezado de área personal';
+$string['personalareaheaderdesc'] = 'Sube una imagen para el encabezado del área personal (tamaño recomendado: 1600x300px). {$a->example_banner}';
 
-$string['slidetitle'] = 'Título para la diapositiva {$a}';
-$string['slidetitle_desc'] = 'Ingrese el título de la diapositiva {$a}';
-$string['slideurl'] = 'URL del botón en la diapositiva {$a}';
-$string['slideurldesc'] = 'Ingrese la URL para el botón en la diapositiva {$a}. Esta URL se abrirá en una nueva ventana.';
+// Encabezados de mis cursos
+$string['showmycoursesheader'] = 'Mostrar encabezado de Mis cursos';
+$string['showmycoursesheader_desc'] = 'Mostrar una imagen de encabezado en la página de Mis cursos.';
+$string['mycoursesheader'] = 'Imagen de encabezado de Mis cursos';
+$string['mycoursesheaderdesc'] = 'Sube una imagen para el encabezado de Mis cursos (tamaño recomendado: 1600x300px). {$a->example_banner}';
 
-$string['unauthorized_access'] = 'Acceso no autorizado';
-$string['unauthorized_access_msg'] = 'Este sitio no está autorizado para operar en esta URL.';
-$string['devtools_access_disabled'] = 'Se ha deshabilitado el acceso a las herramientas de desarrollo.';
+// Página de inicio
+$string['hidefrontpagesections'] = 'Ocultar secciones de la página principal';
+$string['hidefrontpagesections_desc'] = 'Oculta las secciones frontales de la página principal.';
 
-$string['personalareaheader'] = 'Imagen de cabecera del área personal';
-$string['personalareaheaderdesc'] = 'Sube una imagen que se mostrará como cabecera en el área personal.';
-$string['showpersonalareaheader']= 'Mostrar imagen de cabecera del área personal';
-$string['showpersonalareaheader_desc'] = 'Habilita esta configuración para mostrar una imagen de cabecera en el área personal.';
-$string['mycoursesheader'] = 'Imagen de cabecera de mis cursos';
-$string['mycoursesheaderdesc'] = 'Sube una imagen que se mostrará como cabecera en la página de mis cursos.';
-$string['showmycoursesheader'] = 'Mostrar imagen de cabecera de mis cursos';
-$string['showmycoursesheader_desc'] = 'Habilita esta configuración para mostrar una imagen de cabecera en la página de Mis Cursos.';
-$string['hidefrontpagesections'] = 'Ocultar secciones superiores de la página principal';
-$string['hidefrontpagesections_desc'] = 'Habilite esta configuración para ocultar las secciones superiores de la página principal, brindando un aspecto más limpio.';
+// Pie de página
 $string['hidefootersections'] = 'Ocultar secciones del pie de página';
-$string['hidefootersections_desc'] = 'Habilita esta configuración para ocultar secciones de tu pie de página, proporcionando una apariencia más limpia.';
+$string['hidefootersections_desc'] = 'Oculta las secciones del pie de página.';
+$string['abouttitle'] = 'Título de Acerca de';
+$string['abouttitledesc'] = 'Título para la sección Acerca de en el pie de página.';
+$string['abouttitle_default'] = 'Acerca de nosotros';
+$string['abouttext'] = 'Texto de Acerca de';
+$string['abouttextdesc'] = 'Texto para la sección Acerca de en el pie de página.';
+$string['abouttext_default'] = '<p>INTEB - Instituto Técnico Colombiano de Barranquilla.</p>';
+$string['credit'] = 'Diseñado con <i class="fa fa-heart"></i> por IngeWeb';
 
-$string['themesettingslogin'] = 'Ajustes básicos de inicio de sesión';
+// Página de acceso
+$string['default_slide_title'] = 'Bienvenido a nuestra plataforma educativa';
+$string['hide'] = 'Ocultar';
+$string['show'] = 'Mostrar';
 
-$string['abouttext_default'] = '<p style="text-align: center;"></p>
-    <p style="text-align: left;">
-    </p>
-    <p style="text-align: center;"><span style="font-family: inherit; font-size: 1rem; letter-spacing: 0rem; text-transform: inherit;"><b>IngeWeb - Soluciones para triunfar en Internet<br></b></span><span style="font-family: inherit; font-size: 1rem; letter-spacing: 0rem; text-transform: inherit;">Expertos en Moodle, BigBlueButton, WordPress y Joomla.<br></span><strong style="font-family: inherit; font-size: 1rem; letter-spacing: 0rem; text-transform: inherit;">www.ingeweb.co</strong></p>
-    <p></p>';
+// Licencia
+$string['activatelicense'] = 'Activar licencia';
+$string['licenseactivation'] = 'Activación de licencia';
+$string['licenseactivationdesc'] = 'La licencia se activa automáticamente. Si experimentas problemas, puedes usar el botón a continuación para activarla manualmente.';
+$string['themeinfotext'] = '<div class="alert alert-info">
+<p>El tema INTEB es una adaptación personalizada basada en Edwiser RemUI.</p>
+<p>Esta versión incluye activación automática de licencia y correcciones específicas para INTEB.</p>
+<p>Versión: 4.5.0</p>
+</div>';
 
-// Nuevas cadenas para Chat
-$string['themesettingschat'] = 'Ajustes de Chat';
-$string['themesettingschatdesc'] = 'Opciones para integrar un servicio de chat en la plataforma.';
-$string['enable_chat'] = 'Habilitar chat';
-$string['enable_chatdesc'] = 'Si habilita esta opción, se mostrará un widget de chat.';
-$string['tawkto_embed_url'] = 'URL de inserción de Tawk.to';
-$string['tawkto_embed_urldesc'] = 'Ingrese el script o la URL de inserción de Tawk.to (u otro servicio de chat).';
+// Mensajes para acceso no autorizado
+$string['unauthorized_access'] = 'Acceso no autorizado';
+$string['unauthorized_access_msg'] = 'Estás accediendo a este sitio desde un dominio no autorizado. Por favor, contacta con el administrador del sistema.';
+$string['devtools_access_disabled'] = 'El acceso a las herramientas de desarrollador está deshabilitado en este sitio.';
 
-// Nuevas cadenas para Copy/Paste
-$string['themesettingscopypaste'] = 'Configuración de Copy/Paste';
-$string['themesettingscopypaste_desc'] = 'Opciones para bloquear o restringir el copiado y pegado.';
-$string['copypaste_prevention'] = 'Prevenir copy/paste';
-$string['copypaste_preventiondesc'] = 'Si se habilita, se intentará bloquear la función de copiar y pegar.';
-$string['copypaste_roles'] = 'Roles afectados';
-$string['copypaste_rolesdesc'] = 'Seleccione los roles a los que se aplicará la restricción.';
-
-// Activación de licencia
-$string['licenseactivation'] = 'Activación de Licencia';
-$string['licenseactivationdesc'] = 'Si experimenta problemas con las características del tema, puede activar manualmente la licencia usando el botón a continuación:';
-$string['activatelicense'] = 'Activar Licencia';
-
-// Navegación del carrusel
-$string['previous'] = 'Anterior';
-$string['next'] = 'Siguiente';
-$string['default_slide_title'] = 'Bienvenido a nuestra Plataforma de Aprendizaje';
-
-// Dashboard
-$string['dashboardsettings'] = 'Configuración del Tablero';
-
-// Cursos destacados
-$string['featuredcourses'] = 'Cursos Destacados';
-$string['featuredcoursesdesc'] = 'Mostrar cursos destacados en una sección dedicada.';
-
-// Cadenas faltantes identificadas - traducidas al español
-$string['defaultheader'] = 'Cabecera Predeterminada';
-$string['gotop'] = 'Ir arriba';
-$string['focusmode'] = 'Modo Enfoque';
-$string['togglefocusmode'] = 'Alternar Modo Enfoque';
-$string['welcometobrand'] = 'Bienvenido a {$a}';
-$string['entertologin'] = 'Ingresa tus credenciales para iniciar sesión';
-$string['forgotaccount'] = '¿Olvidaste tu contraseña?';
-$string['firsttime'] = '¿Primera vez aquí?';
-$string['cookiesnotice'] = 'Aviso de cookies';
-$string['home'] = 'Inicio';
-$string['footersettings'] = 'Ajustes del Pie de Página';
-$string['viewcoursetitle'] = 'Ver este curso';
-$string['viewcourse'] = 'Ver curso';
-$string['instructorcounttitle'] = 'Más instructores';
-$string['deactivatelicense'] = 'Desactivar Licencia';
-$string['licensekeyactivated'] = 'Clave de licencia activada correctamente';
-$string['opendrawerindex'] = 'Abrir índice del curso';
-$string['opendrawerblocks'] = 'Abrir panel de bloques';
-$string['closecourseindex'] = 'Cerrar índice del curso';
-$string['closeblockdrawer'] = 'Cerrar panel de bloques';
-
-$string['intebhelp'] = "Ayuda de Plataforma";
-$string['intebsupport'] = "Soporte Inteb";
+// Cadenas adicionales para el panel de control
+$string['dashboardpersonalizerinfo'] = 'Información del personalizador del panel';
+$string['defaultheader'] = 'Encabezado predeterminado';

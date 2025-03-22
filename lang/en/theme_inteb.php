@@ -1,150 +1,131 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+/**
+ * Strings for component 'theme_inteb'
+ *
+ * @package   theme_inteb
+ * @copyright (c) 2025 IngeWeb <soporte@ingeweb.co>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+// General strings
 $string['pluginname'] = 'INTEB';
-$string['choosereadme'] = 'INTEB is a theme created by Eng. Pablo A Pico (<a href="http://ingeweb.co/">IngeWeb</a>) exclusively for our clients.';
-$string['configtitle'] = 'INTEB';
+$string['configtitle'] = 'INTEB Theme';
+$string['choosereadme'] = 'INTEB is a child theme of RemUI adapted for INTEB needs.';
 
-$string['logo'] = 'Logo';
+// New strings for scheduled tasks
+$string['license_check_task'] = 'INTEB license verification task';
+$string['license_activated'] = 'License automatically activated';
+$string['license_activation_automatic'] = 'The license has been automatically activated. No additional action is required.';
 
-$string['themesettings'] = 'INTEB Theme Settings';
-$string['themesettingsgeneral'] = 'General Settings';
-$string['contactinfo'] = 'Contact Information';
-$string['abouttitle'] = 'About Title';
-$string['abouttitledesc'] = 'Title for "About" in footer area';
-$string['abouttitle_default'] = 'About Us';
-
-$string['abouttext'] = 'About Text';
-$string['abouttextdesc'] = 'Content for "About" in footer area';
-
-$string['copyright'] = 'Copyright';
-$string['copyrightdesc'] = 'About this website.';
-
-$string['customcss'] = 'Custom CSS';
-$string['customcssdesc'] = 'Any CSS rules you add here will be reflected on every page, making it easy to customize this theme.';
-
-$string['themeinfotext'] = 'This theme was created for <strong>another Moodle project</strong> by <a target="_blank" href="http://ingeweb.co/">IngeWeb - Solutions to succeed on the Internet</a>.';
-$string['credit'] = 'Theme created by <a target="_blank" class="my-credit-link" href="http://ingeweb.co/">IngeWeb</a> © 2025 - All rights reserved';
-
-$string['showingonlycategorieswithenrolledcourses'] = 'Showing only categories with enrolled courses';
-$string['nocoursestoshow'] = 'No courses found to display';
-
-$string['region-side-pre'] = 'Right';
+// Theme settings
+$string['themesettings'] = 'Theme settings';
+$string['themesettingsgeneral'] = 'General';
+$string['themesettingslogin'] = 'Login page';
+$string['dashboardsettings'] = 'Dashboard';
+$string['footersettings'] = 'Footer';
 
 // General notice
-$string['generalnoticemode'] = 'General Notice Mode';
-$string['generalnoticemodedesc'] = 'The general notice allows administrators to display important notifications in the header of each page after login.';
-$string['generalnoticemode_off'] = 'Off';
-$string['generalnoticemode_info'] = 'Information';
-$string['generalnoticemode_danger'] = 'Critical';
+$string['generalnoticemode'] = 'General notice mode';
+$string['generalnoticemodedesc'] = 'Choose the type of general notice that will be displayed on the site.';
+$string['generalnoticemode_off'] = 'Disabled';
+$string['generalnoticemode_info'] = 'Information (blue)';
+$string['generalnoticemode_danger'] = 'Warning (red)';
+$string['generalnotice'] = 'General notice';
+$string['generalnoticedesc'] = 'Text to be displayed in the general notice on all pages.';
+$string['generalnotice_create'] = 'Click here to create a general notice';
 
-$string['generalnotice'] = 'Notice Text';
-$string['generalnoticedesc'] = 'Text to be displayed inside the alert box. You can use the <strong>strong</strong> tag to highlight important phrases.';
-$string['generalnotice_create'] = 'Configure a Notice';
-
-// Cache
-$string['cachedef_fontawesomeremuiiconmapping'] = 'Cache storage for Font Awesome icon mapping';
-
-$string['show'] = 'Show';
-$string['hide'] = 'Hide';
-
-$string['carouselsettings'] = 'Carousel Settings';
-$string['carouselsettings_desc'] = 'Configure the settings for the carousel on the login page, including images, texts, and other options.';
-
-$string['enablecarousel'] = 'Enable carousel on login page';
-$string['enablecarousel_desc'] = 'Enable this setting to display an image carousel on the login page.';
-$string['numberofslides'] = 'Number of slides';
-$string['numberofslides_desc'] = 'Select how many slides you want to show in the login page carousel.';
-$string['slideimage'] = 'Slide Image {$a}';
-$string['slideimage_desc'] = 'Upload an image for slide {$a} in the carousel.';
-$string['carouselinterval'] = 'Carousel Interval';
-$string['carouselintervaldesc'] = 'Enter the interval time in milliseconds for carousel slides.';
-
-$string['carousel'] = 'Image Carousel';
-$string['loginsection'] = 'Login Section';
-
-$string['slidetitle'] = 'Title for slide {$a}';
-$string['slidetitle_desc'] = 'Enter the title for slide {$a}';
-$string['slideurl'] = 'Button URL in slide {$a}';
-$string['slideurldesc'] = 'Enter the URL for the button in slide {$a}. This URL will open in a new window.';
-
-$string['unauthorized_access'] = 'Unauthorized Access';
-$string['unauthorized_access_msg'] = 'This site is not authorized to operate on this URL.';
-$string['devtools_access_disabled'] = 'Access to development tools has been disabled.';
-
-$string['personalareaheader'] = 'Personal Area Header Image';
-$string['personalareaheaderdesc'] = 'Upload an image that will be displayed as header in the personal area.';
-$string['showpersonalareaheader'] = 'Show Personal Area Header Image';
-$string['showpersonalareaheader_desc'] = 'Enable this setting to show a header image in the personal area.';
-$string['mycoursesheader'] = 'My Courses Header Image';
-$string['mycoursesheaderdesc'] = 'Upload an image that will be displayed as header on the My Courses page.';
-$string['showmycoursesheader'] = 'Show My Courses Header Image';
-$string['showmycoursesheader_desc'] = 'Enable this setting to show a header image on the My Courses page.';
-$string['hidefrontpagesections'] = 'Hide Front Page Top Sections';
-$string['hidefrontpagesections_desc'] = 'Enable this setting to hide the top sections of the front page, providing a cleaner look.';
-$string['hidefootersections'] = 'Hide Footer Sections';
-$string['hidefootersections_desc'] = 'Enable this setting to hide footer sections, providing a cleaner appearance.';
-
-$string['themesettingslogin'] = 'Basic Login Settings';
-
-$string['abouttext_default'] = '<p style="text-align: center;"></p>
-    <p style="text-align: left;">
-    </p>
-    <p style="text-align: center;"><span style="font-family: inherit; font-size: 1rem; letter-spacing: 0rem; text-transform: inherit;"><b>IngeWeb - Solutions to succeed on the Internet<br></b></span><span style="font-family: inherit; font-size: 1rem; letter-spacing: 0rem; text-transform: inherit;">Experts in Moodle, BigBlueButton, WordPress and Joomla.<br></span><strong style="font-family: inherit; font-size: 1rem; letter-spacing: 0rem; text-transform: inherit;">www.ingeweb.co</strong></p>
-    <p></p>';
-
-// Chat strings
-$string['themesettingschat'] = 'Chat Settings';
-$string['themesettingschatdesc'] = 'Options to integrate a chat service into the platform.';
+// Chat settings
+$string['themesettingschat'] = 'Chat settings';
+$string['themesettingschatdesc'] = 'Configure the chat widget options for the site.';
 $string['enable_chat'] = 'Enable chat';
-$string['enable_chatdesc'] = 'If you enable this option, a chat widget will be displayed.';
-$string['tawkto_embed_url'] = 'Tawk.to Embed URL';
-$string['tawkto_embed_urldesc'] = 'Enter the Tawk.to (or other chat service) embed script or URL.';
+$string['enable_chatdesc'] = 'Show chat widget on the site.';
+$string['tawkto_embed_url'] = 'Tawk.to embed URL';
+$string['tawkto_embed_urldesc'] = 'Enter the embed URL provided by Tawk.to.';
 
-// Copy/Paste strings
-$string['themesettingscopypaste'] = 'Copy/Paste Settings';
-$string['themesettingscopypaste_desc'] = 'Options to block or restrict copying and pasting.';
-$string['copypaste_prevention'] = 'Prevent copy/paste';
-$string['copypaste_preventiondesc'] = 'If enabled, it will attempt to block the copy and paste function.';
-$string['copypaste_roles'] = 'Affected roles';
-$string['copypaste_rolesdesc'] = 'Select the roles to which the restriction will apply.';
+// Content protection
+$string['themesettingscopypaste'] = 'Content protection';
+$string['themesettingscopypaste_desc'] = 'Prevent certain roles from copying and pasting content.';
+$string['copypaste_prevention'] = 'Copy and paste prevention';
+$string['copypaste_preventiondesc'] = 'Prevent certain roles from copying and pasting content.';
+$string['copypaste_roles'] = 'Roles to protect';
+$string['copypaste_rolesdesc'] = 'Select the roles to which copy and paste prevention will be applied.';
 
-// License activation
-$string['licenseactivation'] = 'License Activation';
-$string['licenseactivationdesc'] = 'If you experience issues with theme features, you can manually activate the license using the button below:';
-$string['activatelicense'] = 'Activate License';
+// Carousel settings
+$string['carouselsettings'] = 'Carousel settings';
+$string['carouselsettings_desc'] = 'Configure the slides for the login page carousel.';
+$string['numberofslides'] = 'Number of slides';
+$string['numberofslides_desc'] = 'Select how many slides to show in the carousel.';
+$string['slidetitle'] = 'Slide {$a} title';
+$string['slidetitle_desc'] = 'Title for slide {$a}.';
+$string['slideimage'] = 'Slide {$a} image';
+$string['slideimage_desc'] = 'Upload an image for slide {$a} (recommended size: 1600x900px).';
+$string['slideurl'] = 'Slide {$a} link';
+$string['slideurldesc'] = 'URL that slide {$a} will link to.';
+$string['carouselinterval'] = 'Carousel interval';
+$string['carouselintervaldesc'] = 'Time in milliseconds between slide transitions.';
 
-// Carrusel navegación
-$string['previous'] = 'Previous';
-$string['next'] = 'Next';
-$string['default_slide_title'] = 'Welcome to our Learning Platform';
+// Personal area headers
+$string['showpersonalareaheader'] = 'Show personal area header';
+$string['showpersonalareaheader_desc'] = 'Show a header image on the Personal Area page.';
+$string['personalareaheader'] = 'Personal area header image';
+$string['personalareaheaderdesc'] = 'Upload an image for the personal area header (recommended size: 1600x300px). {$a->example_banner}';
 
-// Dashboard
-$string['dashboardsettings'] = 'Dashboard Settings';
+// My courses headers
+$string['showmycoursesheader'] = 'Show My Courses header';
+$string['showmycoursesheader_desc'] = 'Show a header image on the My Courses page.';
+$string['mycoursesheader'] = 'My Courses header image';
+$string['mycoursesheaderdesc'] = 'Upload an image for the My Courses header (recommended size: 1600x300px). {$a->example_banner}';
 
-// Cursos destacados
-$string['featuredcourses'] = 'Featured Courses';
-$string['featuredcoursesdesc'] = 'Display featured courses in a dedicated section.';
+// Homepage
+$string['hidefrontpagesections'] = 'Hide homepage sections';
+$string['hidefrontpagesections_desc'] = 'Hide the frontend sections of the homepage.';
 
-// Cadenas faltantes identificadas
-$string['defaultheader'] = 'Default Header';
-$string['gotop'] = 'Go to top';
-$string['focusmode'] = 'Focus Mode';
-$string['togglefocusmode'] = 'Toggle Focus Mode';
-$string['welcometobrand'] = 'Welcome to {$a}';
-$string['entertologin'] = 'Enter your credentials to login';
-$string['forgotaccount'] = 'Forgot password?';
-$string['firsttime'] = 'First time here?';
-$string['cookiesnotice'] = 'Cookies notice';
-$string['home'] = 'Home';
-$string['footersettings'] = 'Footer Settings';
-$string['viewcoursetitle'] = 'View this course';
-$string['viewcourse'] = 'View course';
-$string['instructorcounttitle'] = 'More instructors';
-$string['deactivatelicense'] = 'Deactivate License';
-$string['licensekeyactivated'] = 'License key activated successfully';
-$string['opendrawerindex'] = 'Open course index drawer';
-$string['opendrawerblocks'] = 'Open block drawer';
-$string['closecourseindex'] = 'Close course index';
-$string['closeblockdrawer'] = 'Close block drawer';
+// Footer
+$string['hidefootersections'] = 'Hide footer sections';
+$string['hidefootersections_desc'] = 'Hide the footer sections.';
+$string['abouttitle'] = 'About title';
+$string['abouttitledesc'] = 'Title for the About section in the footer.';
+$string['abouttitle_default'] = 'About us';
+$string['abouttext'] = 'About text';
+$string['abouttextdesc'] = 'Text for the About section in the footer.';
+$string['abouttext_default'] = '<p>INTEB - Colombian Technical Institute of Barranquilla.</p>';
+$string['credit'] = 'Designed with <i class="fa fa-heart"></i> by IngeWeb';
 
-$string['intebhelp'] = "Platform Help";
-$string['intebsupport'] = "Inteb Support";
+// Login page
+$string['default_slide_title'] = 'Welcome to our educational platform';
+$string['hide'] = 'Hide';
+$string['show'] = 'Show';
+
+// License
+$string['activatelicense'] = 'Activate license';
+$string['licenseactivation'] = 'License activation';
+$string['licenseactivationdesc'] = 'The license is activated automatically. If you experience any issues, you can use the button below to activate it manually.';
+$string['themeinfotext'] = '<div class="alert alert-info">
+<p>The INTEB theme is a customized adaptation based on Edwiser RemUI.</p>
+<p>This version includes automatic license activation and specific fixes for INTEB.</p>
+<p>Version: 4.5.0</p>
+</div>';
+
+// Messages for unauthorized access
+$string['unauthorized_access'] = 'Unauthorized Access';
+$string['unauthorized_access_msg'] = 'You are accessing this site from an unauthorized domain. Please contact the system administrator.';
+$string['devtools_access_disabled'] = 'Developer tools access is disabled on this site.';
+
+// Additional dashboard strings
+$string['dashboardpersonalizerinfo'] = 'Dashboard personalizer info';
+$string['defaultheader'] = 'Default header';

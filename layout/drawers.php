@@ -27,13 +27,16 @@ defined('MOODLE_INTERNAL') || die();
 global $CFG, $PAGE, $COURSE;
 
 require_once($CFG->dirroot . '/theme/remui/layout/common.php');
-require_once($CFG->libdir . '/behat/lib.php');
 
 $coursecontext = context_course::instance($COURSE->id);
 if (!is_guest($coursecontext, $USER) &&
     \theme_remui\toolbox::get_setting('enabledashboardcoursestats') &&
     $PAGE->pagelayout == 'mydashboard' && $PAGE->pagetype == 'my-index') {
     $templatecontext['isdashboardstatsshow'] = true;
+    $setupstatus = get_config("theme_remui","setupstatus");
+    if(get_config("theme_remui","dashboardpersonalizerinfo") == "show" && ( $setupstatus == "final" || $setupstatus == 'finished' )) {
+        $templatecontext['showpersonlizerinfo'] = true;
+    }
 }
 
 // Must be called before rendering the template.

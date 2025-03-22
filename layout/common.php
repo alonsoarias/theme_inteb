@@ -34,7 +34,7 @@ global $PAGE;
 // Adding loader image before everything else.
 $loaderimage = \theme_remui\toolbox::setting_file_url('loaderimage', 'loaderimage');
 if (empty($loaderimage)) {
-    $loaderimage   = $CFG->wwwroot.'/theme/remui/pix/owl_loader.gif';
+    $loaderimage   = $CFG->wwwroot.'/theme/remui/pix/siteinnerloader.svg';
 }
 
 // Add block button in editing mode.
