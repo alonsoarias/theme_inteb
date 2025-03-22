@@ -1,4 +1,13 @@
 <?php
+/**
+ * Login page layout for theme_inteb
+ *
+ * @package   theme_inteb
+ * @copyright (c) 2025 IngeWeb <soporte@ingeweb.co>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @author    Pedro Arias <soporte@ingeweb.co>
+ */
+
 defined('MOODLE_INTERNAL') || die();
 
 // Obtener atributos del body y la configuración del tema.
@@ -18,7 +27,6 @@ $templatecontext = [
     ),
     'output' => $OUTPUT,
     'bodyattributes' => $bodyattributes,
-    'loginbackground' => '',
     'carouselimages' => [],
     'carouselinterval' => 5000, // Valor por defecto si no hay nada configurado
     'my_credit' => get_string('credit', 'theme_inteb'),
@@ -32,30 +40,30 @@ $templatecontext = [
 
 // Intervalo (ms) para la rotación automática del carrusel.
 // Aseguramos que sea un entero válido.
-$carouselinterval = isset($theme->settings->login_carouselinterval) && is_numeric($theme->settings->login_carouselinterval)
-    ? (int)$theme->settings->login_carouselinterval
+$carouselinterval = isset($theme->settings->ib_carouselinterval) && is_numeric($theme->settings->ib_carouselinterval)
+    ? (int)$theme->settings->ib_carouselinterval
     : 5000; // Valor por defecto si no está configurado o no es numérico.
 
 $templatecontext['carouselinterval'] = $carouselinterval;
 
-// Número de diapositivas configuradas (ej. 1..10).
-$numslides = isset($theme->settings->login_numberofslides) && is_numeric($theme->settings->login_numberofslides)
-    ? (int)$theme->settings->login_numberofslides
+// Número de diapositivas configuradas (ej. 1..5).
+$numslides = isset($theme->settings->ib_login_numberofslides) && is_numeric($theme->settings->ib_login_numberofslides)
+    ? (int)$theme->settings->ib_login_numberofslides
     : 1;
 
 // Recorremos cada slide. El índice interno comenzará en 0.
 for ($i = 0; $i < $numslides; $i++) {
-    // Ajustes se llaman login_slideimage1, login_slideimage2..., así que sumamos 1 para la lectura real.
+    // Ajustes se llaman ib_login_slideimage1, ib_login_slideimage2..., así que sumamos 1 para la lectura real.
     $slideindex = $i + 1;
 
     // Obtenemos la URL de la imagen (si se subió archivo).
-    $imageurl = $theme->setting_file_url("login_slideimage{$slideindex}", "login_slideimage{$slideindex}");
+    $imageurl = $theme->setting_file_url("ib_login_slideimage{$slideindex}", "ib_login_slideimage{$slideindex}");
     if (!empty($imageurl)) {
         // Verificamos si el archivo existe en storage (opcional).
         $files = $fs->get_area_files(
             $context->id,
             'theme_inteb',
-            "login_slideimage{$slideindex}",
+            "ib_login_slideimage{$slideindex}",
             0,
             'sortorder',
             false
@@ -63,11 +71,11 @@ for ($i = 0; $i < $numslides; $i++) {
         if (!empty($files)) {
             // Título y enlace configurados para la diapositiva.
             $slidetitle = format_string(
-                $theme->settings->{"login_slidetitle{$slideindex}"} ?? '',
+                $theme->settings->{"ib_login_slidetitle{$slideindex}"} ?? '',
                 true,
                 ['escape' => false]
             );
-            $slideurl   = $theme->settings->{"login_slideurl{$slideindex}"} ?? '#';
+            $slideurl   = $theme->settings->{"ib_login_slideurl{$slideindex}"} ?? '#';
 
             // Añadimos la diapositiva al array.
             // 'index' => $i indica el orden real para el 'data-slide-to'.
@@ -104,9 +112,9 @@ $templatecontext['hascarousel'] = !empty($templatecontext['carouselimages']);
 // =========================================================================
 // 2) Texto "About" u otra info en el login
 // =========================================================================
-if (!empty($theme->settings->abouttext)) {
+if (!empty($theme->settings->ib_abouttext)) {
     $templatecontext['abouttext'] = format_string(
-        $theme->settings->abouttext,
+        $theme->settings->ib_abouttext,
         true,
         ['escape' => false]
     );
@@ -115,4 +123,4 @@ if (!empty($theme->settings->abouttext)) {
 // =========================================================================
 // 3) Renderizar la plantilla con este contexto
 // =========================================================================
-echo $OUTPUT->render_from_template('theme_inteb/core/login-custom', $templatecontext);
+echo $OUTPUT->render_from_template('theme_inteb/login', $templatecontext);

@@ -1,13 +1,17 @@
 <?php
-
 /**
- * inteb.
+ * Lib functions for theme_inteb
  *
- * @package    theme_inteb
- * @copyright  Creado por Ing Pablo A Pico - @pabloapico exclusivamente para plataformas Moodle creadas y soportadas por ingeweb - Sistemas y Publicidad
+ * @package   theme_inteb
+ * @copyright (c) 2025 IngeWeb <soporte@ingeweb.co>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @author    Pedro Arias <soporte@ingeweb.co>
  */
 
 defined('MOODLE_INTERNAL') || die();
+
+// Load our license override autoloader
+require_once(__DIR__ . '/classes/license_autoload.php');
 
 require_once(__DIR__ . '/../remui/lib.php');
 
@@ -20,18 +24,24 @@ require_once(__DIR__ . '/../remui/lib.php');
 function theme_inteb_get_extra_scss($theme) {
     $scss = '';
     // Cargando SCSS existente de variables y estilos personalizados
-    $scss .= file_get_contents(__DIR__ . '/scss/_variables.scss');
-    $scss .= file_get_contents(__DIR__ . '/scss/custom_variables.scss');
-    $scss .= file_get_contents(__DIR__ . '/scss/inteb.scss');
+    if (file_exists(__DIR__ . '/scss/_variables.scss')) {
+        $scss .= file_get_contents(__DIR__ . '/scss/_variables.scss');
+    }
+    if (file_exists(__DIR__ . '/scss/custom_variables.scss')) {
+        $scss .= file_get_contents(__DIR__ . '/scss/custom_variables.scss');
+    }
+    if (file_exists(__DIR__ . '/scss/inteb.scss')) {
+        $scss .= file_get_contents(__DIR__ . '/scss/inteb.scss');
+    }
 
     // Añadiendo el contenido de custom.css
-    $customCss = file_get_contents(__DIR__ . '/style/custom.css');
-    $scss .= $customCss;
+    if (file_exists(__DIR__ . '/style/custom.css')) {
+        $customCss = file_get_contents(__DIR__ . '/style/custom.css');
+        $scss .= $customCss;
+    }
 
     return $scss;
 }
-
-
 
 /**
  * Get SCSS to prepend.
@@ -52,7 +62,6 @@ function theme_inteb_get_pre_scss($theme)
  * @param theme_config $theme The theme config object.
  * @return string
  */
-
 function theme_inteb_get_main_scss_content($theme) {
     global $CFG;
 
@@ -76,50 +85,31 @@ function theme_inteb_get_main_scss_content($theme) {
     }
 
     // Luego, cargar las personalizaciones SCSS de inteb.
-    $intebVariables = file_get_contents($CFG->dirroot . '/theme/inteb/scss/_variables.scss');
-    $customVariables = file_get_contents($CFG->dirroot . '/theme/inteb/scss/custom_variables.scss');
-    $intebScss = file_get_contents($CFG->dirroot . '/theme/inteb/scss/inteb.scss');
+    $intebVariables = '';
+    $customVariables = '';
+    $intebScss = '';
+
+    if (file_exists($CFG->dirroot . '/theme/inteb/scss/_variables.scss')) {
+        $intebVariables = file_get_contents($CFG->dirroot . '/theme/inteb/scss/_variables.scss');
+    }
+    if (file_exists($CFG->dirroot . '/theme/inteb/scss/custom_variables.scss')) {
+        $customVariables = file_get_contents($CFG->dirroot . '/theme/inteb/scss/custom_variables.scss');
+    }
+    if (file_exists($CFG->dirroot . '/theme/inteb/scss/inteb.scss')) {
+        $intebScss = file_get_contents($CFG->dirroot . '/theme/inteb/scss/inteb.scss');
+    }
 
     // Cargar cualquier CSS personalizado desde 'custom.css'.
-    $customCss = file_get_contents($CFG->dirroot . '/theme/inteb/style/custom.css');
+    $customCss = '';
+    if (file_exists($CFG->dirroot . '/theme/inteb/style/custom.css')) {
+        $customCss = file_get_contents($CFG->dirroot . '/theme/inteb/style/custom.css');
+    }
 
     // Combinar todos los estilos en el orden correcto.
     $combinedScssContent = $scss . "\n" . $intebVariables . "\n" . $customVariables . "\n" . $intebScss . "\n" . $customCss;
 
     return $combinedScssContent;
 }
-
-
-
-
-/**
- * Adds the footer image to CSS.
- *
- * @param theme_config $theme The theme config object.
- * @return string
- */
-function theme_inteb_set_extra_img($theme)
-{
-    global $OUTPUT;
-
-    $css = '';
-    $topfooterimg = $theme->setting_file_url('topfooterimg', 'topfooterimg');
-
-    if (is_null($topfooterimg)) {
-        $css =  "#top-footer {background-image: none;}";
-    } else {
-        $css = "#top-footer {background-image: url('$topfooterimg');}";
-    }
-
-    $content = '';
-
-    // Always return the background image with the scss when we have it.
-    return !empty($theme->settings->scss) ? $theme->settings->scss . ' ' . $content : $content;
-    return $css;
-}
-
-
-
 
 /**
  * Serves any files associated with the theme settings.
@@ -137,20 +127,35 @@ function theme_inteb_pluginfile($course, $cm, $context, $filearea, $args, $force
 {
     $theme = theme_config::load('inteb');
 
-    if ($context->contextlevel == CONTEXT_SYSTEM && $filearea === 'personalareaheader') {
-        return $theme->setting_file_serve('personalareaheader', $args, $forcedownload, $options);
-    }
-    if ($context->contextlevel == CONTEXT_SYSTEM && $filearea === 'mycoursesheader') {
-        return $theme->setting_file_serve('mycoursesheader', $args, $forcedownload, $options);
-    }
+    if ($context->contextlevel == CONTEXT_SYSTEM) {
+        // Serve theme files with prefixed names
+        if ($filearea === 'ib_personalareaheader') {
+            return $theme->setting_file_serve('ib_personalareaheader', $args, $forcedownload, $options);
+        }
+        if ($filearea === 'ib_mycoursesheader') {
+            return $theme->setting_file_serve('ib_mycoursesheader', $args, $forcedownload, $options);
+        }
 
-    // Check if the file area corresponds to the carousel images.
-    if ($context->contextlevel == CONTEXT_SYSTEM && strpos($filearea, 'login_slideimage') === 0) {
-        // Extract the slide number from the file area name.
-        $slide_number = substr($filearea, 16); // Remove 'login_slideimage' prefix.
-        // Serve the slide image.
-        return $theme->setting_file_serve("login_slideimage{$slide_number}", $args, $forcedownload, $options);
+        // Check if the file area corresponds to the carousel images.
+        if (strpos($filearea, 'ib_login_slideimage') === 0) {
+            // Extract the slide number from the file area name.
+            $slide_number = substr($filearea, strlen('ib_login_slideimage'));
+            // Serve the slide image.
+            return $theme->setting_file_serve("ib_login_slideimage{$slide_number}", $args, $forcedownload, $options);
+        }
     }
 
     return theme_remui_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, $options);
+}
+
+/**
+ * Callback called immediately after the theme is initially set in $PAGE.
+ * Used to ensure we're using our overridden license controller.
+ */
+function theme_inteb_page_init() {
+    // Apply our license override
+    theme_inteb_license_autoload();
+    
+    // Force a valid license status
+    set_config(EDD_LICENSE_STATUS, 'valid', 'theme_remui');
 }

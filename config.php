@@ -15,14 +15,18 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * remui config.
+ * Theme configuration file for theme_inteb.
  *
- * @package   theme_remui
- * @copyright 2016 Frédéric Massart
+ * @package   theme_inteb
+ * @copyright (c) 2025 IngeWeb <soporte@ingeweb.co>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @author    Pedro Arias <soporte@ingeweb.co>
  */
 
 defined('MOODLE_INTERNAL') || die();
+
+// Load our license override autoloader first
+require_once(__DIR__ . '/classes/license_autoload.php');
 
 require_once(__DIR__ . '/lib.php');
 
