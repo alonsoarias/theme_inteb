@@ -15,24 +15,6 @@ $string['abouttitle_default'] = 'About Us';
 $string['abouttext'] = 'About Text';
 $string['abouttextdesc'] = 'Content for "About" in footer area';
 
-$string['loginfootertext'] = 'Login Footer';
-$string['loginfootertextdesc'] = 'Content for the footer section on the login page';
-
-$string['generalalert'] = 'General Alert';
-$string['generalalertdesc'] = 'This will display an alert on the main page to notify users about a particular event or situation.';
-
-$string['footertitle'] = 'Footer Center Block Title';
-$string['footertitledesc'] = 'The title for the center block in the footer.';
-
-$string['footertext'] = 'Footer Center Block Text';
-$string['footertextdesc'] = 'The content for the center block in the footer.';
-
-$string['footertitle2'] = 'Footer Right Block Title';
-$string['footertitledesc2'] = 'The title for the right block in the footer.';
-
-$string['footertext2'] = 'Footer Right Block Text';
-$string['footertextdesc2'] = 'The content for the right block in the footer.';
-
 $string['copyright'] = 'Copyright';
 $string['copyrightdesc'] = 'About this website.';
 
@@ -41,9 +23,6 @@ $string['customcssdesc'] = 'Any CSS rules you add here will be reflected on ever
 
 $string['themeinfotext'] = 'This theme was created for <strong>another Moodle project</strong> by <a target="_blank" href="http://ingeweb.co/">IngeWeb - Solutions to succeed on the Internet</a>.';
 $string['credit'] = 'Theme created by <a target="_blank" class="my-credit-link" href="http://ingeweb.co/">IngeWeb</a> © 2025 - All rights reserved';
-
-$string['frontpagewallpaper'] = 'Front Page Background Image';
-$string['frontpagewallpaperdesc'] = 'This image appears at the top of the front page, right after the main menu.';
 
 $string['showingonlycategorieswithenrolledcourses'] = 'Showing only categories with enrolled courses';
 $string['nocoursestoshow'] = 'No courses found to display';
@@ -127,6 +106,45 @@ $string['copypaste_prevention'] = 'Prevent copy/paste';
 $string['copypaste_preventiondesc'] = 'If enabled, it will attempt to block the copy and paste function.';
 $string['copypaste_roles'] = 'Affected roles';
 $string['copypaste_rolesdesc'] = 'Select the roles to which the restriction will apply.';
+
+// License activation
+$string['licenseactivation'] = 'License Activation';
+$string['licenseactivationdesc'] = 'If you experience issues with theme features, you can manually activate the license using the button below:';
+$string['activatelicense'] = 'Activate License';
+
+// Carrusel navegación
+$string['previous'] = 'Previous';
+$string['next'] = 'Next';
+$string['default_slide_title'] = 'Welcome to our Learning Platform';
+
+// Dashboard
+$string['dashboardsettings'] = 'Dashboard Settings';
+
+// Cursos destacados
+$string['featuredcourses'] = 'Featured Courses';
+$string['featuredcoursesdesc'] = 'Display featured courses in a dedicated section.';
+
+// Cadenas faltantes identificadas
+$string['defaultheader'] = 'Default Header';
+$string['gotop'] = 'Go to top';
+$string['focusmode'] = 'Focus Mode';
+$string['togglefocusmode'] = 'Toggle Focus Mode';
+$string['welcometobrand'] = 'Welcome to {$a}';
+$string['entertologin'] = 'Enter your credentials to login';
+$string['forgotaccount'] = 'Forgot password?';
+$string['firsttime'] = 'First time here?';
+$string['cookiesnotice'] = 'Cookies notice';
+$string['home'] = 'Home';
+$string['footersettings'] = 'Footer Settings';
+$string['viewcoursetitle'] = 'View this course';
+$string['viewcourse'] = 'View course';
+$string['instructorcounttitle'] = 'More instructors';
+$string['deactivatelicense'] = 'Deactivate License';
+$string['licensekeyactivated'] = 'License key activated successfully';
+$string['opendrawerindex'] = 'Open course index drawer';
+$string['opendrawerblocks'] = 'Open block drawer';
+$string['closecourseindex'] = 'Close course index';
+$string['closeblockdrawer'] = 'Close block drawer';
 
 $string['intebhelp'] = "Platform Help";
 $string['intebsupport'] = "Inteb Support";

@@ -23,20 +23,21 @@
  * @author    Pedro Arias <soporte@ingeweb.co>
  */
 
-// This must be the first line of the script.
-define('CLI_SCRIPT', true);
+// Este script está diseñado para ejecutarse desde un navegador web
+// NO establecer CLI_SCRIPT aquí
 
 // Set parameters.
 define('NO_OUTPUT_BUFFERING', true);
 define('CACHE_DISABLE_ALL', true);
 
 // Include necessary files.
-require(__DIR__ . '/../../../config.php');
-require_once($CFG->libdir . '/clilib.php');
+// Corrección de la ruta de inclusión del config.php
+require_once('../../config.php');
 require_once($CFG->libdir . '/adminlib.php');
 
 // Ensure the user is logged in as admin.
-if (!isloggedin() || !is_siteadmin()) {
+require_login();
+if (!is_siteadmin()) {
     echo '<div style="background-color:#ffaaaa; padding:20px; border:1px solid #cc0000; margin:20px;">';
     echo '<h2>Error: Solo administradores pueden ejecutar este script</h2>';
     echo '<p>Inicie sesión como administrador primero.</p>';

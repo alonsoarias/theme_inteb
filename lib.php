@@ -159,3 +159,113 @@ function theme_inteb_page_init() {
     // Force a valid license status
     set_config(EDD_LICENSE_STATUS, 'valid', 'theme_remui');
 }
+
+/**
+ * Function to register necessary event handlers to automatically 
+ * activate license on every page load.
+ */
+function theme_inteb_before_footer() {
+    // Ensure license is valid on every page
+    theme_inteb_page_init();
+    return '';
+}
+
+/**
+ * This function is called when outputting a URL and makes sure Moodle
+ * links have license override applied.
+ *
+ * @param moodle_url $url
+ * @param array $options
+ * @return string URL
+ */
+function theme_inteb_get_url($url, $options = array()) {
+    // Activate license on URL output
+    theme_inteb_page_init();
+    return $url;
+}
+
+/**
+ * Hook that activates the license when theme settings are loaded.
+ */
+function theme_inteb_pre_settings_load() {
+    // Apply our license override
+    theme_inteb_license_autoload();
+    
+    // Force a valid license status
+    set_config(EDD_LICENSE_STATUS, 'valid', 'theme_remui');
+}
+
+/**
+ * Ensures the theme license is validated when rendering CSS.
+ * 
+ * @param string $css The final CSS.
+ * @return string The processed CSS.
+ */
+function theme_inteb_process_css($css) {
+    // Apply license override before processing CSS
+    theme_inteb_page_init();
+    
+    // Return the CSS as is, no additional processing needed here
+    return $css;
+}
+
+/**
+ * Helper function to convert old configuration names to new prefixed ones.
+ * 
+ * @return void
+ */
+function theme_inteb_migrate_settings() {
+    $oldtonew = [
+        'generalnoticemode' => 'ib_generalnoticemode',
+        'generalnotice' => 'ib_generalnotice',
+        'enable_chat' => 'ib_enable_chat',
+        'tawkto_embed_url' => 'ib_tawkto_embed_url',
+        'copypaste_prevention' => 'ib_copypaste_prevention',
+        'copypaste_roles' => 'ib_copypaste_roles',
+        'login_numberofslides' => 'ib_login_numberofslides',
+        'login_carouselinterval' => 'ib_login_carouselinterval',
+        'showpersonalareaheader' => 'ib_showpersonalareaheader',
+        'personalareaheader' => 'ib_personalareaheader',
+        'showmycoursesheader' => 'ib_showmycoursesheader',
+        'mycoursesheader' => 'ib_mycoursesheader',
+        'hidefrontpagesections' => 'ib_hidefrontpagesections',
+        'hidefootersections' => 'ib_hidefootersections',
+        'abouttitle' => 'ib_abouttitle',
+        'abouttext' => 'ib_abouttext'
+    ];
+    
+    // Slide specific settings
+    for ($i = 1; $i <= 10; $i++) {
+        $oldtonew["login_slidetitle$i"] = "ib_login_slidetitle$i";
+        $oldtonew["login_slideurl$i"] = "ib_login_slideurl$i";
+        // Las imágenes se migrarán cuando se guarden los nuevos settings
+    }
+    
+    foreach ($oldtonew as $old => $new) {
+        $value = get_config('theme_inteb', $old);
+        if ($value !== false) {
+            set_config($new, $value, 'theme_inteb');
+            // Opcional: eliminar el valor antiguo
+            // unset_config($old, 'theme_inteb');
+        }
+    }
+}
+
+/**
+ * Function to get theme settings with prefixed names
+ *
+ * @param string $setting Name of the setting
+ * @param mixed $default Default value if setting is not found
+ * @return mixed The setting value or default
+ */
+function theme_inteb_get_setting($setting) {
+    // Always try with the ib_ prefix first
+    $value = get_config('theme_inteb', 'ib_' . $setting);
+    
+    // If not found, try the non-prefixed version (for backward compatibility)
+    if ($value === false) {
+        $value = get_config('theme_inteb', $setting);
+    }
+    
+    return $value;
+}

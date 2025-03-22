@@ -40,8 +40,8 @@ $templatecontext = [
 
 // Intervalo (ms) para la rotación automática del carrusel.
 // Aseguramos que sea un entero válido.
-$carouselinterval = isset($theme->settings->ib_carouselinterval) && is_numeric($theme->settings->ib_carouselinterval)
-    ? (int)$theme->settings->ib_carouselinterval
+$carouselinterval = isset($theme->settings->ib_login_carouselinterval) && is_numeric($theme->settings->ib_login_carouselinterval)
+    ? (int)$theme->settings->ib_login_carouselinterval
     : 5000; // Valor por defecto si no está configurado o no es numérico.
 
 $templatecontext['carouselinterval'] = $carouselinterval;

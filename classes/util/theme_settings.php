@@ -35,13 +35,13 @@ class settings {
         $templatecontext['my_credit'] = get_string('credit', 'theme_inteb');
         
         // Comprobar y cargar correctamente abouttitle
-        $templatecontext['abouttitle'] = $this->theme->settings->abouttitle
-            ? $this->theme->settings->abouttitle 
+        $templatecontext['abouttitle'] = $this->theme->settings->ib_abouttitle
+            ? $this->theme->settings->ib_abouttitle 
             : get_string('abouttitle_default', 'theme_inteb'); 
         
         // Comprobar y cargar correctamente abouttext
-        $templatecontext['abouttext'] = $this->theme->settings->abouttext
-            ? $this->theme->settings->abouttext 
+        $templatecontext['abouttext'] = $this->theme->settings->ib_abouttext
+            ? $this->theme->settings->ib_abouttext 
             : get_string('abouttext_default', 'theme_inteb');
         
         return $templatecontext;
@@ -59,7 +59,7 @@ class settings {
         $templatecontext = [];
 
         // Retrieve 'personalareaheader' from the theme settings or use a default value if not set.
-        $personalareaheader = $this->theme->setting_file_url('personalareaheader', 'personalareaheader');
+        $personalareaheader = $this->theme->setting_file_url('ib_personalareaheader', 'ib_personalareaheader');
         if (!empty($personalareaheader)) {
             $templatecontext['headerimage'] = [
                 'url' => $personalareaheader,
@@ -87,7 +87,7 @@ class settings {
         $templatecontext = [];
 
         // Retrieve 'mycoursesheader' from the theme settings or use a default value if not set.
-        $mycoursesheader = $this->theme->setting_file_url('mycoursesheader', 'mycoursesheader');
+        $mycoursesheader = $this->theme->setting_file_url('ib_mycoursesheader', 'ib_mycoursesheader');
         if (!empty($mycoursesheader)) {
             $templatecontext['headerimage'] = [
                 'url' => $mycoursesheader,

@@ -63,7 +63,7 @@ class core_renderer extends \theme_remui\output\core_renderer
      */
     public function get_theme_img_url($img) {
         $theme = theme_config::load('inteb');
-        return $theme->setting_file_url($img, $img);
+        return $theme->setting_file_url('ib_' . $img, 'ib_' . $img);
     }
 
     /**
@@ -92,12 +92,12 @@ class core_renderer extends \theme_remui\output\core_renderer
         $theme = theme_config::load('inteb');
 
         // 1) Widget de chat
-        if (!empty($theme->settings->enable_chat)) {
+        if (!empty($theme->settings->ib_enable_chat)) {
             $output .= $this->add_chat_widget();
         }
 
         // 2) Prevención de Copy/Paste
-        if (!empty($theme->settings->copypaste_prevention)) {
+        if (!empty($theme->settings->ib_copypaste_prevention)) {
             $this->add_copy_paste_prevention();
         }
 
@@ -116,23 +116,23 @@ class core_renderer extends \theme_remui\output\core_renderer
         $output = '';
 
         // Ocultar secciones front page si está configurado
-        if (!empty($theme->settings->hidefrontpagesections)) {
+        if (!empty($theme->settings->ib_hidefrontpagesections)) {
             $output .= '<style>.frontpage-sections { display: none; }</style>';
         }
 
         // Aviso general (notice)
-        if (!empty(trim($theme->settings->generalnotice))) {
-            $mode = $theme->settings->generalnoticemode;
+        if (!empty(trim($theme->settings->ib_generalnotice))) {
+            $mode = $theme->settings->ib_generalnoticemode;
             // 'info' => alert-info, 'danger' => alert-danger, 'off' => sin aviso
             if ($mode === 'info') {
-                $output .= '<div class="alert alert-info mt-4"><strong><i class="fa fa-info-circle"></i></strong> ' . $theme->settings->generalnotice . '</div>';
+                $output .= '<div class="alert alert-info mt-4"><strong><i class="fa fa-info-circle"></i></strong> ' . $theme->settings->ib_generalnotice . '</div>';
             } else if ($mode === 'danger') {
-                $output .= '<div class="alert alert-danger mt-4"><strong><i class="fa fa-warning"></i></strong> ' . $theme->settings->generalnotice . '</div>';
+                $output .= '<div class="alert alert-danger mt-4"><strong><i class="fa fa-warning"></i></strong> ' . $theme->settings->ib_generalnotice . '</div>';
             }
         }
 
         // Recordatorio para admin, si el aviso está en modo 'off'
-        if (is_siteadmin() && (!empty($theme->settings->generalnoticemode) && $theme->settings->generalnoticemode === 'off')) {
+        if (is_siteadmin() && (!empty($theme->settings->ib_generalnoticemode) && $theme->settings->ib_generalnoticemode === 'off')) {
             $output .= '<div class="alert mt-4"><a href="' . $CFG->wwwroot . '/admin/settings.php?section=themesettinginteb#theme_inteb">' .
                        '<strong><i class="fa fa-edit"></i></strong> ' . get_string('generalnotice_create', 'theme_inteb') . '</a></div>';
         }
@@ -158,7 +158,7 @@ class core_renderer extends \theme_remui\output\core_renderer
 
         $theme = theme_config::load('inteb');
         // Si el usuario no ha iniciado sesión o no tenemos URL del chat, no hacemos nada
-        if (!isloggedin() || empty($theme->settings->tawkto_embed_url)) {
+        if (!isloggedin() || empty($theme->settings->ib_tawkto_embed_url)) {
             return '';
         }
 
@@ -184,7 +184,7 @@ class core_renderer extends \theme_remui\output\core_renderer
         (function(){
             var s1 = document.createElement(\"script\"), s0 = document.getElementsByTagName(\"script\")[0];
             s1.async = true;
-            s1.src = '" . $theme->settings->tawkto_embed_url . "';
+            s1.src = '" . $theme->settings->ib_tawkto_embed_url . "';
             s1.charset = 'UTF-8';
             s1.setAttribute('crossorigin','*');
             s0.parentNode.insertBefore(s1, s0);
@@ -203,7 +203,7 @@ class core_renderer extends \theme_remui\output\core_renderer
         global $USER, $PAGE, $COURSE;
 
         $theme = theme_config::load('inteb');
-        $restrictedroles = $theme->settings->copypaste_roles;
+        $restrictedroles = $theme->settings->ib_copypaste_roles;
 
         // Si no hay roles restringidos, no hacemos nada.
         if (empty($restrictedroles)) {

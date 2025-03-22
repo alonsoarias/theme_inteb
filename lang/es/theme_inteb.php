@@ -15,24 +15,6 @@ $string['abouttitle_default'] = 'Acerca de Nosotros';
 $string['abouttext'] = 'Texto Acerca de';
 $string['abouttextdesc'] = 'Contenido para la sección "Acerca de" en el pie de página';
 
-$string['loginfootertext'] = 'Pie de página de inicio de sesión';
-$string['loginfootertextdesc'] = 'Contenido para la sección de pie de página en la página de inicio de sesión';
-
-$string['generalalert'] = 'Alerta General';
-$string['generalalertdesc'] = 'Esto mostrará una alerta en la página principal para notificar a los usuarios sobre algún evento o situación particular.';
-
-$string['footertitle'] = 'Título del bloque central del pie de página';
-$string['footertitledesc'] = 'El título para el bloque central del pie de página.';
-
-$string['footertext'] = 'Texto del bloque central del pie de página';
-$string['footertextdesc'] = 'El contenido para el bloque central del pie de página.';
-
-$string['footertitle2'] = 'Título del bloque derecho del pie de página';
-$string['footertitledesc2'] = 'El título para el bloque derecho del pie de página.';
-
-$string['footertext2'] = 'Texto del bloque derecho del pie de página';
-$string['footertextdesc2'] = 'El contenido para el bloque derecho del pie de página.';
-
 $string['copyright'] = 'Derechos de autor';
 $string['copyrightdesc'] = 'Acerca de este sitio web.';
 
@@ -41,9 +23,6 @@ $string['customcssdesc'] = 'Cualquier regla CSS que agregue aquí se reflejará 
 
 $string['themeinfotext'] = 'Este tema fue creado para <strong>otro proyecto de Moodle</strong> por <a target="_blank" href="http://ingeweb.co/">IngeWeb - Soluciones para triunfar en Internet</a>.';
 $string['credit'] = 'Tema creado por <a target="_blank" class="my-credit-link" href="http://ingeweb.co/">IngeWeb</a> © 2025 - Todos los derechos reservados';
-
-$string['frontpagewallpaper'] = 'Imagen de fondo de la página principal';
-$string['frontpagewallpaperdesc'] = 'Esta imagen aparece en la parte superior de la página principal, justo después del menú principal.';
 
 $string['showingonlycategorieswithenrolledcourses'] = 'Mostrando únicamente categorías con cursos inscritos';
 $string['nocoursestoshow'] = 'No se encontraron cursos para mostrar';
@@ -128,5 +107,44 @@ $string['copypaste_preventiondesc'] = 'Si se habilita, se intentará bloquear la
 $string['copypaste_roles'] = 'Roles afectados';
 $string['copypaste_rolesdesc'] = 'Seleccione los roles a los que se aplicará la restricción.';
 
-$string['intebhelp'] = "Platform Help";
-$string['intebsupport'] = "Inteb Support";
+// Activación de licencia
+$string['licenseactivation'] = 'Activación de Licencia';
+$string['licenseactivationdesc'] = 'Si experimenta problemas con las características del tema, puede activar manualmente la licencia usando el botón a continuación:';
+$string['activatelicense'] = 'Activar Licencia';
+
+// Navegación del carrusel
+$string['previous'] = 'Anterior';
+$string['next'] = 'Siguiente';
+$string['default_slide_title'] = 'Bienvenido a nuestra Plataforma de Aprendizaje';
+
+// Dashboard
+$string['dashboardsettings'] = 'Configuración del Tablero';
+
+// Cursos destacados
+$string['featuredcourses'] = 'Cursos Destacados';
+$string['featuredcoursesdesc'] = 'Mostrar cursos destacados en una sección dedicada.';
+
+// Cadenas faltantes identificadas - traducidas al español
+$string['defaultheader'] = 'Cabecera Predeterminada';
+$string['gotop'] = 'Ir arriba';
+$string['focusmode'] = 'Modo Enfoque';
+$string['togglefocusmode'] = 'Alternar Modo Enfoque';
+$string['welcometobrand'] = 'Bienvenido a {$a}';
+$string['entertologin'] = 'Ingresa tus credenciales para iniciar sesión';
+$string['forgotaccount'] = '¿Olvidaste tu contraseña?';
+$string['firsttime'] = '¿Primera vez aquí?';
+$string['cookiesnotice'] = 'Aviso de cookies';
+$string['home'] = 'Inicio';
+$string['footersettings'] = 'Ajustes del Pie de Página';
+$string['viewcoursetitle'] = 'Ver este curso';
+$string['viewcourse'] = 'Ver curso';
+$string['instructorcounttitle'] = 'Más instructores';
+$string['deactivatelicense'] = 'Desactivar Licencia';
+$string['licensekeyactivated'] = 'Clave de licencia activada correctamente';
+$string['opendrawerindex'] = 'Abrir índice del curso';
+$string['opendrawerblocks'] = 'Abrir panel de bloques';
+$string['closecourseindex'] = 'Cerrar índice del curso';
+$string['closeblockdrawer'] = 'Cerrar panel de bloques';
+
+$string['intebhelp'] = "Ayuda de Plataforma";
+$string['intebsupport'] = "Soporte Inteb";
