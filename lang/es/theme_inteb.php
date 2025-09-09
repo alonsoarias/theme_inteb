@@ -25,7 +25,7 @@
 // Cadenas generales
 $string['pluginname'] = 'INTEB';
 $string['configtitle'] = 'Tema INTEB';
-$string['choosereadme'] = 'INTEB es un tema hijo de RemUI adaptado a las necesidades de INTEB.';
+$string['choosereadme'] = 'INTEB es un tema creado por el Ing. Pablo A Pico (<a href="http://ingeweb.co/">IngeWeb</a>) exclusivamente para nuestros clientes.';
 
 // Nuevas cadenas para tareas programadas
 $string['license_check_task'] = 'Tarea de verificación de licencia para INTEB';
@@ -103,8 +103,8 @@ $string['abouttitledesc'] = 'Título para la sección Acerca de en el pie de pá
 $string['abouttitle_default'] = 'Acerca de nosotros';
 $string['abouttext'] = 'Texto de Acerca de';
 $string['abouttextdesc'] = 'Texto para la sección Acerca de en el pie de página.';
-$string['abouttext_default'] = '<p>INTEB - Instituto Técnico Colombiano de Barranquilla.</p>';
-$string['credit'] = 'Diseñado con <i class="fa fa-heart"></i> por IngeWeb';
+$string['abouttext_default'] = '<p>INTEB - Instituto Técnico Educativo Bilingüe.</p>';
+$string['credit'] = 'Tema creado por <a target="_blank" class="my-credit-link" href="http://ingeweb.co/">IngeWeb</a> © 2025 - Todos los derechos reservados';
 
 // Página de acceso
 $string['default_slide_title'] = 'Bienvenido a nuestra plataforma educativa';
@@ -115,11 +115,7 @@ $string['show'] = 'Mostrar';
 $string['activatelicense'] = 'Activar licencia';
 $string['licenseactivation'] = 'Activación de licencia';
 $string['licenseactivationdesc'] = 'La licencia se activa automáticamente. Si experimentas problemas, puedes usar el botón a continuación para activarla manualmente.';
-$string['themeinfotext'] = '<div class="alert alert-info">
-<p>El tema INTEB es una adaptación personalizada basada en Edwiser RemUI.</p>
-<p>Esta versión incluye activación automática de licencia y correcciones específicas para INTEB.</p>
-<p>Versión: 4.5.0</p>
-</div>';
+$string['themeinfotext'] = 'Este tema fue creado para <strong>otro proyecto de Moodle</strong> por <a target="_blank" href="http://ingeweb.co/">IngeWeb - Soluciones para triunfar en Internet</a>.';
 
 // Mensajes para acceso no autorizado
 $string['unauthorized_access'] = 'Acceso no autorizado';

@@ -326,8 +326,8 @@ class core_renderer extends \theme_remui\output\core_renderer
         $allowed_urls = [
             'https://inteb.moodlesoporte.net',
             'http://inteb.moodlesoporte.net',
-            'https://aulavirtual.inteb.edu.co',
-            'http://aulavirtual.inteb.edu.co',
+            'https://aulavirtualnew.inteb.edu.co',
+            'http://aulavirtualnew.inteb.edu.co',
             'https://moodle45.localhost.com',
             'http://moodle45.localhost.com',
             'https://demomoodle.ingeweb.co',
