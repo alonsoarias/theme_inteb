@@ -775,3 +775,238 @@ button.btn.btn-primary.icon-no-margin.p-0 {
 /* Para los teléfonos más pequeños */
 @media (max-width: 479px) {
 }
+
+/* =========================================
+   INTEB - Courseindex Collapsed by Default
+   ========================================= */
+
+/* Asegurar que el ícono de chevron muestre el estado correcto cuando está colapsado */
+#theme_remui-drawers-courseindex .courseindex-chevron.collapsed {
+    .collapsed-icon {
+        display: inline-block !important;
+    }
+    .expanded-icon {
+        display: none !important;
+    }
+}
+
+#theme_remui-drawers-courseindex .courseindex-chevron:not(.collapsed) {
+    .collapsed-icon {
+        display: none !important;
+    }
+    .expanded-icon {
+        display: inline-block !important;
+    }
+}
+
+/* Transición suave para el colapso/expansión */
+#theme_remui-drawers-courseindex .courseindex-item-content {
+    transition: all 0.3s ease-in-out;
+}
+
+/* =========================================
+   INTEB - Centrado de Cuestionarios mod_quiz
+   ========================================= */
+
+/* Centrar la información general del cuestionario */
+#page-mod-quiz-view {
+    .quizinfo {
+        text-align: center;
+        margin: 2rem auto;
+        max-width: 800px;
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        p {
+            text-align: center;
+            margin: 1rem auto;
+        }
+    }
+    
+    /* Centrar el área de calificación y feedback */
+    #page .quizgradefeedback,
+    .generalbox#feedback {
+        text-align: center;
+        margin: 2rem auto;
+        max-width: 800px;
+        
+        h3, h4 {
+            text-align: center;
+        }
+        
+        .overriddennotice {
+            text-align: center;
+            font-size: 0.9em;
+        }
+    }
+    
+    /* Centrar el botón de inicio/continuar intento */
+    .quizstartbuttondiv {
+        text-align: center;
+        margin: 2rem auto;
+        padding: 2rem 0;
+        
+        .btn, button, input[type="submit"] {
+            display: inline-block;
+            margin: 0 auto;
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            
+            /* Aplicar colores del theme */
+            background-color: $color-secondary;
+            border-color: $color-secondary;
+            color: #ffffff;
+            
+            &:hover {
+                background-color: $color-primary;
+                border-color: $color-primary;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+                transition: all 0.3s ease;
+            }
+            
+            &:active, &:focus {
+                background-color: darken($color-primary, 10%);
+                border-color: darken($color-primary, 10%);
+            }
+        }
+    }
+    
+    /* Centrar la descripción de la actividad */
+    .activity-description,
+    #intro,
+    .generalbox {
+        text-align: center;
+        margin: 1.5rem auto;
+        max-width: 900px;
+        
+        .no-overflow {
+            text-align: center;
+        }
+    }
+    
+    /* Centrar los mensajes de información */
+    .box.generalbox.boxaligncenter {
+        text-align: center;
+        margin: 1.5rem auto;
+        max-width: 800px;
+        
+        .boxwidthnarrow {
+            margin: 0 auto;
+        }
+    }
+    
+    /* Centrar la lista de intentos previos */
+    h3 {
+        text-align: center;
+        margin: 2rem 0 1rem;
+    }
+    
+    /* Mejorar el diseño de las cards de intentos */
+    .list-unstyled {
+        max-width: 1200px;
+        margin: 0 auto;
+        
+        .card {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s ease;
+            
+            &:hover {
+                box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            }
+            
+            .card-header {
+                background-color: lighten($color-primary, 45%);
+                border-bottom: 2px solid $color-primary;
+                
+                h4 {
+                    color: $color-primary;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
+
+/* Centrar elementos en la página de resumen del intento */
+#page-mod-quiz-summary {
+    #content {
+        text-align: center;
+        
+        .submitbtns {
+            text-align: center;
+            margin: 2rem auto;
+            
+            .btn {
+                margin: 0 0.5rem;
+            }
+        }
+    }
+    
+    #quiz-timer {
+        text-align: center;
+        margin: 1.5rem auto;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: $color-primary;
+    }
+}
+
+/* Centrar elementos en la página de revisión */
+#page-mod-quiz-review {
+    .submitbtns {
+        text-align: center;
+        margin: 2rem auto;
+    }
+    
+    table.quizreviewsummary {
+        margin: 2rem auto;
+        max-width: 800px;
+    }
+}
+
+/* Ajustes para vista móvil */
+@media (max-width: 768px) {
+    #page-mod-quiz-view {
+        .quizinfo,
+        #page .quizgradefeedback,
+        .generalbox,
+        .activity-description {
+            padding: 0 1rem;
+            max-width: 100%;
+        }
+        
+        .quizstartbuttondiv {
+            .btn, button, input[type="submit"] {
+                width: 90%;
+                max-width: 300px;
+            }
+        }
+    }
+}
+
+/* Animación suave para los botones del quiz */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba($color-secondary, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba($color-secondary, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba($color-secondary, 0);
+    }
+}
+
+/* Aplicar animación al botón de inicio cuando no hay intentos previos */
+#page-mod-quiz-view .quizstartbuttondiv:first-of-type .btn {
+    animation: pulse 2s infinite;
+    
+    &:hover {
+        animation: none;
+    }
+}
