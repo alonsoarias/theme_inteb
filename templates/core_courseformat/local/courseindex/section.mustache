@@ -32,6 +32,7 @@
     - Toggle button con clase "collapsed" por defecto
     - aria-expanded="false" inicial para accesibilidad
     - Compatible con iconos Edwiser del parent theme
+    - Persistencia de estado en localStorage
 
     Example context (json):
     {
@@ -135,7 +136,8 @@ require(['jquery'], function($) {
             $('#' + collapseId).addClass('show');
             $('[aria-controls="' + collapseId + '"]')
                 .removeClass('collapsed')
-                .attr('aria-expanded', 'true');
+                .attr('aria-expanded', 'true')
+                .removeAttr('data-inteb-collapsed');
         }
         
         // Guardar estado cuando cambia
