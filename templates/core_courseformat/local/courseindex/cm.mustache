@@ -20,12 +20,15 @@
     @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
     
     Based on theme_remui/templates/core_courseformat/local/courseindex/cm.mustache
+    No modifications needed - inherits parent template structure
 }}
 {{!
     @template core_courseformat/local/courseindex/cm
 
     Displays a course index course-module entry.
-    Copy from RemUI parent theme - No modifications needed for cm items.
+    This template is an exact copy from RemUI parent theme.
+    No modifications are required for cm items as the collapse
+    functionality is handled at the section level.
 
     Example context (json):
     {
@@ -55,7 +58,7 @@
         <div class="edw-section-content-wrapper text-truncate align-items-center">
             <span class="completioninfo" data-for="cm_completion" data-value="NaN"></span>
             {{#uservisible}}
-            <a
+            
                 class="courseindex-link text-truncate text-link-regular"
                 {{#url}} href="{{{url}}}" {{/url}}{{^url}} href="#{{{anchor}}}" data-anchor="true" {{/url}}
                 data-for="cm_name"

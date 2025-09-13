@@ -776,11 +776,11 @@ button.btn.btn-primary.icon-no-margin.p-0 {
 @media (max-width: 479px) {
 }
 
-/* =========================================
-   INTEB - Courseindex Collapsed by Default
-   ========================================= */
+/* ===============================================
+   INTEB - Courseindex Collapsed by Default Styles
+   =============================================== */
 
-/* Asegurar que el ícono de chevron muestre el estado correcto cuando está colapsado */
+/* Asegurar que los iconos muestren el estado correcto */
 #theme_remui-drawers-courseindex .courseindex-chevron.collapsed {
     .collapsed-icon {
         display: inline-block !important;
@@ -804,12 +804,23 @@ button.btn.btn-primary.icon-no-margin.p-0 {
     transition: all 0.3s ease-in-out;
 }
 
-/* =========================================
-   INTEB - Centrado de Cuestionarios mod_quiz
-   ========================================= */
+/* Hover effect para el toggle button */
+#theme_remui-drawers-courseindex .courseindex-chevron {
+    transition: transform 0.2s ease;
+    
+    &:hover {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
 
-/* Centrar la información general del cuestionario */
+/* ===============================================
+   INTEB - Centrado de Cuestionarios mod_quiz
+   =============================================== */
+
+/* Centrar la página principal del quiz */
 #page-mod-quiz-view {
+    /* Centrar información general del quiz */
     .quizinfo {
         text-align: center;
         margin: 2rem auto;
@@ -818,15 +829,18 @@ button.btn.btn-primary.icon-no-margin.p-0 {
         h2 {
             text-align: center;
             margin-bottom: 1.5rem;
+            font-weight: 600;
+            color: $color-primary;
         }
         
         p {
             text-align: center;
             margin: 1rem auto;
+            line-height: 1.6;
         }
     }
     
-    /* Centrar el área de calificación y feedback */
+    /* Centrar área de calificación y feedback */
     #page .quizgradefeedback,
     .generalbox#feedback {
         text-align: center;
@@ -835,61 +849,79 @@ button.btn.btn-primary.icon-no-margin.p-0 {
         
         h3, h4 {
             text-align: center;
+            color: $color-primary;
         }
         
         .overriddennotice {
             text-align: center;
             font-size: 0.9em;
+            color: #666;
         }
     }
     
-    /* Centrar el botón de inicio/continuar intento */
+    /* Centrar y estilizar el botón de inicio/continuar intento */
     .quizstartbuttondiv {
         text-align: center;
-        margin: 2rem auto;
+        margin: 2.5rem auto;
         padding: 2rem 0;
         
-        .btn, button, input[type="submit"] {
+        .btn, 
+        button, 
+        input[type="submit"] {
             display: inline-block;
             margin: 0 auto;
-            padding: 0.75rem 2rem;
-            font-size: 1.1rem;
+            padding: 0.875rem 2.5rem;
+            font-size: 1.125rem;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
             
-            /* Aplicar colores del theme */
+            /* Colores del theme INTEB */
             background-color: $color-secondary;
             border-color: $color-secondary;
             color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             
             &:hover {
                 background-color: $color-primary;
                 border-color: $color-primary;
                 transform: translateY(-2px);
-                box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-                transition: all 0.3s ease;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             }
             
-            &:active, &:focus {
+            &:active, 
+            &:focus {
                 background-color: darken($color-primary, 10%);
                 border-color: darken($color-primary, 10%);
+                outline: none;
+                box-shadow: 0 0 0 0.2rem rgba($color-primary, 0.25);
             }
         }
     }
     
-    /* Centrar la descripción de la actividad */
+    /* Centrar descripción de la actividad */
     .activity-description,
     #intro,
-    .generalbox {
+    .generalbox:not(#feedback) {
         text-align: center;
         margin: 1.5rem auto;
         max-width: 900px;
+        padding: 1.5rem;
         
         .no-overflow {
             text-align: center;
         }
+        
+        /* Mejorar tipografía */
+        p {
+            line-height: 1.7;
+            color: #333;
+        }
     }
     
-    /* Centrar los mensajes de información */
+    /* Centrar mensajes de información */
     .box.generalbox.boxaligncenter {
         text-align: center;
         margin: 1.5rem auto;
@@ -900,23 +932,28 @@ button.btn.btn-primary.icon-no-margin.p-0 {
         }
     }
     
-    /* Centrar la lista de intentos previos */
+    /* Centrar lista de intentos previos */
     h3 {
         text-align: center;
-        margin: 2rem 0 1rem;
+        margin: 2.5rem 0 1.5rem;
+        color: $color-primary;
+        font-weight: 600;
     }
     
-    /* Mejorar el diseño de las cards de intentos */
+    /* Mejorar diseño de cards de intentos */
     .list-unstyled {
         max-width: 1200px;
         margin: 0 auto;
+        padding: 0 1rem;
         
         .card {
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: box-shadow 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
             
             &:hover {
-                box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+                transform: translateY(-2px);
             }
             
             .card-header {
@@ -926,70 +963,117 @@ button.btn.btn-primary.icon-no-margin.p-0 {
                 h4 {
                     color: $color-primary;
                     font-weight: 600;
+                    margin: 0;
                 }
+            }
+            
+            .card-body {
+                padding: 1.25rem;
             }
         }
     }
 }
 
-/* Centrar elementos en la página de resumen del intento */
+/* Centrar elementos en página de resumen del intento */
 #page-mod-quiz-summary {
     #content {
-        text-align: center;
-        
         .submitbtns {
             text-align: center;
             margin: 2rem auto;
             
             .btn {
                 margin: 0 0.5rem;
+                padding: 0.75rem 2rem;
+                font-weight: 600;
             }
         }
     }
     
+    /* Timer del quiz */
     #quiz-timer {
         text-align: center;
         margin: 1.5rem auto;
-        font-size: 1.2rem;
+        font-size: 1.25rem;
         font-weight: 600;
         color: $color-primary;
+        padding: 1rem;
+        background-color: lighten($color-primary, 47%);
+        border-radius: 4px;
+        max-width: 300px;
     }
 }
 
-/* Centrar elementos en la página de revisión */
+/* Centrar elementos en página de revisión */
 #page-mod-quiz-review {
     .submitbtns {
         text-align: center;
         margin: 2rem auto;
+        
+        .btn {
+            margin: 0 0.5rem;
+            padding: 0.75rem 2rem;
+        }
     }
     
     table.quizreviewsummary {
         margin: 2rem auto;
         max-width: 800px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        border-radius: 4px;
+        overflow: hidden;
+        
+        th.cell {
+            background-color: lighten($color-primary, 40%);
+            color: $color-primary;
+            font-weight: 600;
+        }
+        
+        td.cell {
+            background-color: #fafafa;
+        }
     }
 }
 
-/* Ajustes para vista móvil */
+/* Responsive: Ajustes para móvil */
 @media (max-width: 768px) {
     #page-mod-quiz-view {
         .quizinfo,
         #page .quizgradefeedback,
         .generalbox,
         .activity-description {
-            padding: 0 1rem;
+            padding: 1rem;
             max-width: 100%;
         }
         
         .quizstartbuttondiv {
-            .btn, button, input[type="submit"] {
+            padding: 1.5rem 0;
+            
+            .btn, 
+            button, 
+            input[type="submit"] {
                 width: 90%;
                 max-width: 300px;
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+        
+        .list-unstyled {
+            padding: 0 0.5rem;
+            
+            .card {
+                margin-bottom: 1rem;
             }
         }
     }
+    
+    #page-mod-quiz-summary #quiz-timer {
+        font-size: 1.1rem;
+        max-width: 90%;
+    }
 }
 
-/* Animación suave para los botones del quiz */
+/* Animación pulse para botón de inicio (cuando no hay intentos) */
 @keyframes pulse {
     0% {
         box-shadow: 0 0 0 0 rgba($color-secondary, 0.7);
@@ -1002,11 +1086,33 @@ button.btn.btn-primary.icon-no-margin.p-0 {
     }
 }
 
-/* Aplicar animación al botón de inicio cuando no hay intentos previos */
+/* Aplicar animación al primer intento */
 #page-mod-quiz-view .quizstartbuttondiv:first-of-type .btn {
-    animation: pulse 2s infinite;
-    
-    &:hover {
-        animation: none;
+    &:not(:hover) {
+        animation: pulse 2s infinite;
+    }
+}
+
+/* Mejorar accesibilidad con focus visible */
+#page-mod-quiz-view {
+    .btn:focus-visible,
+    button:focus-visible,
+    input[type="submit"]:focus-visible {
+        outline: 3px solid $color-primary;
+        outline-offset: 2px;
+    }
+}
+
+/* Print styles para quiz */
+@media print {
+    #page-mod-quiz-view {
+        .quizstartbuttondiv {
+            display: none;
+        }
+        
+        .quizinfo,
+        .generalbox {
+            page-break-inside: avoid;
+        }
     }
 }
