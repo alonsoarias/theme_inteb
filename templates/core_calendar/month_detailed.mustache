@@ -1,0 +1,138 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+    Theme INTEB
+    @package theme_inteb
+    @copyright (c) 2025 IngeWeb <soporte@ingeweb.co>
+    @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+}}
+{{!
+    @template core_calendar/month_detailed
+
+    Completely redesigned month view for INTEB
+}}
+<div class="inteb-month-view">
+    {{> core/overlay_loading}}
+    
+    <div class="inteb-calendar-grid">
+        <!-- Days of Week Header -->
+        <div class="inteb-weekdays-header">
+            {{#daynames}}
+            <div class="inteb-weekday">
+                <span class="inteb-weekday-short">{{shortname}}</span>
+            </div>
+            {{/daynames}}
+        </div>
+        
+        <!-- Calendar Days Grid -->
+        <div class="inteb-days-grid">
+            {{#weeks}}
+                {{#prepadding}}
+                    <div class="inteb-day-empty"></div>
+                {{/prepadding}}
+                
+                {{#days}}
+                    <div class="inteb-day {{#istoday}}inteb-today{{/istoday}} {{#isweekend}}inteb-weekend{{/isweekend}} {{#hasevents}}inteb-has-events{{/hasevents}}"
+                         data-day="{{mday}}"
+                         data-day-timestamp="{{timestamp}}"
+                         data-new-event-timestamp="{{neweventtimestamp}}"
+                         {{#defaulteventcontext}}data-action="create-event"{{/defaulteventcontext}}>
+                        
+                        <!-- Day Number -->
+                        <div class="inteb-day-number">
+                            {{#istoday}}
+                                <span class="inteb-today-badge">{{mday}}</span>
+                            {{/istoday}}
+                            {{^istoday}}
+                                <span>{{mday}}</span>
+                            {{/istoday}}
+                        </div>
+                        
+                        <!-- Events Container -->
+                        {{#hasevents}}
+                        <div class="inteb-day-events">
+                            {{#events}}
+                                {{^underway}}
+                                <div class="inteb-event-chip inteb-event-{{normalisedeventtype}}"
+                                     data-event-id="{{id}}"
+                                     data-event-component="{{component}}"
+                                     data-event-eventtype="{{eventtype}}"
+                                     {{#draggable}}
+                                     draggable="true"
+                                     data-drag-type="move"
+                                     {{/draggable}}
+                                     title="{{name}}">
+                                    <span class="inteb-event-dot"></span>
+                                    <span class="inteb-event-text">{{{name}}}</span>
+                                </div>
+                                {{/underway}}
+                                {{#underway}}
+                                <div class="inteb-event-ongoing" title="{{name}}">
+                                    <i class="fa fa-arrow-right"></i>
+                                    <span>{{{name}}}</span>
+                                </div>
+                                {{/underway}}
+                            {{/events}}
+                            
+                            {{#hasmoreevents}}
+                            <button class="inteb-more-events" data-action="view-day" 
+                                    data-day="{{mday}}" 
+                                    data-month="{{date.mon}}" 
+                                    data-year="{{date.year}}">
+                                +{{moreeventcount}} {{#str}}more{{/str}}
+                            </button>
+                            {{/hasmoreevents}}
+                        </div>
+                        {{/hasevents}}
+                        
+                        <!-- Event Indicators for Mobile -->
+                        {{#hasevents}}
+                        <div class="inteb-event-indicators">
+                            {{#events}}
+                            <span class="inteb-indicator inteb-indicator-{{normalisedeventtype}}"></span>
+                            {{/events}}
+                        </div>
+                        {{/hasevents}}
+                    </div>
+                {{/days}}
+                
+                {{#postpadding}}
+                    <div class="inteb-day-empty"></div>
+                {{/postpadding}}
+            {{/weeks}}
+        </div>
+    </div>
+</div>
+
+{{#js}}
+require(['jquery', 'core_calendar/month_view_drag_drop'], function($, DragDrop) {
+    var root = $('.inteb-month-view');
+    DragDrop.init(root);     
+    // View tabs
+    $('.inteb-view-tab').on('click', function() {
+        var view = $(this).data('view');
+        var params = {
+            view: view,
+            year: $(this).data('year'),
+            month: $(this).data('month'),
+            day: $(this).data('day')
+        };
+        
+        var url = M.cfg.wwwroot + '/calendar/view.php?' + $.param(params);
+        window.location.href = url;
+    });
+});
+{{/js}}

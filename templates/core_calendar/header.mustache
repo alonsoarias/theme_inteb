@@ -1,0 +1,80 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+    Theme INTEB
+    @package theme_inteb
+    @copyright (c) 2025 IngeWeb <soporte@ingeweb.co>
+    @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+}}
+{{!
+    @template core_calendar/header
+
+    Completely redesigned calendar header for INTEB
+}}
+<div class="inteb-calendar-header">
+    <!-- Today Button and Month Navigation -->
+    <div class="inteb-header-top">      
+        <div class="inteb-month-display">
+            <button class="inteb-nav-arrow inteb-prev-month" data-action="previous-month">
+                <i class="fa fa-chevron-left"></i>
+            </button>
+            
+            <h2 class="inteb-current-month-year">
+                {{periodname}}
+            </h2>
+            
+            <button class="inteb-nav-arrow inteb-next-month" data-action="next-month">
+                <i class="fa fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- View Selector Tabs -->
+    <div class="inteb-view-tabs">
+        <button class="inteb-view-tab {{#viewingmonth}}active{{/viewingmonth}}" 
+                data-view="month"
+                data-year="{{date.year}}" 
+                data-month="{{date.mon}}" 
+                data-day="{{date.mday}}"
+                data-courseid="{{courseid}}"
+                data-categoryid="{{categoryid}}">
+            <i class="fa fa-th"></i>
+            {{#str}}month{{/str}}
+        </button>
+        
+        <button class="inteb-view-tab {{#viewingday}}active{{/viewingday}}" 
+                data-view="day"
+                data-year="{{date.year}}" 
+                data-month="{{date.mon}}" 
+                data-day="{{date.mday}}"
+                data-courseid="{{courseid}}"
+                data-categoryid="{{categoryid}}">
+            <i class="fa fa-calendar-o"></i>
+            {{#str}}day, core_calendar{{/str}}
+        </button>
+        
+        <button class="inteb-view-tab {{#viewingupcoming}}active{{/viewingupcoming}}" 
+                data-view="upcoming"
+                data-year="{{date.year}}" 
+                data-month="{{date.mon}}" 
+                data-day="{{date.mday}}"
+                data-courseid="{{courseid}}"
+                data-categoryid="{{categoryid}}">
+            <i class="fa fa-list"></i>
+            {{#str}}upcomingevents, core_calendar{{/str}}
+        </button>
+    </div>
+</div>

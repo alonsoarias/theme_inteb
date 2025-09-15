@@ -1,0 +1,81 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+    Theme INTEB
+    @package theme_inteb
+    @copyright (c) 2025 IngeWeb <soporte@ingeweb.co>
+    @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+}}
+{{!
+    @template core_calendar/upcoming_events_card
+
+    Upcoming events sidebar card for INTEB
+}}
+<div class="inteb-upcoming-card">
+    <div class="inteb-card-header">
+        <i class="fa fa-calendar-check-o"></i>
+        <h3>{{#str}}upcomingevents, calendar{{/str}}</h3>
+    </div>
+    
+    <div class="inteb-card-body" id="upcoming-events-{{uniqid}}">
+        {{#events}}
+        <div class="inteb-upcoming-event" data-event-id="{{id}}">
+            <div class="inteb-event-date-badge">
+                <span class="inteb-event-day">{{eventday}}</span>
+                <span class="inteb-event-month">{{eventmonth}}</span>
+            </div>
+            
+            <div class="inteb-event-info">
+                <h4 class="inteb-event-title">
+                    <a href="{{viewurl}}">{{{name}}}</a>
+                </h4>
+                <div class="inteb-event-meta">
+                    <i class="fa fa-clock-o"></i>
+                    <span>{{formattedtime}}</span>
+                </div>
+                {{#location}}
+                <div class="inteb-event-location">
+                    <i class="fa fa-map-marker"></i>
+                    <span>{{location}}</span>
+                </div>
+                {{/location}}
+            </div>
+            
+            <div class="inteb-event-type-badge inteb-type-{{normalisedeventtype}}">
+                {{eventtype}}
+            </div>
+        </div>
+        {{/events}}
+        
+        {{^events}}
+        <div class="inteb-no-events">
+            <div class="inteb-empty-icon">
+                <i class="fa fa-calendar-times-o"></i>
+            </div>
+            <p>{{#str}}noupcomingevents, calendar{{/str}}</p>
+        </div>
+        {{/events}}
+    </div>
+    
+    {{#events}}
+    <div class="inteb-card-footer">
+        <a href="{{calendarurl}}" class="inteb-view-all-link">
+            {{#str}}viewall{{/str}}
+            <i class="fa fa-arrow-right"></i>
+        </a>
+    </div>
+    {{/events}}
+</div>

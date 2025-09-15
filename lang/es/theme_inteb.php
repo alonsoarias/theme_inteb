@@ -125,3 +125,4 @@ $string['devtools_access_disabled'] = 'El acceso a las herramientas de desarroll
 // Cadenas adicionales para el panel de control
 $string['dashboardpersonalizerinfo'] = 'Información del personalizador del panel';
 $string['defaultheader'] = 'Encabezado predeterminado';
+

@@ -1,0 +1,156 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+    Theme INTEB - Child theme of RemUI
+    @package theme_inteb
+    @copyright (c) 2025 IngeWeb <soporte@ingeweb.co>
+    @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+}}
+{{!
+    @template core_calendar/view_selector
+
+    View selector - Modernized and fully functional
+}}
+<div data-region="view-selector" class="inteb-view-selector">
+    <button id="calendarviewdropdown" 
+            type="button" 
+            class="btn form-control dropdown-toggle inteb-view-btn" 
+            data-toggle="dropdown" 
+            aria-haspopup="true" 
+            aria-expanded="false">
+        <span class="inteb-view-icon">
+            {{#viewingmonth}}<i class="fa fa-th"></i>{{/viewingmonth}}
+            {{#viewingday}}<i class="fa fa-calendar-day"></i>{{/viewingday}}
+            {{#viewingupcoming}}<i class="fa fa-list-ul"></i>{{/viewingupcoming}}
+        </span>
+        <span class="d-sm-inline-block" data-active-item-text>
+            {{#viewingmonth}}{{#str}}month{{/str}}{{/viewingmonth}}
+            {{#viewingday}}{{#str}}day, core_calendar{{/str}}{{/viewingday}}
+            {{#viewingupcoming}}{{#str}}upcomingevents, core_calendar{{/str}}{{/viewingupcoming}}
+        </span>
+    </button>
+    <ul class="dropdown-menu inteb-dropdown" data-show-active-item aria-labelledby="calendarviewdropdown">
+        <li>
+            <a class="dropdown-item {{#viewingmonth}}active{{/viewingmonth}}" 
+               href="#" 
+               data-view="month"
+               data-view-url="{{config.wwwroot}}/calendar/view.php?view=month&amp;courseid={{courseid}}&amp;categoryid={{categoryid}}"
+               data-year="{{date.year}}" 
+               data-month="{{date.mon}}" 
+               data-day="{{date.mday}}" 
+               data-courseid="{{courseid}}" 
+               data-categoryid="{{categoryid}}">
+                <i class="fa fa-th inteb-menu-icon"></i>
+                {{#str}}month{{/str}}
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item {{#viewingday}}active{{/viewingday}}" 
+               href="#" 
+               data-view="day"
+               data-view-url="{{config.wwwroot}}/calendar/view.php?view=day&amp;courseid={{courseid}}&amp;categoryid={{categoryid}}"
+               data-year="{{date.year}}" 
+               data-month="{{date.mon}}"
+               data-day="{{date.mday}}" 
+               data-courseid="{{courseid}}" 
+               data-categoryid="{{categoryid}}">
+                <i class="fa fa-calendar-day inteb-menu-icon"></i>
+                {{#str}}day, core_calendar{{/str}}
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item {{#viewingupcoming}}active{{/viewingupcoming}}" 
+               href="#" 
+               data-view="upcoming"
+               data-view-url="{{config.wwwroot}}/calendar/view.php?view=upcoming&amp;courseid={{courseid}}&amp;categoryid={{categoryid}}"
+               data-year="{{date.year}}" 
+               data-month="{{date.mon}}" 
+               data-day="{{date.mday}}" 
+               data-courseid="{{courseid}}" 
+               data-categoryid="{{categoryid}}">
+                <i class="fa fa-list-ul inteb-menu-icon"></i>
+                {{#str}}upcomingevents, core_calendar{{/str}}
+            </a>
+        </li>
+    </ul>
+</div>
+{{#js}}
+require(['jquery', 'core_calendar/repository', 'core_calendar/events'], function($, CalendarRepository, CalendarEvents) {
+    
+    // View selector functionality
+    $('[data-region="view-selector"] .dropdown-item').on('click', function(e) {
+        e.preventDefault();
+        
+        var $this = $(this);
+        var view = $this.data('view');
+        var year = $this.data('year');
+        var month = $this.data('month');
+        var day = $this.data('day');
+        var courseId = $this.data('courseid') || 0;
+        var categoryId = $this.data('categoryid') || 0;
+        
+        // Show loading
+        $('.inteb-view-selector').addClass('loading');
+        
+        // Build URL
+        var url = M.cfg.wwwroot + '/calendar/view.php?';
+        var params = [];
+        
+        params.push('view=' + view);
+        
+        if (courseId > 0) {
+            params.push('course=' + courseId);
+        }
+        if (categoryId > 0) {
+            params.push('categoryid=' + categoryId);
+        }
+        
+        // Add date parameters based on view
+        if (view === 'month') {
+            params.push('cal_y=' + year);
+            params.push('cal_m=' + month);
+        } else if (view === 'day') {
+            params.push('cal_y=' + year);
+            params.push('cal_m=' + month);
+            params.push('cal_d=' + day);
+        } else if (view === 'upcoming') {
+            // Upcoming view doesn't need date params
+            params.push('course=' + (courseId || 1));
+        }
+        
+        url += params.join('&');
+        
+        // Navigate to the new view
+        window.location.href = url;
+    });
+    
+    // Update active state on dropdown show
+    $('#calendarviewdropdown').on('show.bs.dropdown', function() {
+        var $button = $(this);
+        var $dropdown = $button.next('.dropdown-menu');
+        
+        // Update active states
+        $dropdown.find('.dropdown-item').each(function() {
+            var $item = $(this);
+            if ($item.hasClass('active')) {
+                $item.attr('aria-current', 'true');
+            } else {
+                $item.removeAttr('aria-current');
+            }
+        });
+    });
+});
+{{/js}}
